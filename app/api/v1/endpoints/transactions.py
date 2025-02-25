@@ -63,6 +63,7 @@ def read_transaction(
 class TransactionWithCategoryNames(schemas.Transaction):
     major_category_name: str | None = None
     minor_category_name: str | None = None
+    type: str | None = None
 
     class Config:
         from_attributes = True
@@ -93,11 +94,12 @@ def get_user_transactions(
             detail="Invalid yearmonth format. Please use YYYYMM (e.g., 202402)"
         )
 
-    # トランザクションとカテゴリ名を一括取得
+    # トランザクションとカテゴリ情報を一括取得
     transactions = db.query(
         models.Transaction,
         models.MajorCategory.name.label('major_category_name'),
-        models.MinorCategory.name.label('minor_category_name')
+        models.MinorCategory.name.label('minor_category_name'),
+        models.MajorCategory.type.label('category_type')
     ).join(
         models.MajorCategory,
         models.Transaction.major_category_id == models.MajorCategory.major_category_id
@@ -118,6 +120,39 @@ def get_user_transactions(
         transaction = record[0]
         transaction.major_category_name = record.major_category_name
         transaction.minor_category_name = record.minor_category_name
+        transaction.type = record.category_type
         result.append(transaction)
 
-    return result 
+    return result
+
+@router.post("/bulk", response_model=List[schemas.Transaction])
+def create_transactions_bulk(
+    transaction_data: schemas.TransactionBulkCreate,
+    db: Session = Depends(get_db),
+    current_user_id: int = 1  # 認証実装後に修正
+):
+    """
+    複数のトランザクションを一括登録します。
+    """
+    if not transaction_data.transactions:
+        raise HTTPException(status_code=400, detail="トランザクションデータが空です")
+    
+    db_transactions = []
+    
+    # 全てのトランザクションをデータベースに追加
+    for transaction in transaction_data.transactions:
+        db_transaction = models.Transaction(
+            **transaction.dict(),
+            user_id=current_user_id
+        )
+        db.add(db_transaction)
+        db_transactions.append(db_transaction)
+    
+    # 一括コミット
+    db.commit()
+    
+    # 全てのトランザクションをリフレッシュ
+    for db_transaction in db_transactions:
+        db.refresh(db_transaction)
+    
+    return db_transactions 

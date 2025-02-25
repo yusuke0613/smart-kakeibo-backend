@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr
 from datetime import date, datetime
 from decimal import Decimal
-from typing import Optional
+from typing import Optional, List
 from enum import Enum
 
 # CategoryType の定義を追加
@@ -77,4 +77,8 @@ class MinorCategory(MinorCategoryBase):
     updated_at: datetime
 
     class Config:
-        from_attributes = True 
+        from_attributes = True
+
+# 一括登録用のスキーマを追加
+class TransactionBulkCreate(BaseModel):
+    transactions: List[TransactionCreate] 
