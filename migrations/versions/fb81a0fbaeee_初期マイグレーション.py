@@ -1,8 +1,8 @@
-"""create all tables in kakeibo schema
+"""初期マイグレーション
 
-Revision ID: 571101ecf88f
+Revision ID: fb81a0fbaeee
 Revises: 
-Create Date: 2025-02-25 14:32:11.714756
+Create Date: 2025-02-25 19:33:25.662642
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '571101ecf88f'
+revision: str = 'fb81a0fbaeee'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -23,7 +23,7 @@ def upgrade() -> None:
     op.create_table('user_levels',
     sa.Column('level_id', sa.Integer(), nullable=False),
     sa.Column('level_name', sa.String(), nullable=False),
-    sa.Column('required_points', sa.Integer(), nullable=True),
+    sa.Column('required_points', sa.Integer(), server_default='0', nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.PrimaryKeyConstraint('level_id'),
@@ -37,8 +37,8 @@ def upgrade() -> None:
     sa.Column('current_level', sa.Integer(), nullable=True),
     sa.Column('registration_date', sa.Date(), server_default=sa.text('CURRENT_DATE'), nullable=True),
     sa.Column('last_login_date', sa.Date(), nullable=True),
-    sa.Column('continuous_login_days', sa.Integer(), server_default=sa.text('0'), nullable=True),
-    sa.Column('total_login_days', sa.Integer(), server_default=sa.text('0'), nullable=True),
+    sa.Column('continuous_login_days', sa.Integer(), server_default='0', nullable=True),
+    sa.Column('total_login_days', sa.Integer(), server_default='0', nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['current_level'], ['kakeibo.user_levels.level_id'], ),
@@ -51,8 +51,8 @@ def upgrade() -> None:
     op.create_table('major_categories',
     sa.Column('major_category_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('name', sa.String(), nullable=False),
-    sa.Column('type', sa.Enum('INCOME', 'EXPENSE', name='categorytype', schema='kakeibo'), nullable=False),
+    sa.Column('name', sa.String(), nullable=True),
+    sa.Column('type', sa.Enum('INCOME', 'EXPENSE', name='categorytype'), nullable=True),
     sa.Column('is_fixed', sa.Boolean(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),

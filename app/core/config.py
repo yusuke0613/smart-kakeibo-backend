@@ -5,11 +5,11 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Household Budget API"
     VERSION: str = "1.0.0"
     API_V1_STR: str = "/api/v1"
-    
-    POSTGRES_USER: str
-    POSTGRES_PASSWORD: str
-    POSTGRES_SERVER: str
-    POSTGRES_DB: str
+    SCHEMA_NAME: str = "kakeibo"
+    POSTGRES_USER: str = "postgres"
+    POSTGRES_PASSWORD: str = "root"
+    POSTGRES_SERVER: str = "localhost:5432"
+    POSTGRES_DB: str = "postgres"
     DATABASE_URL: Optional[str] = None
 
     JWT_SECRET_KEY: str
@@ -21,6 +21,6 @@ class Settings(BaseSettings):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.DATABASE_URL = f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_SERVER}/{self.POSTGRES_DB}"
+        self.DATABASE_URL = "postgresql://postgres:root@localhost:5432/postgres"
 
 settings = Settings() 

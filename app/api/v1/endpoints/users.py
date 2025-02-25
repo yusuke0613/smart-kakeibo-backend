@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.db.database import get_db
 from app.schemas import schemas
-from app.models import models
-from datetime import datetime
+from app.models.models import User
 from app.core.security import get_password_hash
+from datetime import datetime
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -14,26 +14,19 @@ def create_user(
     db: Session = Depends(get_db)
 ):
     # メールアドレスの重複チェック
-    db_user = db.query(models.User).filter(models.User.email == user.email).first()
-    if db_user:
+    if db.query(User).filter(User.email == user.email).first():
         raise HTTPException(status_code=400, detail="Email already registered")
     
     # ユーザー名の重複チェック
-    db_user = db.query(models.User).filter(models.User.username == user.username).first()
-    if db_user:
+    if db.query(User).filter(User.username == user.username).first():
         raise HTTPException(status_code=400, detail="Username already taken")
 
-    now = datetime.now()
     # ユーザーの作成
-    db_user = models.User(
+    db_user = User(
         username=user.username,
         email=user.email,
         password_hash=get_password_hash(user.password),
-        registration_date=now.date(),
-        continuous_login_days=0,
-        total_login_days=0,
-        created_at=now,
-        updated_at=now
+        current_level=1  # デフォルトレベル
     )
     
     try:
@@ -43,4 +36,4 @@ def create_user(
         return db_user
     except Exception as e:
         db.rollback()
-        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}") 
+        raise HTTPException(status_code=500, detail=str(e)) 

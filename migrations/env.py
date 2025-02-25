@@ -2,9 +2,14 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config, pool, text
 from alembic import context
 from app.db.database import Base
-from app.models import models
-from app.core.config import settings
 
+# 個別にすべてのモデルをインポート
+from app.models.models import User  # Userモデルを明示的にインポート
+# 他の必要なモデルもここで明示的にインポート
+from app.models.models import MajorCategory, MinorCategory  # 例
+from app.models.models import Transaction  # 例
+
+from app.core.config import settings
 # スキーマ名を定義
 SCHEMA_NAME = "kakeibo"
 
