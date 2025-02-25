@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from typing import List
 from app.db.database import get_db
 from app.models import models
@@ -59,7 +59,15 @@ def read_transaction(
         raise HTTPException(status_code=404, detail="Transaction not found")
     return transaction
 
-@router.get("/user/{user_id}/{yearmonth}", response_model=List[schemas.Transaction])
+# レスポンス用のスキーマを修正
+class TransactionWithCategoryNames(schemas.Transaction):
+    major_category_name: str | None = None
+    minor_category_name: str | None = None
+
+    class Config:
+        from_attributes = True
+
+@router.get("/user/{user_id}/{yearmonth}", response_model=List[TransactionWithCategoryNames])
 def get_user_transactions(
     user_id: int,
     yearmonth: str,  # YYYYMM形式
@@ -85,14 +93,31 @@ def get_user_transactions(
             detail="Invalid yearmonth format. Please use YYYYMM (e.g., 202402)"
         )
 
-    # トランザクションの取得
-    transactions = db.query(models.Transaction)\
-        .filter(
-            models.Transaction.user_id == user_id,
-            models.Transaction.transaction_date >= start_date,
-            models.Transaction.transaction_date <= end_date
-        )\
-        .order_by(models.Transaction.transaction_date.desc())\
-        .all()
+    # トランザクションとカテゴリ名を一括取得
+    transactions = db.query(
+        models.Transaction,
+        models.MajorCategory.name.label('major_category_name'),
+        models.MinorCategory.name.label('minor_category_name')
+    ).join(
+        models.MajorCategory,
+        models.Transaction.major_category_id == models.MajorCategory.major_category_id
+    ).outerjoin(
+        models.MinorCategory,
+        models.Transaction.minor_category_id == models.MinorCategory.minor_category_id
+    ).filter(
+        models.Transaction.user_id == user_id,
+        models.Transaction.transaction_date >= start_date,
+        models.Transaction.transaction_date <= end_date
+    ).order_by(
+        models.Transaction.transaction_date.desc()
+    ).all()
 
-    return transactions 
+    # レスポンスの整形
+    result = []
+    for record in transactions:
+        transaction = record[0]
+        transaction.major_category_name = record.major_category_name
+        transaction.minor_category_name = record.minor_category_name
+        result.append(transaction)
+
+    return result 
