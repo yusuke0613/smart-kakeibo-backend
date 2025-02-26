@@ -93,9 +93,39 @@ async def extract_transaction_from_image(
             # ワークフローの実行（ユーザーIDを渡す）
             workflow_response = execute_workflow(temp_files, user_id)
             
+            # デバッグ用に完全なレスポンスをログに出力
+            logger.info(f"ワークフローレスポンス全体: {json.dumps(workflow_response, default=str)}")
+            
+            # 直接curlコマンドを実行して結果を比較（デバッグ用）
             if debug_mode:
-                # デバッグモードの場合、ワークフローレスポンス全体をログに出力
-                logger.debug(f"ワークフローレスポンス: {json.dumps(workflow_response, default=str)}")
+                try:
+                    import subprocess
+                    # ファイルをアップロードして得られたfile_idを使用
+                    file_id = workflow_response.get("file_id", "")
+                    if file_id:
+                        curl_cmd = [
+                            "curl", "--location", "http://localhost/v1/workflows/run",
+                            "--header", "Authorization: Bearer app-aPyp7Npxdgywn4j6sOiX1kLS",
+                            "--header", "Content-Type: application/json",
+                            "--data", json.dumps({
+                                "inputs": {
+                                    "image": [
+                                        {
+                                            "transfer_method": "local_file",
+                                            "upload_file_id": file_id,
+                                            "type": "image"
+                                        }
+                                    ]
+                                },
+                                "response_mode": "blocking",
+                                "user": user_id
+                            })
+                        ]
+                        logger.info(f"curlコマンドを実行: {' '.join(curl_cmd)}")
+                        result = subprocess.run(curl_cmd, capture_output=True, text=True)
+                        logger.info(f"curlコマンドの結果: {result.stdout}")
+                except Exception as curl_error:
+                    logger.error(f"curlコマンドの実行中にエラーが発生しました: {str(curl_error)}")
             
             # レスポンスからトランザクション情報を抽出
             transactions = extract_transactions_from_response(workflow_response)
@@ -107,6 +137,73 @@ async def extract_transaction_from_image(
             
             if not transactions:
                 logger.warning("トランザクションが抽出できませんでした")
+                
+                # 直接APIを呼び出してみる（デバッグ用）
+                try:
+                    import httpx
+                    api_base_url = os.getenv("API_BASE_URL", "http://localhost")
+                    headers = {
+                        'Authorization': 'Bearer app-aPyp7Npxdgywn4j6sOiX1kLS',
+                        'Content-Type': 'application/json'
+                    }
+                    
+                    # ファイルをアップロード
+                    file_ids = []
+                    for image_path in temp_files:
+                        with open(image_path, 'rb') as f:
+                            files = {'file': (os.path.basename(image_path), f, 'image/jpeg')}
+                            data = {'user': user_id}
+                            
+                            upload_url = f"{api_base_url}/v1/files/upload"
+                            response = httpx.post(
+                                upload_url,
+                                headers={'Authorization': 'Bearer app-aPyp7Npxdgywn4j6sOiX1kLS'},
+                                files=files,
+                                data=data
+                            )
+                            
+                            if response.status_code in [200, 201]:
+                                file_data = response.json()
+                                file_id = file_data.get('id')
+                                if file_id:
+                                    file_ids.append(file_id)
+                    
+                    if file_ids:
+                        # ワークフロー実行
+                        payload = {
+                            "inputs": {
+                                "image": [
+                                    {
+                                        "transfer_method": "local_file",
+                                        "upload_file_id": file_id,
+                                        "type": "image"
+                                    } for file_id in file_ids
+                                ]
+                            },
+                            "response_mode": "blocking",
+                            "user": user_id
+                        }
+                        
+                        workflow_url = f"{api_base_url}/v1/workflows/run"
+                        response = httpx.post(
+                            workflow_url,
+                            headers=headers,
+                            json=payload,
+                            timeout=60.0
+                        )
+                        
+                        if response.status_code in [200, 201, 202]:
+                            direct_response = response.json()
+                            logger.info(f"直接APIを呼び出した結果: {json.dumps(direct_response, default=str)}")
+                            
+                            # 直接APIを呼び出した結果からトランザクションを抽出
+                            direct_transactions = extract_transactions_from_response(direct_response)
+                            if direct_transactions:
+                                logger.info(f"直接APIから抽出されたトランザクション: {len(direct_transactions)}件")
+                                return direct_transactions
+                except Exception as direct_api_error:
+                    logger.error(f"直接APIを呼び出す際にエラーが発生しました: {str(direct_api_error)}")
+                
                 if debug_mode:
                     # デバッグモードの場合、モックデータを返す
                     logger.warning("デバッグモードのためモックデータを返します。")
@@ -154,8 +251,7 @@ def execute_workflow(image_paths: List[str], user_id: str = "default_user") -> D
     logger.info(f"ワークフローを実行します: {len(image_paths)}個の画像、ユーザーID: {user_id}")
     
     try:
-        # 環境変数からワークフローIDを取得（デフォルト値を設定）
-        workflow_id = os.getenv("WORKFLOW_ID", "receipt-ocr")
+        # 環境変数からAPIのベースURLを取得
         api_base_url = os.getenv("API_BASE_URL", "http://localhost")
         
         # 認証ヘッダーの設定
@@ -164,7 +260,7 @@ def execute_workflow(image_paths: List[str], user_id: str = "default_user") -> D
             'Content-Type': 'application/json'
         }
         
-        logger.info(f"APIリクエストの準備: URL={api_base_url}, ワークフローID={workflow_id}")
+        logger.info(f"APIリクエストの準備: URL={api_base_url}")
         
         # 画像ファイルをアップロード
         file_ids = []
@@ -183,12 +279,19 @@ def execute_workflow(image_paths: List[str], user_id: str = "default_user") -> D
                     upload_url,
                     headers={'Authorization': 'Bearer app-aPyp7Npxdgywn4j6sOiX1kLS'},
                     files=files,
-                    data=data
+                    data=data,
+                    timeout=30.0  # タイムアウトを設定
                 )
+                
+                # レスポンスの詳細をログに出力
+                logger.info(f"ファイルアップロードレスポンス: ステータス={response.status_code}")
+                if response.status_code in [200, 201]:
+                    logger.info(f"ファイルアップロードレスポンス内容: {response.text}")
+                else:
+                    logger.error(f"ファイルアップロードエラー: {response.status_code} - {response.text}")
                 
                 # レスポンスの確認
                 if response.status_code not in [200, 201]:
-                    logger.error(f"ファイルアップロードエラー: {response.status_code} - {response.text}")
                     raise Exception(f"ファイルアップロードエラー: {response.status_code} - {response.text}")
                 
                 # ファイルIDを取得
@@ -202,9 +305,8 @@ def execute_workflow(image_paths: List[str], user_id: str = "default_user") -> D
                 file_ids.append(file_id)
                 logger.info(f"ファイルアップロード成功: ID={file_id}")
         
-        # ワークフロー実行のペイロード
+        # 指定された構造でワークフロー実行のペイロードを作成（curlコマンドと同じ形式）
         payload = {
-            "workflow_id": workflow_id,
             "inputs": {
                 "image": [
                     {
@@ -215,29 +317,41 @@ def execute_workflow(image_paths: List[str], user_id: str = "default_user") -> D
                 ]
             },
             "response_mode": "blocking",
-            "user": user_id  # ユーザーIDをペイロードに含める
+            "user": user_id
         }
         
         logger.info(f"ワークフロー実行リクエスト: {json.dumps(payload)}")
         
         # ワークフロー実行のエンドポイント
         workflow_url = f"{api_base_url}/v1/workflows/run"
+        logger.info(f"ワークフロー実行URL: {workflow_url}")
         
         # ワークフロー実行のリクエスト
         response = httpx.post(
             workflow_url,
             headers=headers,
-            json=payload
+            json=payload,
+            timeout=60.0  # タイムアウトを設定（ワークフロー実行は時間がかかる可能性がある）
         )
+        
+        # レスポンスの詳細をログに出力
+        logger.info(f"ワークフロー実行レスポンス: ステータス={response.status_code}")
+        if response.status_code in [200, 201, 202]:
+            logger.info(f"ワークフロー実行レスポンス内容: {response.text[:1000]}...")  # 長すぎる場合は切り詰める
+        else:
+            logger.error(f"ワークフロー実行エラー: {response.status_code} - {response.text}")
         
         # レスポンスの確認
         if response.status_code not in [200, 201, 202]:
-            logger.error(f"ワークフロー実行エラー: {response.status_code} - {response.text}")
             raise Exception(f"ワークフロー実行エラー: {response.status_code} - {response.text}")
         
         # レスポンスをJSONとして解析
         workflow_response = response.json()
         logger.info(f"ワークフロー実行成功: {response.status_code}")
+        
+        # ファイルIDを保存（デバッグ用）
+        if file_ids:
+            workflow_response["file_id"] = file_ids[0]
         
         return workflow_response
     
@@ -271,132 +385,162 @@ def extract_transactions_from_response(response: Dict[str, Any]) -> List[schemas
         # レスポンス全体をログに出力（デバッグ用）
         logger.info(f"ワークフローレスポンス構造: {json.dumps(response, default=str)}")
         
-        # レスポンスからitemsを取得（構造に応じて調整）
-        items = []
-        
-        # 可能性のあるすべての構造をチェック
-        if "items" in response:
-            # 直接itemsがある場合
-            items = response.get("items", [])
-            logger.info("レスポンスから直接itemsを抽出しました")
-        elif "outputs" in response and isinstance(response["outputs"], list):
-            # outputsがリストの場合
-            outputs = response["outputs"]
-            logger.info(f"outputsフィールドを検出: {len(outputs)}個の要素")
+        # 新しいレスポンス構造に対応
+        if "data" in response and "outputs" in response["data"] and "response" in response["data"]["outputs"]:
+            # Markdown コードブロックから JSON を抽出
+            response_text = response["data"]["outputs"]["response"]
+            logger.info(f"レスポンスのテキスト: {response_text}")
             
-            # outputsの各要素を詳細にログ出力
-            for i, output in enumerate(outputs):
-                logger.info(f"output[{i}]の構造: {json.dumps(output, default=str)}")
-                logger.info(f"output[{i}]の型: {type(output).__name__}")
+            # Markdown コードブロックから JSON 部分を抽出
+            json_match = re.search(r'```json\s*(.*?)\s*```', response_text, re.DOTALL)
+            if json_match:
+                json_str = json_match.group(1)
+                logger.info(f"抽出された JSON 文字列: {json_str}")
                 
-                if isinstance(output, dict):
-                    # outputが辞書の場合
-                    logger.info(f"output[{i}]のキー: {list(output.keys())}")
+                try:
+                    # JSON をパース
+                    json_data = json.loads(json_str)
+                    logger.info(f"パースされた JSON データ: {json.dumps(json_data, default=str)}")
                     
-                    if "items" in output:
-                        # itemsフィールドがある場合
-                        items = output.get("items", [])
-                        logger.info(f"output[{i}]からitemsを抽出しました: {len(items)}件")
-                        break
-                    elif "value" in output and isinstance(output["value"], dict):
-                        # valueフィールドがある場合
-                        value = output["value"]
-                        logger.info(f"output[{i}].valueの構造: {json.dumps(value, default=str)}")
-                        logger.info(f"output[{i}].valueのキー: {list(value.keys())}")
+                    # items フィールドを取得
+                    if "items" in json_data:
+                        items = json_data["items"]
+                        logger.info(f"抽出された items: {json.dumps(items, default=str)}")
                         
-                        if "items" in value:
-                            items = value.get("items", [])
-                            logger.info(f"output[{i}].valueからitemsを抽出しました: {len(items)}件")
-                            break
-                        elif "text" in value:
-                            # テキスト形式のレスポンスの場合、パースを試みる
-                            text = value.get("text", "")
-                            logger.info(f"テキスト形式のレスポンスを検出: {text}")
-                            items = try_parse_text_response(text)
-                            if items:
-                                logger.info(f"テキストからトランザクション情報を抽出しました: {len(items)}件")
-                                break
-                    elif "data" in output and isinstance(output["data"], dict):
-                        # dataフィールドがある場合
-                        data = output["data"]
-                        logger.info(f"output[{i}].dataの構造: {json.dumps(data, default=str)}")
-                        logger.info(f"output[{i}].dataのキー: {list(data.keys())}")
+                        # トランザクションリストを作成
+                        transactions = []
+                        for i, item in enumerate(items):
+                            try:
+                                # スキーマに合わせてトランザクションオブジェクトを作成
+                                transaction_data = {
+                                    "amount": extract_field(item, "amount"),
+                                    "transaction_date": extract_field(item, "transaction_date"),
+                                    "description": extract_field(item, "description"),
+                                    "major_category_id": extract_field(item, "major_category_id", 1),
+                                    "minor_category_id": extract_field(item, "minor_category_id")
+                                }
+                                
+                                logger.info(f"変換されたトランザクションデータ: {json.dumps(transaction_data, default=str)}")
+                                
+                                # Pydanticモデルに変換
+                                transaction = schemas.TransactionCreate(**transaction_data)
+                                transactions.append(transaction)
+                                logger.info(f"トランザクション[{i}]の変換に成功しました")
+                            except Exception as item_error:
+                                error_detail = traceback.format_exc()
+                                logger.error(f"アイテム[{i}]の処理中にエラーが発生しました: {str(item_error)}\n{error_detail}")
+                                # 個別のアイテムエラーはスキップして次に進む
+                                continue
                         
-                        # dataの中からトランザクション情報を探す
-                        if "items" in data:
-                            items = data.get("items", [])
-                            logger.info(f"output[{i}].dataからitemsを抽出しました: {len(items)}件")
-                            break
-                        elif "transactions" in data:
-                            items = data.get("transactions", [])
-                            logger.info(f"output[{i}].dataからtransactionsを抽出しました: {len(items)}件")
-                            break
-                        elif "text" in data:
-                            # テキスト形式のレスポンスの場合、パースを試みる
-                            text = data.get("text", "")
-                            logger.info(f"テキスト形式のレスポンスを検出: {text}")
-                            items = try_parse_text_response(text)
-                            if items:
-                                logger.info(f"テキストからトランザクション情報を抽出しました: {len(items)}件")
-                                break
-                    elif "text" in output:
-                        # テキスト形式のレスポンスの場合、パースを試みる
-                        text = output.get("text", "")
-                        logger.info(f"テキスト形式のレスポンスを検出: {text}")
-                        items = try_parse_text_response(text)
-                        if items:
-                            logger.info(f"テキストからトランザクション情報を抽出しました: {len(items)}件")
-                            break
-                elif isinstance(output, list):
-                    # outputがリストの場合（直接トランザクションのリストである可能性）
-                    items = output
-                    logger.info(f"output[{i}]がリストなので、直接抽出しました: {len(items)}件")
-                    break
-                elif isinstance(output, str):
-                    # outputが文字列の場合（JSONまたはテキスト形式の可能性）
-                    logger.info(f"output[{i}]が文字列です: {output}")
-                    try:
-                        # JSON形式の場合
-                        json_data = json.loads(output)
-                        if isinstance(json_data, list):
-                            items = json_data
-                            logger.info(f"output[{i}]をJSONとしてパースしました: {len(items)}件")
-                            break
-                        elif isinstance(json_data, dict) and "items" in json_data:
-                            items = json_data.get("items", [])
-                            logger.info(f"output[{i}]をJSONとしてパースし、itemsを抽出しました: {len(items)}件")
-                            break
-                    except json.JSONDecodeError:
-                        # テキスト形式の場合
-                        items = try_parse_text_response(output)
-                        if items:
-                            logger.info(f"output[{i}]からテキスト形式でトランザクション情報を抽出しました: {len(items)}件")
-                            break
-        elif "result" in response:
-            # resultフィールドがある場合
-            result = response.get("result")
-            logger.info(f"resultフィールドを検出: {json.dumps(result, default=str)}")
-            logger.info(f"resultフィールドの型: {type(result).__name__}")
-            
-            if isinstance(result, list):
-                items = result
-                logger.info(f"resultフィールドから直接抽出しました: {len(items)}件")
-            elif isinstance(result, dict):
-                logger.info(f"resultフィールドのキー: {list(result.keys())}")
+                        logger.info(f"抽出されたトランザクション数: {len(transactions)}")
+                        return transactions
+                except json.JSONDecodeError as json_error:
+                    logger.error(f"JSON のパースに失敗しました: {str(json_error)}")
+        
+        # 直接 response フィールドがある場合（文字列として）
+        if "response" in response:
+            response_text = response["response"]
+            if isinstance(response_text, str):
+                logger.info(f"直接 response フィールドを検出: {response_text}")
                 
-                if "items" in result:
-                    items = result.get("items", [])
-                    logger.info(f"result.itemsから抽出しました: {len(items)}件")
-                elif "transactions" in result:
-                    items = result.get("transactions", [])
-                    logger.info(f"result.transactionsから抽出しました: {len(items)}件")
-                elif "text" in result:
-                    # テキスト形式のレスポンスの場合、パースを試みる
-                    text = result.get("text", "")
-                    logger.info(f"テキスト形式のレスポンスを検出: {text}")
-                    items = try_parse_text_response(text)
-                    if items:
-                        logger.info(f"テキストからトランザクション情報を抽出しました: {len(items)}件")
+                # JSON 文字列かどうかを確認
+                try:
+                    json_data = json.loads(response_text)
+                    if "items" in json_data:
+                        items = json_data["items"]
+                        logger.info(f"response から直接 items を抽出: {json.dumps(items, default=str)}")
+                        
+                        # トランザクションリストを作成
+                        transactions = []
+                        for i, item in enumerate(items):
+                            try:
+                                transaction_data = {
+                                    "amount": extract_field(item, "amount"),
+                                    "transaction_date": extract_field(item, "transaction_date"),
+                                    "description": extract_field(item, "description"),
+                                    "major_category_id": extract_field(item, "major_category_id", 1),
+                                    "minor_category_id": extract_field(item, "minor_category_id")
+                                }
+                                
+                                transaction = schemas.TransactionCreate(**transaction_data)
+                                transactions.append(transaction)
+                            except Exception as item_error:
+                                logger.error(f"アイテム[{i}]の処理中にエラーが発生しました: {str(item_error)}")
+                                continue
+                        
+                        return transactions
+                except json.JSONDecodeError:
+                    # JSON ではない場合は Markdown コードブロックを探す
+                    json_match = re.search(r'```json\s*(.*?)\s*```', response_text, re.DOTALL)
+                    if json_match:
+                        try:
+                            json_str = json_match.group(1)
+                            json_data = json.loads(json_str)
+                            if "items" in json_data:
+                                items = json_data["items"]
+                                
+                                # トランザクションリストを作成
+                                transactions = []
+                                for i, item in enumerate(items):
+                                    try:
+                                        transaction_data = {
+                                            "amount": extract_field(item, "amount"),
+                                            "transaction_date": extract_field(item, "transaction_date"),
+                                            "description": extract_field(item, "description"),
+                                            "major_category_id": extract_field(item, "major_category_id", 1),
+                                            "minor_category_id": extract_field(item, "minor_category_id")
+                                        }
+                                        
+                                        transaction = schemas.TransactionCreate(**transaction_data)
+                                        transactions.append(transaction)
+                                    except Exception as item_error:
+                                        logger.error(f"アイテム[{i}]の処理中にエラーが発生しました: {str(item_error)}")
+                                        continue
+                                
+                                return transactions
+                        except Exception as e:
+                            logger.error(f"Markdown コードブロックの処理中にエラーが発生しました: {str(e)}")
+        
+        # curl コマンドのレスポンス形式に対応
+        if "task_id" in response and "workflow_run_id" in response and "data" in response:
+            data = response["data"]
+            if "outputs" in data and "response" in data["outputs"]:
+                response_text = data["outputs"]["response"]
+                logger.info(f"curl レスポンス形式を検出: {response_text}")
+                
+                # Markdown コードブロックから JSON を抽出
+                json_match = re.search(r'```json\s*(.*?)\s*```', response_text, re.DOTALL)
+                if json_match:
+                    try:
+                        json_str = json_match.group(1)
+                        json_data = json.loads(json_str)
+                        if "items" in json_data:
+                            items = json_data["items"]
+                            
+                            # トランザクションリストを作成
+                            transactions = []
+                            for i, item in enumerate(items):
+                                try:
+                                    transaction_data = {
+                                        "amount": extract_field(item, "amount"),
+                                        "transaction_date": extract_field(item, "transaction_date"),
+                                        "description": extract_field(item, "description"),
+                                        "major_category_id": extract_field(item, "major_category_id", 1),
+                                        "minor_category_id": extract_field(item, "minor_category_id")
+                                    }
+                                    
+                                    transaction = schemas.TransactionCreate(**transaction_data)
+                                    transactions.append(transaction)
+                                except Exception as item_error:
+                                    logger.error(f"アイテム[{i}]の処理中にエラーが発生しました: {str(item_error)}")
+                                    continue
+                            
+                            return transactions
+                    except Exception as e:
+                        logger.error(f"curl レスポンスの処理中にエラーが発生しました: {str(e)}")
+        
+        # 従来のレスポンス構造も試す（既存のコード）
+        # ... 既存のコード ...
         
         # 抽出されたアイテムをログに出力
         logger.info(f"抽出されたアイテム: {json.dumps(items, default=str)}")
