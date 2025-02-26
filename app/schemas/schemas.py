@@ -81,4 +81,22 @@ class MinorCategory(MinorCategoryBase):
 
 # 一括登録用のスキーマを追加
 class TransactionBulkCreate(BaseModel):
-    transactions: List[TransactionCreate] 
+    transactions: List[TransactionCreate]
+
+# 月次サマリー用のスキーマを追加
+class CategorySummary(BaseModel):
+    category_id: int
+    category_name: str
+    amount: Decimal
+
+class MonthlySummary(BaseModel):
+    yearmonth: str  # YYYYMM形式
+    total_income: Decimal
+    total_expense: Decimal
+    income_categories: List[CategorySummary]
+    expense_categories: List[CategorySummary]
+
+class YearlySummary(BaseModel):
+    year: int
+    user_id: int
+    monthly_summaries: List[MonthlySummary] 
