@@ -9,6 +9,46 @@ class CategoryType(str, enum.Enum):
     INCOME = "INCOME"
     EXPENSE = "EXPENSE"
 
+class FamilyComposition(int, enum.Enum):
+    SINGLE = 1
+    TWO_PERSON = 2
+    THREE_PERSON = 3
+    FOUR_PERSON = 4
+    FIVE_PERSON = 5
+
+class AgeGroup(int, enum.Enum):
+    TWENTIES = 1
+    THIRTIES = 2
+    FORTIES = 3
+    FIFTIES = 4
+    SIXTIES = 5
+
+class IncomeRange(int, enum.Enum):
+    UNDER_3_5M = 1
+    FROM_3_5M_TO_4M = 2
+    FROM_4M_TO_5M = 3
+    FROM_5M_TO_6M = 4
+    FROM_6M_TO_7M = 5
+    FROM_7M_TO_8M = 6
+    FROM_8M_TO_9M = 7
+    FROM_9M_TO_10M = 8
+    FROM_10M_TO_12M = 9
+    OVER_12M = 10
+
+class LifestyleMindset(int, enum.Enum):
+    SAVING = 1
+    BALANCED = 2
+    COMFORT = 3
+
+class MidtermGoal(int, enum.Enum):
+    NONE = 0
+    INCREASE_SAVINGS = 1
+    BUY_HOUSE = 2
+    BUY_CAR = 3
+    RETIREMENT_FUND = 4
+    EDUCATION_FUND = 5
+    HOBBY_TRAVEL_FUND = 6
+
 class User(Base):
     __tablename__ = "users"
     __table_args__ = {"schema": "kakeibo"}
@@ -23,6 +63,15 @@ class User(Base):
     last_login_date = Column(Date)
     continuous_login_days = Column(Integer, server_default='0')
     total_login_days = Column(Integer, server_default='0')
+    
+    # 新しいフィールドを追加
+    family_composition = Column(Integer, nullable=True)
+    age_group = Column(Integer, nullable=True)
+    household_income_range = Column(Integer, nullable=True)
+    lifestyle_mindset = Column(Integer, nullable=True)
+    midterm_goal = Column(Integer, nullable=True)
+    monthly_expense_target = Column(Numeric(10, 2), nullable=True)
+    
     created_at = Column(DateTime, server_default=text('now()'))
     updated_at = Column(DateTime, server_default=text('now()'), onupdate=text('now()'))
 
