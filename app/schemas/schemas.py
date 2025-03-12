@@ -178,7 +178,9 @@ class UserExistenceCheck(BaseModel):
 
 class UserExistenceResponse(BaseModel):
     exists: bool
-    field: Optional[str] = None  # username または email
+    fields: List[str] = []  # 重複しているフィールドのリスト（"username"や"email"）
+    username_exists: bool = False
+    email_exists: bool = False
 
 # ユーザー情報更新用のスキーマ
 class UserUpdate(BaseModel):

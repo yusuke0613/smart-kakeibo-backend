@@ -97,24 +97,36 @@ def check_user_existence(
 ):
     """
     ユーザー名またはメールアドレスが既に登録されているか確認します。
+    両方が重複している場合は、両方の情報を返します。
     """
     if not check_data.username and not check_data.email:
         raise HTTPException(status_code=400, detail="ユーザー名またはメールアドレスを指定してください")
     
+    # 結果を格納する変数を初期化
+    result = {
+        "exists": False,
+        "fields": [],
+        "username_exists": False,
+        "email_exists": False
+    }
+    
     # ユーザー名の存在確認
     if check_data.username:
-        user = db.query(User).filter(User.username == check_data.username).first()
-        if user:
-            return {"exists": True, "field": "username"}
+        username_user = db.query(User).filter(User.username == check_data.username).first()
+        if username_user:
+            result["exists"] = True
+            result["fields"].append("username")
+            result["username_exists"] = True
     
     # メールアドレスの存在確認
     if check_data.email:
-        user = db.query(User).filter(User.email == check_data.email).first()
-        if user:
-            return {"exists": True, "field": "email"}
+        email_user = db.query(User).filter(User.email == check_data.email).first()
+        if email_user:
+            result["exists"] = True
+            result["fields"].append("email")
+            result["email_exists"] = True
     
-    # 存在しない場合
-    return {"exists": False}
+    return result
 
 @router.put("/{user_id}", response_model=schemas.User)
 def update_user(
