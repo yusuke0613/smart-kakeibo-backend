@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>子供の「なぜ」を絵本にするWebサービス市場調査</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap");
+
+      :root {
+        --fashion-1: #593c47;
+        --fashion-2: #f2e63d;
+        --fashion-3: #f2c53d;
+        --fashion-4: #f25c05;
+        --fashion-5: #f24405;
+        --light-bg: rgba(255, 255, 255, 0.85);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Zen Kurenaido", sans-serif;
+        background-color: #f9f7f5;
+        color: #334155;
+        line-height: 1.4;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        border-bottom: 3px solid var(--fashion-4);
+        padding-bottom: 15px;
+        position: relative;
+      }
+
+      .header::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--fashion-3);
+        border-radius: 3px;
+      }
+
+      .title {
+        font-family: "Kaisei Decol", serif;
+        font-size: 32px;
+        font-weight: bold;
+        background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .title::before {
+        content: "📚";
+        position: absolute;
+        left: -15px;
+        top: 5px;
+      }
+
+      .date-source {
+        font-family: "Yomogi", cursive;
+        font-size: 14px;
+        color: #475569;
+        text-align: right;
+      }
+
+      .content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .column {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .card {
+        background-color: var(--light-bg);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          var(--fashion-2),
+          var(--fashion-3),
+          var(--fashion-4)
+        );
+        border-radius: 12px 12px 0 0;
+      }
+
+      .section-title {
+        font-family: "Kaisei Decol", serif;
+        font-size: 18px;
+        color: #1e40af;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 2px dashed var(--fashion-3);
+        display: flex;
+        align-items: center;
+      }
+
+      .section-title::before {
+        margin-right: 10px;
+        font-size: 24px;
+      }
+
+      .market-size .section-title::before {
+        content: "📈";
+      }
+
+      .digital-trends .section-title::before {
+        content: "💻";
+      }
+
+      .target-demo .section-title::before {
+        content: "👪";
+      }
+
+      .consumption .section-title::before {
+        content: "📱";
+      }
+
+      .competition .section-title::before {
+        content: "🏆";
+      }
+
+      .revenue .section-title::before {
+        content: "💰";
+      }
+
+      .strategy .section-title::before {
+        content: "🎯";
+      }
+
+      .content-text {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      .highlight {
+        font-family: "Yomogi", cursive;
+        font-weight: bold;
+        font-size: 16px;
+        color: var(--fashion-1);
+        background: linear-gradient(transparent 70%, var(--fashion-2) 70%);
+        padding: 0 2px;
+        display: inline-block;
+      }
+
+      .data-bubble {
+        background-color: rgba(242, 197, 61, 0.2);
+        border: 2px solid var(--fashion-3);
+        border-radius: 15px;
+        padding: 10px 15px;
+        margin: 10px 0;
+        position: relative;
+        font-family: "Kaisei Decol", serif;
+      }
+
+      .data-bubble::after {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        border-width: 0 10px 10px;
+        border-style: solid;
+        border-color: var(--fashion-3) transparent;
+      }
+
+      .arrow {
+        text-align: center;
+        margin: 15px 0;
+        position: relative;
+        height: 20px;
+      }
+
+      .arrow::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        width: 50%;
+        height: 2px;
+        background-color: var(--fashion-4);
+        transform: translateY(-50%);
+      }
+
+      .arrow::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 25%;
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid var(--fashion-4);
+        border-right: 2px solid var(--fashion-4);
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      .icon-list {
+        list-style: none;
+        margin: 15px 0;
+        padding-left: 10px;
+      }
+
+      .icon-list li {
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .icon-list li::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .check-item::before {
+        content: "✅";
+      }
+
+      .star-item::before {
+        content: "⭐";
+      }
+
+      .idea-item::before {
+        content: "💡";
+      }
+
+      .chart {
+        display: flex;
+        height: 160px;
+        margin: 20px 0;
+        align-items: flex-end;
+        justify-content: space-around;
+        border-bottom: 2px dashed var(--fashion-1);
+        padding-bottom: 10px;
+        position: relative;
+      }
+
+      .chart::before {
+        content: "市場規模";
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        font-size: 12px;
+      }
+
+      .chart::after {
+        content: "年";
+        position: absolute;
+        bottom: -25px;
+        right: 0;
+        font-size: 12px;
+      }
+
+      .bar {
+        width: 40px;
+        background: linear-gradient(180deg, var(--fashion-3), var(--fashion-4));
+        border-radius: 5px 5px 0 0;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .bar::after {
+        content: attr(data-year);
+        position: absolute;
+        bottom: -20px;
+        font-size: 12px;
+      }
+
+      .bar::before {
+        content: attr(data-value);
+        position: absolute;
+        top: -25px;
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--fashion-5);
+      }
+
+      .pie-chart {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: conic-gradient(
+          var(--fashion-5) 0% 49.3%,
+          var(--fashion-4) 49.3% 87.3%,
+          var(--fashion-3) 87.3% 100%
+        );
+        margin: 20px auto;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .pie-chart-center {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        background-color: white;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+        gap: 10px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        margin-right: 10px;
+      }
+
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        margin-right: 5px;
+        border-radius: 2px;
+      }
+
+      .usage-bar {
+        height: 25px;
+        background-color: #e5e7eb;
+        border-radius: 12px;
+        margin: 10px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .usage-fill {
+        height: 100%;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .price-tag {
+        background-color: var(--fashion-3);
+        color: var(--fashion-1);
+        font-weight: bold;
+        padding: 5px 12px;
+        border-radius: 20px;
+        position: relative;
+        display: inline-block;
+        margin: 10px 0;
+        transform: rotate(-3deg);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .price-tag::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -10px;
+        width: 20px;
+        height: 10px;
+        background-color: var(--fashion-3);
+        border-radius: 50%;
+        transform: translateY(50%);
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px dashed var(--fashion-1);
+        font-size: 12px;
+        color: #64748b;
+      }
+
+      .hand-drawn-arrow {
+        position: relative;
+        padding: 20px 0;
+        text-align: center;
+        font-family: "Yomogi", cursive;
+        font-weight: bold;
+        color: var(--fashion-5);
+      }
+
+      .hand-drawn-arrow svg {
+        width: 80px;
+        height: 40px;
+        fill: none;
+        stroke: var(--fashion-4);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .strategy-card {
+        background-color: rgba(242, 92, 5, 0.1);
+        border: 2px solid var(--fashion-4);
+        border-radius: 12px;
+        padding: 15px;
+        margin: 10px 0;
+      }
+
+      .strategy-card-title {
+        font-weight: bold;
+        color: var(--fashion-5);
+        margin-bottom: 10px;
+        border-bottom: 1px dashed var(--fashion-4);
+        padding-bottom: 5px;
+      }
+
+      .bubbles-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 15px 0;
+      }
+
+      .bubble {
+        background-color: white;
+        border: 2px solid var(--fashion-3);
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        text-align: center;
+        padding: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: rotate(var(--rotation));
+        --rotation: 0deg;
+      }
+
+      .bubble:nth-child(odd) {
+        --rotation: -3deg;
+      }
+
+      .bubble:nth-child(even) {
+        --rotation: 3deg;
+      }
+
+      .competitor-card {
+        border: 2px dashed var(--fashion-3);
+        border-radius: 12px;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: relative;
+      }
+
+      .competitor-name {
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        background-color: white;
+        padding: 0 10px;
+        font-weight: bold;
+        color: var(--fashion-1);
+      }
+
+      .competitor-detail {
+        margin-top: 10px;
+        font-size: 12px;
+      }
+
+      @media (max-width: 768px) {
+        .column {
+          flex: 100%;
+        }
+        .chart {
+          height: 120px;
+        }
+        .bar {
+          width: 30px;
+        }
+        .title {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="title">子供の「なぜ」を絵本にするWebサービスの市場調査</h1>
+        <div class="date-source">
+          2025年3月26日<br />
+          出典: 調査レポート
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- 左カラム -->
+        <div class="column">
+          <div class="card market-size">
+            <h2 class="section-title">絵本市場の規模と成長予測</h2>
+            <p class="content-text">
+              世界の子ども向け絵本市場は<span class="highlight">力強い成長</span
+              >を続けています。
+            </p>
+
+            <div class="chart">
+              <div
+                class="bar"
+                style="height: 70px"
+                data-year="2022"
+                data-value="94億$"
+              ></div>
+              <div
+                class="bar"
+                style="height: 85px"
+                data-year="2023"
+                data-value="100億$"
+              ></div>
+              <div
+                class="bar"
+                style="height: 100px"
+                data-year="2025"
+                data-value="115億$"
+              ></div>
+              <div
+                class="bar"
+                style="height: 130px"
+                data-year="2030"
+                data-value="151億$"
+              ></div>
+            </div>
+
+            <div class="data-bubble">
+              年平均成長率 (CAGR): <span class="highlight">6.8%</span>
+            </div>
+
+            <p class="content-text">
+              日本の児童書市場も少子化にもかかわらず<span class="highlight"
+                >堅調に推移</span
+              >しており、2021年には前年比4%増加し、2000年比では約<span
+                class="highlight"
+                >1.5倍の売上</span
+              >を記録！
+            </p>
+          </div>
+
+          <div class="card digital-trends">
+            <h2 class="section-title">
+              デジタル絵本・教育コンテンツ市場の動向
+            </h2>
+            <p class="content-text">
+              子ども向けデジタルコンテンツ市場は<span class="highlight"
+                >特に教育分野で成長</span
+              >しています。
+            </p>
+
+            <ul class="icon-list">
+              <li class="check-item">
+                日本の子供向けプログラミング教育市場：<br />
+                2023年 <span class="highlight">221.7億円</span> → 2030年
+                <span class="highlight">1000億円超</span>
+              </li>
+              <li class="check-item">
+                デジタル教科書市場：<br />
+                2021年 → 2030年
+                <span class="highlight">約6倍の500億円規模</span>
+              </li>
+              <li class="star-item">
+                <span class="highlight">「絵本ナビ」</span
+                >は約11億円の資金調達に成功
+              </li>
+              <li class="idea-item">
+                ChatGPTとDALL-E活用で<span class="highlight"
+                  >絵本を即時生成</span
+                >する技術も登場
+              </li>
+            </ul>
+          </div>
+
+          <div class="card target-demo">
+            <h2 class="section-title">ターゲットとなる子供の人口と特性</h2>
+            <p class="content-text">
+              日本の18歳未満の子どもがいる世帯数は2023年で<span
+                class="highlight"
+                >983万5千世帯（全世帯の18.1%）</span
+              >
+            </p>
+
+            <p class="content-text">
+              15歳未満の子どもの人口は約<span class="highlight">1401万人</span
+              >で、年齢別内訳は：
+            </p>
+
+            <div class="bubbles-container">
+              <div class="bubble">12-14歳<br />317万人</div>
+              <div class="bubble">9-11歳<br />305万人</div>
+              <div class="bubble">6-8歳<br />288万人</div>
+              <div class="bubble">3-5歳<br />257万人</div>
+              <div class="bubble">0-2歳<br />235万人</div>
+            </div>
+
+            <p class="content-text">子どもの数の分布：</p>
+
+            <div class="pie-chart">
+              <div class="pie-chart-center">子供の人数</div>
+            </div>
+
+            <div class="legend">
+              <div class="legend-item">
+                <div
+                  class="legend-color"
+                  style="background-color: var(--fashion-5)"
+                ></div>
+                <span>1人（49.3%）</span>
+              </div>
+              <div class="legend-item">
+                <div
+                  class="legend-color"
+                  style="background-color: var(--fashion-4)"
+                ></div>
+                <span>2人（38.0%）</span>
+              </div>
+              <div class="legend-item">
+                <div
+                  class="legend-color"
+                  style="background-color: var(--fashion-3)"
+                ></div>
+                <span>3人以上（12.7%）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 中央カラム -->
+        <div class="column">
+          <div class="card consumption">
+            <h2 class="section-title">子供のデジタルコンテンツ消費傾向</h2>
+            <p class="content-text">
+              現代の子どもたちのデジタルデバイス利用率は<span class="highlight"
+                >非常に高い</span
+              >です！
+            </p>
+
+            <ul class="icon-list">
+              <li class="check-item">
+                2歳児の約<span class="highlight">60%</span>がインターネット利用
+              </li>
+              <li class="check-item">
+                6歳児の約<span class="highlight">80%</span>がインターネット利用
+              </li>
+              <li class="check-item">
+                低年齢層(0-9歳)全体の<span class="highlight">74.9%</span
+                >がネット利用
+              </li>
+            </ul>
+
+            <p class="content-text">デジタルコンテンツの利用内容：</p>
+
+            <div class="usage-bar">
+              <div
+                class="usage-fill"
+                style="width: 93.6%; background-color: var(--fashion-5)"
+              >
+                動画視聴 93.6%
+              </div>
+            </div>
+            <div class="usage-bar">
+              <div
+                class="usage-fill"
+                style="width: 64.7%; background-color: var(--fashion-4)"
+              >
+                ゲーム 64.7%
+              </div>
+            </div>
+            <div class="usage-bar">
+              <div
+                class="usage-fill"
+                style="width: 40%; background-color: var(--fashion-3)"
+              >
+                勉強 40%
+              </div>
+            </div>
+
+            <p class="content-text">
+              利用デバイスはスマートフォンが<span class="highlight"
+                >最も高い利用率（60%以上）</span
+              >を示す一方、<span class="highlight"
+                >タブレット端末の利用も急増</span
+              >しています。
+            </p>
+          </div>
+
+          <div class="card competition">
+            <h2 class="section-title">競合サービス分析</h2>
+            <p class="content-text">
+              子供の知的好奇心や「なぜ」の質問に対応するサービスの例：
+            </p>
+
+            <div class="competitor-card">
+              <div class="competitor-name">AIウィー子ちゃん</div>
+              <div class="competitor-detail">
+                OpenAIのChatGPTを活用した小学生の疑問に答えるキッズAI博士サービス。24時間365日無料で利用可能（12歳以下は保護者同伴必須）
+              </div>
+            </div>
+
+            <div class="competitor-card">
+              <div class="competitor-name">絵本ナビプレミアム</div>
+              <div class="competitor-detail">
+                <div class="price-tag">月額1,480円</div>
+                約500冊の絵本が読み放題のサービス
+              </div>
+            </div>
+
+            <div class="competitor-card">
+              <div class="competitor-name">森のえほん館</div>
+              <div class="competitor-detail">
+                <div class="price-tag">月額350円</div>
+                500冊以上の絵本が定額で利用可能。各作品にプロの声優による朗読機能付き
+              </div>
+            </div>
+
+            <div class="competitor-card">
+              <div class="competitor-name">ごっこランド</div>
+              <div class="competitor-detail">
+                子ども向け社会体験アプリ。累計700万ダウンロード。企業の仕事や社会体験をゲーム形式で疑似体験
+              </div>
+            </div>
+
+            <div class="hand-drawn-arrow">
+              <svg viewBox="0 0 100 50">
+                <path d="M10,25 C30,5 70,45 90,25 L85,20 M90,25 L85,30" />
+              </svg>
+              「なぜ」特化型は少ない！
+            </div>
+          </div>
+        </div>
+
+        <!-- 右カラム -->
+        <div class="column">
+          <div class="card revenue">
+            <h2 class="section-title">収益モデルとビジネスチャンス</h2>
+            <p class="content-text">
+              子供向け絵本Webサービスの<span class="highlight"
+                >主な収益モデル</span
+              >：
+            </p>
+
+            <ul class="icon-list">
+              <li class="star-item">
+                <span class="highlight">サブスクリプションモデル</span><br />
+                月額350円～1,480円の価格帯で読み放題サービス
+              </li>
+              <li class="star-item">
+                <span class="highlight">フリーミアムモデル</span><br />
+                基本機能は無料、追加機能やコンテンツに課金
+              </li>
+              <li class="star-item">
+                <span class="highlight">法人向けサービス</span><br />
+                教育機関や企業とのパートナーシップ
+              </li>
+            </ul>
+
+            <div class="data-bubble">
+              AIパーソナライズ絵本サービス：<span class="highlight"
+                >月間約180万円</span
+              >の収益
+            </div>
+
+            <div class="data-bubble">
+              3Dアバター絵本サービス：創業1年目で単月黒字達成、<span
+                class="highlight"
+                >年商1,600万円</span
+              >を記録
+            </div>
+
+            <p class="content-text">
+              技術的な実装方法として、<span class="highlight">Springin'</span
+              >のようなプログラミングアプリを使用したインタラクティブな要素や、<span
+                class="highlight"
+                >ChatGPTとDALL-E</span
+              >を組み合わせたAI技術で自動的に絵本を生成するシステムが考えられます。
+            </p>
+          </div>
+
+          <div class="card strategy">
+            <h2 class="section-title">結論と戦略的提言</h2>
+            <p class="content-text">
+              子供の「なぜ」を絵本にするWebサービスは、<span class="highlight"
+                >世界的に成長を続ける絵本市場</span
+              >と、<span class="highlight"
+                >デジタル教育コンテンツへの需要の高まり</span
+              >を背景に、大きな事業機会を有しています。
+            </p>
+
+            <div class="strategy-card">
+              <div class="strategy-card-title">ターゲット</div>
+              <p>
+                2〜6歳の「なぜなぜ期」の子どもとその保護者をコアターゲットとし、子どもの自然な好奇心に応える高品質なコンテンツを提供
+              </p>
+            </div>
+
+            <div class="strategy-card">
+              <div class="strategy-card-title">差別化</div>
+              <p>
+                AI技術を活用して子どもの質問に応じたパーソナライズ絵本を生成する機能を実装し、競合サービスとの差別化を図る
+              </p>
+            </div>
+
+            <div class="strategy-card">
+              <div class="strategy-card-title">価格設定</div>
+              <p>
+                月額350円～1,000円程度のサブスクリプションモデルを基本としつつ、無料トライアルや基本機能の無料提供などフリーミアム要素も取り入れる
+              </p>
+            </div>
+
+            <div class="strategy-card">
+              <div class="strategy-card-title">事業展開</div>
+              <p>
+                教育機関や子ども関連企業との提携により、B2B展開も視野に入れる
+              </p>
+            </div>
+
+            <div class="hand-drawn-arrow">
+              <svg viewBox="0 0 100 50">
+                <path d="M20,40 C40,10 60,10 80,40 L75,35 M80,40 L75,45" />
+              </svg>
+              持続的成長が期待できる！
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        この市場調査レポートは、様々な公開情報と業界データに基づいて作成されています。
+        © 2025 子供の「なぜ」を絵本にするWebサービス市場調査チーム
+      </div>
+    </div>
+    <div class="reference">
+      <a
+        href="https://www.wiseguyreports.com/ja/reports/children-picture-book-market"
+        >https://www.wiseguyreports.com/ja/reports/children-picture-book-market</a
+    >
+    <a
+      href="https://www.verifiedmarketreports.com/ja/product/children-s-picture-book-market/"
+      >https://www.verifiedmarketreports.com/ja/product/children-s-picture-book-market/</a
+    >
+    <a href="https://www.toppan-colorer.co.jp/column/3680"
+      >https://www.toppan-colorer.co.jp/column/3680</a
+    >
+    <a href="https://momenttech.tokyo/subscription-ehon/"
+      >https://momenttech.tokyo/subscription-ehon/</a
+    >
+  </body>
+</html>
