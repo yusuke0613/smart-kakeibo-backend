@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wonderpedia市場調査レポート - グラフィックレコーディング風インフォグラフィック</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --gray-text: #475569;
+      --blue-text: #1e40af;
+      --body-text: #334155;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Zen Kurenaido', sans-serif;
+      background-color: #f8f9fa;
+      color: var(--body-text);
+      line-height: 1.4;
+      font-size: 14px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .container {
+      width: 100%;
+    }
+    
+    /* ヘッダースタイル */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 3px solid var(--fashion-3);
+      padding-bottom: 15px;
+      position: relative;
+    }
+    
+    .header:after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      width: 85%;
+      height: 3px;
+      background-color: var(--fashion-4);
+      border-radius: 50%;
+      opacity: 0.4;
+    }
+    
+    .header-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .header-date {
+      font-family: 'Yomogi', cursive;
+      color: var(--gray-text);
+      font-size: 14px;
+      text-align: right;
+    }
+    
+    /* メインコンテンツスタイル */
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1 1 30%;
+      min-width: 300px;
+    }
+    
+    .section {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      margin-bottom: 25px;
+      position: relative;
+      backdrop-filter: blur(10px);
+      border: 2px solid transparent;
+    }
+    
+    .section:nth-child(1) {
+      border-color: var(--fashion-2);
+    }
+    
+    .section:nth-child(2) {
+      border-color: var(--fashion-3);
+    }
+    
+    .section:nth-child(3) {
+      border-color: var(--fashion-4);
+    }
+    
+    .section:nth-child(4) {
+      border-color: var(--fashion-5);
+    }
+    
+    .hand-drawn-border {
+      position: relative;
+    }
+    
+    .hand-drawn-border:before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 2px dashed var(--fashion-3);
+      border-radius: 15px;
+      z-index: -1;
+    }
+    
+    .section-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      color: var(--blue-text);
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px dotted var(--fashion-3);
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-title i {
+      margin-right: 8px;
+      font-size: 22px;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+      font-weight: bold;
+    }
+    
+    .marker-red {
+      background: linear-gradient(transparent 60%, rgba(242, 68, 4, 0.3) 60%);
+      font-weight: bold;
+    }
+    
+    .marker-blue {
+      background: linear-gradient(transparent 60%, rgba(30, 64, 175, 0.2) 60%);
+      font-weight: bold;
+    }
+    
+    .keyword {
+      color: var(--fashion-5);
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .keyword:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-color: var(--fashion-2);
+      z-index: -1;
+      opacity: 0.5;
+    }
+    
+    .bubble {
+      background-color: white;
+      border: 2px solid var(--fashion-3);
+      border-radius: 20px;
+      padding: 10px 15px;
+      position: relative;
+      margin: 15px 0;
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .bubble:before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border-top: 2px solid var(--fashion-3);
+      border-left: 2px solid var(--fashion-3);
+      transform: rotate(45deg);
+    }
+    
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+      font-weight: bold;
+      color: var(--fashion-4);
+    }
+    
+    .arrow:before, .arrow:after {
+      content: "";
+      height: 2px;
+      background-color: var(--fashion-4);
+      flex: 1;
+    }
+    
+    .arrow:before {
+      margin-right: 15px;
+    }
+    
+    .arrow:after {
+      margin-left: 15px;
+    }
+    
+    .data-point {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .data-point-icon {
+      min-width: 30px;
+      height: 30px;
+      background-color: var(--fashion-3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .data-value {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0 3px;
+      color: var(--fashion-5);
+    }
+    
+    .banner {
+      background-color: var(--fashion-1);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 25px;
+      position: relative;
+      margin: 20px 0 15px;
+      text-align: center;
+      font-weight: bold;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      transform: rotate(-1deg);
+    }
+    
+    .banner:after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 10%;
+      width: 80%;
+      height: 2px;
+      background-color: var(--fashion-5);
+      border-radius: 50%;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    
+    .comparison-table th {
+      background-color: rgba(89, 60, 71, 0.1);
+      padding: 8px;
+      text-align: left;
+      border-bottom: 2px dashed var(--fashion-3);
+    }
+    
+    .comparison-table td {
+      padding: 8px;
+      border-bottom: 1px dotted #ccc;
+    }
+    
+    .model-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 12px;
+      margin: 10px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: relative;
+      border-left: 4px solid var(--fashion-4);
+    }
+    
+    .model-card-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .model-card-title:before {
+      content: "💰";
+      margin-right: 5px;
+    }
+    
+    .model-card-pros {
+      color: #15803d;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    
+    .model-card-cons {
+      color: #b91c1c;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    
+    .chart {
+      width: 100%;
+      height: 200px;
+      border: 1px dashed var(--fashion-3);
+      border-radius: 8px;
+      margin: 15px 0;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to bottom, rgba(242, 196, 61, 0.1), rgba(242, 196, 61, 0.05));
+    }
+    
+    .bar {
+      position: absolute;
+      bottom: 0;
+      width: 40px;
+      background-color: var(--fashion-4);
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      transition: height 0.3s ease;
+    }
+    
+    .bar-1 {
+      left: 30px;
+      height: 100px;
+    }
+    
+    .bar-2 {
+      left: 90px;
+      height: 130px;
+    }
+    
+    .bar-3 {
+      left: 150px;
+      height: 160px;
+    }
+    
+    .bar-4 {
+      left: 210px;
+      height: 180px;
+    }
+    
+    .target-illustration {
+      display: flex;
+      justify-content: center;
+      margin: 15px 0;
+    }
+    
+    .target-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px dashed var(--fashion-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .target-circle-inner {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px dashed var(--fashion-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .target-circle-core {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--fashion-5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .note {
+      font-family: 'Yomogi', cursive;
+      padding: 10px;
+      background-color: rgba(242, 230, 61, 0.1);
+      border-radius: 8px;
+      position: relative;
+      margin: 15px 0;
+      font-size: 13px;
+    }
+    
+    .note:before {
+      content: "📝";
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      background-color: white;
+      padding: 0 5px;
+    }
+    
+    .footer {
+      margin-top: 40px;
+      padding-top: 15px;
+      border-top: 1px dashed var(--fashion-3);
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray-text);
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .column {
+        flex: 1 1 100%;
+      }
+      
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .header-date {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="header-title">Wonderpedia市場調査レポート</h1>
+      <div class="header-date">2025年3月27日</div>
+    </header>
+    
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <section id="target" class="section hand-drawn-border">
+          <h2 class="section-title">
+            <i>👨‍👩‍👧</i>最適な顧客層 (ターゲット)
+          </h2>
+          
+          <div class="bubble">
+            子どもの「<span class="highlight">知りたい！</span>」に楽しく答える
+          </div>
+          
+          <div class="target-illustration">
+            <div class="target-circle">
+              <div class="target-circle-inner">
+                <div class="target-circle-core">core</div>
+              </div>
+              <div style="position: absolute; top: -20px; left: 20px;">なぜなぜ期の子ども</div>
+              <div style="position: absolute; bottom: -10px; right: 10px;">多忙な保護者</div>
+            </div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">🧒</div>
+            <div>
+              <strong>子どもの年齢層:</strong> 主に<span class="marker-blue">幼稚園〜小学校低学年(3〜8歳)</span>
+              <br>「なぜ？どうして？」と疑問を持つ<span class="keyword">なぜなぜ期</span>の子ども
+            </div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">👨‍👩‍👧</div>
+            <div>
+              <strong>保護者層:</strong> 20〜40代の子育て世代
+              <br>「子どもの好奇心に応えたいが<span class="marker-red">時間や知識が足りない</span>」
+              <br>調査では<span class="data-value">73.1%</span>の母親が「時間がないため」に読み聞かせができていないと回答
+            </div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">📱</div>
+            <div>
+              <strong>利用シーン:</strong>
+              <br>・寝る前の絵本タイム
+              <br>・雨の日の室内遊び
+              <br>・移動中のタブレット利用
+              <br>・親が手が離せない時間
+            </div>
+          </div>
+          
+          <div class="note">
+            好奇心旺盛な幼児と多忙な保護者の両方のニーズを満たす、AIでパーソナライズされた絵本体験を提供
+          </div>
+        </section>
+        
+        <section id="market" class="section">
+          <h2 class="section-title">
+            <i>📈</i>関連市場規模と成長予測
+          </h2>
+          
+          <div class="banner">
+            ベビー・育児関連市場は安定成長中
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">💹</div>
+            <div>
+              <strong>育児関連市場:</strong> 約<span class="data-value">4.4兆円</span>規模
+              <br>2021年: <span class="marker-blue">4兆3,513億円</span>
+              <br>2023年: <span class="marker-blue">4兆4,268億円</span>
+              <br>年間成長率: <span class="marker-blue">0.9%</span>前後
+            </div>
+          </div>
+          
+          <div class="chart">
+            <div class="bar bar-1" style="background-color: var(--fashion-3);"></div>
+            <div class="bar bar-2" style="background-color: var(--fashion-3);"></div>
+            <div class="bar bar-3" style="background-color: var(--fashion-4);"></div>
+            <div class="bar bar-4" style="background-color: var(--fashion-4);"></div>
+            <div style="position: absolute; bottom: 5px; left: 30px; font-size: 10px;">2021</div>
+            <div style="position: absolute; bottom: 5px; left: 90px; font-size: 10px;">2022</div>
+            <div style="position: absolute; bottom: 5px; left: 150px; font-size: 10px;">2023</div>
+            <div style="position: absolute; bottom: 5px; left: 210px; font-size: 10px;">2024</div>
+            <div style="position: absolute; top: 10px; left: 10px; font-size: 11px;">育児関連市場規模</div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">🚀</div>
+            <div>
+              <strong>ベビーテック市場:</strong>
+              <br>・世界市場: <span class="marker-blue">1,972億ドル</span>(2021年)
+              <br>・年平均成長率: <span class="data-value">8.9%</span> (2022-2030)
+              <br>→ <span class="highlight">高いCAGR</span>で持続的拡大中
+            </div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">📊</div>
+            <div>
+              <strong>EdTech市場:</strong>
+              <br>・日本: <span class="marker-blue">1,691億円(2016)</span>→<span class="marker-blue">3,103億円(2023)</span>
+              <br>・年平均成長率: <span class="data-value">約9%</span>
+              <br>・世界の教育アプリ市場: <span class="data-value">約7.7兆円</span>(2024)
+              <br>→2032年までに<span class="marker-red">年15%成長</span>予測
+            </div>
+          </div>
+          
+          <div class="arrow">ブルーオーシャンの可能性</div>
+          
+          <div class="bubble">
+            大きな裾野(4兆円超の育児市場)と高い成長率(EdTechで年9〜15%)を併せ持つ<span class="keyword">有望市場</span>
+          </div>
+        </section>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <section id="competition" class="section">
+          <h2 class="section-title">
+            <i>🔍</i>競合となる既存サービスとの比較
+          </h2>
+          
+          <div class="comparison-table">
+            <tr>
+              <th>サービス名</th>
+              <th>特徴</th>
+              <th>価格</th>
+            </tr>
+            <tr>
+              <td><span class="keyword">はじまりはじまり</span></td>
+              <td>子どもが選択肢を選ぶだけで自分が主人公の物語が完成</td>
+              <td>月額¥990〜¥6,600</td>
+            </tr>
+            <tr>
+              <td><span class="keyword">AIえほん図書館</span></td>
+              <td>年齢・主人公名・テーマを選んでAIが自動生成</td>
+              <td>基本無料(キャンペーン中)</td>
+            </tr>
+            <tr>
+              <td><span class="keyword">おはなしえほん</span></td>
+              <td>子どもの簡単な単語からストーリー生成</td>
+              <td>無料(プロトタイプ)</td>
+            </tr>
+            <tr>
+              <td><span class="keyword">森のえほん館</span></td>
+              <td>既存絵本700冊以上の読み放題(AI生成ではない)</td>
+              <td>月額¥480</td>
+            </tr>
+          </div>
+          
+          <div class="banner">
+            Wonderpediaの差別化ポイント
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">🔥</div>
+            <div>
+              <strong>「なぜ？」という問いを物語化</strong>
+              <br>疑問そのものから絵本を生成する独自アプローチ
+            </div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">🔊</div>
+            <div>
+              <strong>音声連携の充実</strong>
+              <br>音声認識と家族の声で読み聞かせ機能
+            </div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">💾</div>
+            <div>
+              <strong>Q&Aデータベース的価値</strong>
+              <br>子どもの疑問を蓄積・共有できる機能
+            </div>
+          </div>
+          
+          <div class="note">
+            競合は数社レベルでまだ各社模索段階。Wonderpediaはより豊かな体験と学びの蓄積を提供することで差別化可能
+          </div>
+          
+          <div class="bubble">
+            <span class="marker-red">市場参入のタイミングとして最適</span>- AIを活用した新しい学び体験は市場ニーズと合致
+          </div>
+        </section>
+        
+        <section id="price-comparison" class="section">
+          <h2 class="section-title">
+            <i>💰</i>競合の料金比較
+          </h2>
+          
+          <div class="chart" style="height: 180px;">
+            <div style="position: absolute; left: 20px; bottom: 30px; width: 30px; height: 80px; background-color: var(--fashion-3); border-radius: 5px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <span style="font-size: 8px; transform: rotate(-90deg); white-space: nowrap;">森のえほん館</span>
+            </div>
+            <div style="position: absolute; left: 60px; bottom: 30px; width: 30px; height: 100px; background-color: var(--fashion-3); border-radius: 5px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <span style="font-size: 8px; transform: rotate(-90deg); white-space: nowrap;">はじまり(ライト)</span>
+            </div>
+            <div style="position: absolute; left: 100px; bottom: 30px; width: 30px; height: 130px; background-color: var(--fashion-4); border-radius: 5px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <span style="font-size: 8px; transform: rotate(-90deg); white-space: nowrap;">はじまり(標準)</span>
+            </div>
+            <div style="position: absolute; left: 140px; bottom: 30px; width: 30px; height: 30px; background-color: var(--fashion-2); border-radius: 5px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <span style="font-size: 8px; transform: rotate(-90deg); white-space: nowrap;">無料サービス</span>
+            </div>
+            <div style="position: absolute; bottom: 5px; left: 20px; font-size: 10px;">¥480</div>
+            <div style="position: absolute; bottom: 5px; left: 60px; font-size: 10px;">¥990</div>
+            <div style="position: absolute; bottom: 5px; left: 100px; font-size: 10px;">¥1,870</div>
+            <div style="position: absolute; bottom: 5px; left: 140px; font-size: 10px;">¥0</div>
+            <div style="position: absolute; top: 10px; left: 10px; font-size: 11px;">月額料金比較</div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">📊</div>
+            <div>
+              <strong>サブスク価格帯:</strong>
+              <br>・最安: <span class="marker-blue">森のえほん館 (¥480)</span>
+              <br>・中価格帯: <span class="marker-blue">はじまりはじまり (¥990〜¥1,870)</span>
+              <br>・高価格帯: <span class="marker-blue">はじまりプレミアム (¥6,600)</span>
+            </div>
+          </div>
+          
+          <div class="arrow">料金と機能のバランス</div>
+          
+          <div class="bubble">
+            中価格帯(¥1,000〜2,000)が<span class="keyword">最も受け入れられやすい</span>と考えられる
+          </div>
+        </section>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <section id="business-model" class="section">
+          <h2 class="section-title">
+            <i>💼</i>想定される収益モデルの検討
+          </h2>
+          
+          <div class="bubble">
+            <span class="highlight">サブスクリプションモデル(定額課金)</span>が最も現実的かつ成長ポテンシャルが高い
+          </div>
+          
+          <div class="model-card">
+            <div class="model-card-title">サブスクリプション(月額課金)モデル</div>
+            <div>月額料金で一定量のサービスを継続利用できる形態</div>
+            <div class="model-card-pros">
+              <strong>✅ メリット:</strong> 安定した継続収益、習慣的利用促進、アップセル相性良好
+            </div>
+            <div class="model-card-cons">
+              <strong>❌ 課題:</strong> 継続的な価値提供が必須、競合との価格競争
+            </div>
+          </div>
+          
+          <div class="model-card">
+            <div class="model-card-title">フリーミアム(基本無料+一部有料)モデル</div>
+            <div>基本機能は無料、プレミアム機能は有料という二段階構造</div>
+            <div class="model-card-pros">
+              <strong>✅ メリット:</strong> ユーザー獲得ハードル低下、段階的導入が可能
+            </div>
+            <div class="model-card-cons">
+              <strong>❌ 課題:</strong> 有料転換率確保、無料ユーザーのコスト負担
+            </div>
+          </div>
+          
+          <div class="model-card">
+            <div class="model-card-title">広告モデル(無料+広告収入)</div>
+            <div>広告表示を主な収益源とするモデル</div>
+            <div class="model-card-pros">
+              <strong>✅ メリット:</strong> ユーザー獲得の可能性向上
+            </div>
+            <div class="model-card-cons">
+              <strong>❌ 課題:</strong> 子ども向けアプリは規制厳格、教育価値低下リスク
+            </div>
+          </div>
+          
+          <div class="model-card">
+            <div class="model-card-title">コンテンツ販売モデル(生成絵本の物販)</div>
+            <div>生成したオリジナル絵本を製本・販売するモデル</div>
+            <div class="model-card-pros">
+              <strong>✅ メリット:</strong> 単価売上が高い、顧客ロイヤリティ向上
+            </div>
+            <div class="model-card-cons">
+              <strong>❌ 課題:</strong> スケーラビリティ低い、オペレーション負荷
+            </div>
+          </div>
+          
+          <div class="arrow">最適なアプローチ</div>
+          
+          <div class="note">
+            <strong>最適な収益モデル:</strong><br>
+            「基本(月額)課金 + 付随サービス課金」のハイブリッド
+            <br><br>
+            ①無料お試し期間付きサブスクリプションでユーザー囲い込み
+            <br>
+            ②プレミアム特典(製本サービス等)で高単価プランへ誘導
+            <br>
+            ③ユーザーの成長に合わせた多層的収益化
+          </div>
+          
+          <div class="bubble">
+            継続課金による<span class="keyword">安定収益</span>を基盤に、ユーザーの利用状況に応じて<span class="marker-red">多角的にマネタイズ</span>
+          </div>
+        </section>
+        
+        <section id="conclusion" class="section">
+          <h2 class="section-title">
+            <i>🎯</i>市場調査まとめ
+          </h2>
+          
+          <div class="data-point">
+            <div class="data-point-icon">👨‍👩‍👧</div>
+            <div>
+              <strong>ターゲット:</strong> なぜなぜ期(2〜6歳)の子どもと多忙な20〜40代保護者
+            </div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">💹</div>
+            <div>
+              <strong>市場:</strong> 育児関連4.4兆円の大市場、EdTech分野で年9〜15%成長
+            </div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">🔍</div>
+            <div>
+              <strong>競合:</strong> 参入数社レベルで黎明期、差別化余地が十分にある
+            </div>
+          </div>
+          
+          <div class="data-point">
+            <div class="data-point-icon">💰</div>
+            <div>
+              <strong>収益モデル:</strong> サブスク(月額¥1,000〜2,000)を基本に多角展開
+            </div>
+          </div>
+          
+          <div class="banner">
+            今後の展望
+          </div>
+          
+          <div class="bubble">
+            AIを活用した新しい学び体験の提供で、<span class="highlight">子どもの知的好奇心を満たしつつ</span>保護者の負担を軽減する<span class="marker-red">Win-Winの関係構築</span>が可能
+          </div>
+          
+          <div class="note">
+            少子化の日本でも子ども一人当たりの教育投資は増加傾向。デジタル世代の親子増加と相まって、今後数年で<span class="keyword">大きな市場機会</span>が期待できる
+          </div>
+        </section>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      Wonderpedia市場調査レポート | 作成日: 2025年3月27日 | © 2025 All Rights Reserved
+    </footer>
+  </div>
+</body>
+</html>
