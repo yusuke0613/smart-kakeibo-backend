@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子ども向けデジタル学習・エデュテイメント市場分析</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --text-subtitle: #475569;
+            --bg-light: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Yomogi', cursive;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        /* ヘッダーセクション */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, rgba(89, 60, 71, 0.05) 0%, rgba(242, 196, 60, 0.1) 100%);
+            border-bottom: 2px dashed var(--fashion-3);
+            position: relative;
+        }
+        
+        h1 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--fashion-1), var(--fashion-4));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 5px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='4' viewBox='0 0 100 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2C20 0.5 25 3.5 50 2C75 0.5 80 3.5 100 2' stroke='%23F25C05' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+            background-size: 100px 4px;
+        }
+        
+        .date-source {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 14px;
+            color: var(--text-subtitle);
+            text-align: right;
+        }
+        
+        /* メインコンテンツエリア */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px;
+            position: relative;
+        }
+        
+        /* セクションスタイル */
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: var(--bg-light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to right, var(--fashion-3), var(--fashion-4));
+            border-radius: 3px 3px 0 0;
+        }
+        
+        h2 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 24px;
+            color: var(--fashion-1);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-left: 35px;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .tam h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F2C53D'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z'/%3E%3C/svg%3E");
+        }
+        
+        .sam h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F25C05'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
+        }
+        
+        .som h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F24405'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V9h-2V7h4v10z'/%3E%3C/svg%3E");
+        }
+        
+        h3 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-title);
+            margin: 15px 0 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h3::before {
+            content: '●';
+            margin-right: 8px;
+            color: var(--fashion-3);
+            font-size: 14px;
+        }
+        
+        p, ul {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        /* 手書き風の要素 */
+        .hand-drawn {
+            position: relative;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .hand-drawn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid var(--fashion-1);
+            border-radius: 10px;
+            opacity: 0.7;
+            clip-path: polygon(
+                0% 0%, 100% 0%, 99% 2%, 98% 3%, 97% 3%, 96% 2%, 
+                95% 1%, 94% 1%, 93% 0%, 92% 1%, 91% 2%, 90% 2%, 
+                100% 10%, 100% 90%, 99% 92%, 98% 94%, 97% 95%, 
+                96% 96%, 95% 97%, 94% 97%, 93% 98%, 92% 99%, 
+                91% 99%, 90% 100%, 10% 100%, 8% 99%, 6% 98%, 
+                5% 97%, 4% 96%, 3% 95%, 2% 94%, 1% 93%, 1% 92%, 
+                0% 91%, 0% 10%, 1% 8%, 2% 6%, 3% 5%, 4% 4%, 
+                5% 3%, 6% 2%, 7% 1%, 8% 0%
+            );
+        }
+        
+        /* 吹き出し */
+        .bubble {
+            position: relative;
+            background-color: rgba(242, 230, 61, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .bubble::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            border-width: 0 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent rgba(242, 230, 61, 0.1) transparent;
+        }
+        
+        /* キーワード強調 */
+        .highlight {
+            font-weight: bold;
+            color: var(--fashion-1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: rgba(242, 196, 60, 0.4);
+            z-index: -1;
+            border-radius: 3px;
+        }
+        
+        /* マーカー効果 */
+        .marker {
+            font-weight: bold;
+            background: linear-gradient(transparent 60%, rgba(242, 92, 5, 0.3) 40%);
+            padding: 0 2px;
+        }
+        
+        /* 数値表示 */
+        .number {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--fashion-4);
+            padding: 2px 5px;
+            border-radius: 4px;
+            background-color: rgba(242, 230, 61, 0.2);
+            display: inline-block;
+        }
+        
+        /* 矢印 */
+        .arrow {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .arrow::before {
+            content: '';
+            flex-grow: 1;
+            height: 2px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='2' viewBox='0 0 100 2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 1C25 0.2 75 1.8 100 1' stroke='%23F25C05' stroke-width='2' stroke-dasharray='3 3'/%3E%3C/svg%3E");
+            margin-right: 10px;
+        }
+        
+        .arrow::after {
+            content: '→';
+            color: var(--fashion-4);
+            font-size: 20px;
+        }
+        
+        /* バッジ */
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: var(--fashion-1);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 0 5px;
+            transform: rotate(-2deg);
+        }
+        
+        /* リスト */
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 10px;
+        }
+        
+        li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F2C53D'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        /* データカード */
+        .data-card {
+            border: 2px solid var(--fashion-3);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .data-card::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--fashion-3);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        
+        /* グラスモーフィズム効果 */
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: var(--text-subtitle);
+            border-top: 1px dashed var(--fashion-3);
+            margin-top: 30px;
+        }
+        
+        /* 手書き風のポイント装飾 */
+        .point {
+            position: relative;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .point::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--fashion-4);
+            font-weight: bold;
+        }
+        
+        /* チャートエリア */
+        .chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .chart-bar {
+            height: 30px;
+            background: linear-gradient(to right, var(--fashion-2), var(--fashion-4));
+            border-radius: 15px;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            color: var(--fashion-1);
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .chart-label {
+            position: absolute;
+            left: -120px;
+            width: 110px;
+            text-align: right;
+            font-size: 12px;
+        }
+        
+        .chart-value {
+            position: absolute;
+            right: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        /* レスポンシブ調整 */
+        @media (max-width: 960px) {
+            .column {
+                flex: 100%;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 22px;
+            }
+            
+            .chart-bar {
+                margin-left: 120px;
+            }
+        }
+        
+        /* ドキュメント装飾 */
+        .document {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: rgba(242, 196, 60, 0.2);
+            border-radius: 0 0 50% 50%;
+            top: -20px;
+            right: -20px;
+            transform: rotate(45deg);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>子ども向けデジタル学習・エデュテイメント市場分析</h1>
+                <p>日本国内の子ども向けデジタル教育市場の規模と成長展望</p>
+            </div>
+            <div class="date-source">
+                <p>2024年4月 作成</p>
+                <p>統計データ・各種レポート参照</p>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- 1列目：TAM -->
+            <div class="column">
+                <div class="section tam">
+                    <div class="document"></div>
+                    <h2>TAM：市場規模（総市場）</h2>
+                    <div class="bubble">
+                        <p>日本の3〜15歳の子どもの数は<span class="highlight">約1,200万人強</span>と推計されます（2024年時点、15歳未満は1,401万人）</p>
+                    </div>
+                    
+                    <p>この世代を対象とするデジタル学習・エデュテイメント関連の年間市場規模（TAM）は、通信教育・学習アプリ・知育玩具・オンライン教材サービスなどを含めて<span class="marker">数千億円規模</span>にのぼります。</p>
+                    
+                    <h3>主要セグメント</h3>
+                    <div class="hand-drawn">
+                        <div class="point">
+                            <p><span class="badge">通信教育</span> 幼児〜中高生向けの通信教育市場は、補習教育市場全体の約9.8%を占めます</p>
+                            <p class="number">約1,450億円規模</p>
+                            <p>ベネッセが85%以上のシェアを持つなど圧倒的に支配的です。コロナ禍で一時拡大しましたが、2022〜23年度は対面塾回帰でやや縮小傾向です</p>
+                        </div>
+                        
+                        <div class="arrow"></div>
+                        
+                        <div class="point">
+                            <p><span class="badge">知育・教育玩具</span> デジタル要素を含む知育玩具・幼児向け教育玩具の市場</p>
+                            <p class="number">約1,812億円（2023年度）</p>
+                            <p>カードゲームに次ぐ玩具業界第2位の規模です。ブロックや電子玩具、幼児向けタブレット玩具などが含まれ、前年比+2.3%と堅調に推移しています</p>
+                        </div>
+                        
+                        <div class="arrow"></div>
+                        
+                        <div class="point">
+                            <p><span class="badge">デジタル学習アプリ</span> 子ども向けの学習アプリやオンライン教材の市場規模は急成長中</p>
+                            <p>例：NTTドコモの「dキッズ」は月額約390円で知育アプリ使い放題のサービスですが、2016年時点で約47万〜58万会員を獲得</p>
+                            <p class="number">デジタル教材コンテンツ市場：約632億円（2022年度）</p>
+                            <p>GIGAスクール構想により小中学生全員にタブレットが行き渡ったことで拡大</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass">
+                        <p><span class="highlight">TAM（総市場）は少なくとも3,000億円規模（年間）</span>と推計されます。</p>
+                        <p>これは教育産業全体（約2.8兆円）の一部ですが、デジタル化の進展に伴い今後も拡大傾向にあります。</p>
+                        <p>例えば生成AI活用の新サービスも登場し始めており、ベネッセとソフトバンクは<span class="marker">幼児向けAI会話サービス「しまじろうAI」</span>を共同開発して1万人規模の実証提供を開始するなど、新たなエデュテイメント分野の拡大が期待されています。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2列目：SAM -->
+            <div class="column">
+                <div class="section sam">
+                    <div class="document"></div>
+                    <h2>SAM：サービス提供可能市場</h2>
+                    <p>TAMの中でも、当該サービスが狙いうる実質的な市場規模（SAM）は、<span class="highlight">「教育熱心でICT活用に前向きな家庭層」</span>および<span class="highlight">「先進的な自治体・学校・塾などの教育機関」</span>に絞られます。</p>
+                    
+                    <div class="data-card">
+                        <h3>教育熱心な家庭層（B2C）</h3>
+                        <ul>
+                            <li>日本には18歳未満の子どもがいる世帯が約992万世帯あります</li>
+                            <li>このうち、デジタル学習に積極的な層は全体の2〜3割程度と考えられます</li>
+                            <li>ある調査では子育て家庭の約23%が何らかの通信教育を「契約経験あり」と回答</li>
+                            <li>ベネッセの通信講座も全国の子どもの約12.5%（221万人）に利用されています</li>
+                        </ul>
+                        
+                        <div class="chart">
+                            <div style="width: 80%; position: relative;">
+                                <div class="chart-bar" style="width: 100%;">
+                                    <span class="chart-label">総子育て世帯</span>
+                                    <span class="chart-value">992万世帯</span>
+                                </div>
+                                <div class="chart-bar" style="width: 30%;">
+                                    <span class="chart-label">通信教育利用層</span>
+                                    <span class="chart-value">約230万世帯</span>
+                                </div>
+                                <div class="chart-bar" style="width: 60%;">
+                                    <span class="chart-label">潜在顧客層</span>
+                                    <span class="chart-value">約200〜300万世帯</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="point">少なくとも<span class="number">約200万〜300万世帯</span>が本サービスの潜在顧客になり得ます</p>
+                        <p class="point">この規模に月額料金1,000〜2,000円のモデルを当てはめると、年間<span class="number">約240〜720億円</span>（中央値で約500億円規模）の市場ポテンシャルになります</p>
+                        <p>（例：250万世帯×月1,500円×12か月＝約450億円）</p>
+                    </div>
+                    
+                    <div class="data-card">
+                        <h3>教育機関・団体（B2B/B2G）</h3>
+                        <ul>
+                            <li>公教育や民間学習施設での導入も見込めます</li>
+                            <li>全国には公立小中学校だけで約3万校あり、ICT端末配備済みです（GIGAスクール構想）</li>
+                            <li>仮に先進的な<span class="marker">5%（1,500校）</span>が本サービスを導入し、生徒向けライセンス料を月数百円程度充当すると約<span class="number">540億円/年</span>となります</li>
+                            <li>民間の学習塾業界も全国で数万教室規模があります</li>
+                            <li>大手塾やフランチャイズ塾が副教材として導入するケースでは、例えば<span class="number">100社×平均年間500万円の契約で50億円</span>規模の市場となります</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass">
+                        <p><span class="highlight">SAMは現実的なターゲット層に絞って年間数百億円規模（おおよそ500〜600億円前後）</span>と見込まれます。</p>
+                        <p>内訳は主にB2Cの家庭向け売上で占められ（数百億円）、B2B/B2Gの学校・塾向けは数十億円程度の付加的な市場と位置付けられます。</p>
+                        <p>実際には価格戦略次第で変動しますが、<span class="marker">月額1,000〜2,000円のレンジで換算して数百億円の潜在売上規模</span>がデータ根拠から裏付けられます。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3列目：SOM -->
+            <div class="column">
+                <div class="section som">
+                    <div class="document"></div>
+                    <h2>SOM：獲得可能な市場規模</h2>
+                    <p>サービス提供開始から初年度〜数年で実際に獲得し得る市場規模（SOM）は、上記SAMの一部となります。B2C/B2Bそれぞれについて、保守的かつ現実的なシナリオで目標数値を算出します。</p>
+                    
+                    <div class="hand-drawn">
+                        <h3>家庭向け（B2C）初年度目標</h3>
+                        <p>通信キャリアなど強力なチャネルを活用する前提で、<span class="marker">初年度に数万〜十数万世帯の契約獲得</span>を目指すのが現実的です。</p>
+                        
+                        <div class="bubble">
+                            <p><span class="highlight">展開シナリオ例：</span></p>
+                            <p>ソフトバンクの既存顧客向けに無料体験付きプランを展開し、子育て世帯の5%（約50万世帯）が試用、そのうち20%が有料継続すると仮定すれば<span class="number">10万世帯</span>の有料ユーザーとなります。</p>
+                            <p>月額1,500円換算で年商にして<span class="number">約18億円規模</span>です。</p>
+                        </div>
+                        
+                        <p>サービス開始数年でユーザー基盤を拡大し、<span class="marker">3年目に30万世帯規模（市場シェア約10%）</span>の獲得を実現できれば、<span class="number">年間約54億円（30万×1,500円×12）の売上</span>となります。</p>
+                        <p>これはSAM（家庭部門）の約1割に相当し、十分達成可能な水準です。ソフトバンクなど大手との提携による販促効果や、ベネッセなど既存教育企業との協業（例：ベネッセとソフトバンクによるAIしまじろう開発）も活用することで、このペースでの普及が見込めます。</p>
+                    </div>
+                    
+                    <div class="hand-drawn">
+                        <h3>学校・塾向け（B2B/B2G）初年度目標</h3>
+                        <p>まずはモデルケースとなる教育機関への導入実績づくりを狙います。初年度は<span class="marker">自治体や私立校を中心に数十校規模</span>の導入が現実的なラインでしょう（例：先進自治体5〜10件、私立・学習塾20〜30件程度）。</p>
+                        <p>仮に合計50機関と契約し、1機関あたり年間100万円の利用料契約とすると<span class="number">年間5,000万円</span>の売上です。</p>
+                        <p>これは全体売上への寄与は限定的ですが、成功事例の創出により他機関への横展開が期待できます。サービス開始から数年で<span class="marker">数百校規模</span>まで導入校を増やせれば、例えば300機関×100万円＝<span class="number">3億円/年</span>程度のB2B売上が見込まれます。</p>
+                    </div>
+                    
+                    <div class="glass">
+                        <h3>市場獲得のまとめ</h3>
+                        <p><span class="highlight">SOM（サービス初年度〜数年内の現実的獲得市場）は年間数十億円規模</span>となります。</p>
+                        <p>具体的には<span class="marker">初年度で20億円前後、3年程度で50〜60億円規模の年間売上</span>が目標ラインとなります。</p>
+                        <p>これらは通信キャリアの販路支援やプロモーション次第で十分手が届く数字です。例えばソフトバンクは自社の「子育て応援クラブ」等を通じて子育て世帯約100万件以上にリーチ可能とされ、こうしたチャネルを最大限活用することで早期に数十万ユーザーの獲得を狙えます。</p>
+                        <p>現実的な目標設定として、<span class="number">提供開始数年間でSAMの約10%（売上50億円規模）を取り込む</span>計画が妥当と言えるでしょう。</p>
+                    </div>
+                    
+                    <div class="chart">
+                        <div style="width: 90%; position: relative;">
+                            <div class="chart-bar" style="width: 100%;">
+                                <span class="chart-label">TAM</span>
+                                <span class="chart-value">3,000億円</span>
+                            </div>
+                            <div class="chart-bar" style="width: 20%;">
+                                <span class="chart-label">SAM</span>
+                                <span class="chart-value">500〜600億円</span>
+                            </div>
+                            <div class="chart-bar" style="width: 2%;">
+                                <span class="chart-label">SOM（初年度）</span>
+                                <span class="chart-value">20億円</span>
+                            </div>
+                            <div class="chart-bar" style="width: 5%;">
+                                <span class="chart-label">SOM（3年目）</span>
+                                <span class="chart-value">50〜60億円</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>参考資料：総務省・経産省・民間調査会社等の統計データおよび市場レポートより</p>
+            <p>※本資料は各種公開情報を基に作成したものであり、実際の市場状況と異なる場合があります</p>
+        </footer>
+    </div>
+</body>
+</html>

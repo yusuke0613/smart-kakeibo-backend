@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="#f8fafc" />
+  
+  <!-- Header -->
+  <defs>
+    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title Section -->
+  <text x="80" y="80" font-family="Arial, sans-serif" font-size="32px" font-weight="bold" fill="url(#titleGradient)">AI搭載「なぜなに」学習プラットフォーム</text>
+  <text x="1840" y="80" font-family="Arial, sans-serif" font-size="14px" fill="#475569" text-anchor="end">2025年4月2日</text>
+  <line x1="80" x2="1840" y1="100" y2="100" stroke="#2563EB" stroke-width="2" opacity="0.5" />
+  
+  <!-- Executive Summary Card -->
+  <rect x="80" y="130" width="1760" height="160" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <text x="110" y="170" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">エグゼクティブサマリー</text>
+  <text x="110" y="210" font-family="Arial, sans-serif" font-size="14px" fill="#334155" line-height="1.4">
+    子どもの<tspan fill="#2563EB" font-weight="bold">「なぜ？」</tspan>という好奇心に応えるAI搭載プラットフォーム。年齢・興味に合わせた回答を提供し、
+  </text>
+  <text x="110" y="235" font-family="Arial, sans-serif" font-size="14px" fill="#334155" line-height="1.4">
+    絵本風ストーリーや実験アクティビティに変換することで、親子の学びと体験をサポートします。
+  </text>
+  
+  <!-- KPI Indicators -->
+  <rect x="1150" y="150" width="180" height="120" rx="12" ry="12" fill="#eef2ff" stroke="#2563EB" stroke-width="1" />
+  <rect x="1350" y="150" width="180" height="120" rx="12" ry="12" fill="#eef2ff" stroke="#2563EB" stroke-width="1" />
+  <rect x="1550" y="150" width="180" height="120" rx="12" ry="12" fill="#eef2ff" stroke="#2563EB" stroke-width="1" />
+  
+  <text x="1240" y="180" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#1e40af" text-anchor="middle">ターゲット年齢</text>
+  <text x="1240" y="220" font-family="Arial, sans-serif" font-size="24px" font-weight="bold" fill="#2563EB" text-anchor="middle">3-12歳</text>
+  
+  <text x="1440" y="180" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#1e40af" text-anchor="middle">コンテンツタイプ</text>
+  <text x="1440" y="220" font-family="Arial, sans-serif" font-size="24px" font-weight="bold" fill="#2563EB" text-anchor="middle">3種類</text>
+  
+  <text x="1640" y="180" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#1e40af" text-anchor="middle">入力方法</text>
+  <text x="1640" y="220" font-family="Arial, sans-serif" font-size="24px" font-weight="bold" fill="#2563EB" text-anchor="middle">テキスト・音声</text>
+  
+  <!-- Feature 1 Card - Left Column -->
+  <rect x="80" y="330" width="850" height="340" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <!-- Feature 1 Icon -->
+  <circle cx="120" cy="370" r="25" fill="#2563EB" opacity="0.1" />
+  <text x="120" y="380" font-family="Arial, sans-serif" font-size="24px" fill="#2563EB" text-anchor="middle">🔍</text>
+  
+  <text x="160" y="378" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">AI なぜなに Q&A ＋ 絵本生成</text>
+  
+  <!-- Feature 1 Content -->
+  <circle cx="130" cy="430" r="6" fill="#2563EB" />
+  <text x="150" y="435" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    子どもの「なぜ？」をテキスト・音声で入力すると、<tspan fill="#2563EB" font-weight="bold">年齢・学年・興味トピック</tspan>に応じて最適化された回答を提供
+  </text>
+  
+  <circle cx="130" cy="480" r="6" fill="#2563EB" />
+  <text x="150" y="485" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    回答内容をさらに噛み砕いて「<tspan fill="#2563EB" font-weight="bold">絵本風ストーリー</tspan>」を自動生成し、挿絵も合わせて自動作成
+  </text>
+  
+  <circle cx="130" cy="530" r="6" fill="#2563EB" />
+  <text x="150" y="535" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    親子で読める簡単な絵本としてアプリ内に保存・共有できる
+  </text>
+  
+  <!-- Visualization for Feature 1 -->
+  <rect x="150" y="560" width="700" height="80" rx="8" ry="8" fill="#eef2ff" stroke="#2563EB" stroke-width="1" stroke-dasharray="4" />
+  
+  <!-- Simple Book Visualization -->
+  <rect x="180" y="575" width="50" height="50" rx="4" ry="4" fill="#dbeafe" stroke="#2563EB" stroke-width="1" />
+  <rect x="245" y="575" width="50" height="50" rx="4" ry="4" fill="#dbeafe" stroke="#2563EB" stroke-width="1" />
+  <rect x="310" y="575" width="50" height="50" rx="4" ry="4" fill="#dbeafe" stroke="#2563EB" stroke-width="1" />
+  
+  <!-- Flow Arrows -->
+  <path d="M235 600 L240 600 L240 595 L250 603 L240 611 L240 606 L235 606 Z" fill="#2563EB" />
+  <path d="M300 600 L305 600 L305 595 L315 603 L305 611 L305 606 L300 606 Z" fill="#2563EB" />
+  
+  <text x="380" y="603" font-family="Arial, sans-serif" font-size="12px" fill="#1e40af" font-style="italic">
+    質問から絵本へ：AIが自動生成するワークフロー
+  </text>
+  
+  <!-- Feature 2 Card - Right Column -->
+  <rect x="990" y="330" width="850" height="340" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <!-- Feature 2 Icon -->
+  <circle cx="1030" cy="370" r="25" fill="#2563EB" opacity="0.1" />
+  <text x="1030" y="380" font-family="Arial, sans-serif" font-size="24px" fill="#2563EB" text-anchor="middle">🚀</text>
+  
+  <text x="1070" y="378" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">ミッション型アクティビティ提案</text>
+  
+  <!-- Feature 2 Content -->
+  <circle cx="1040" cy="430" r="6" fill="#2563EB" />
+  <text x="1060" y="435" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    疑問やテーマに関連した「<tspan fill="#2563EB" font-weight="bold">おうちでできるミニ実験</tspan>」や「観察してみよう」「お手伝いミッション」を提案
+  </text>
+  
+  <circle cx="1040" cy="480" r="6" fill="#2563EB" />
+  <text x="1060" y="485" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    「なぜ？」の答えを<tspan fill="#2563EB" font-weight="bold">体験から学べる</tspan>ように誘導し、親子がリアルで楽しめるアクションを促す
+  </text>
+  
+  <!-- Activity Type Cards -->
+  <rect x="1060" y="520" width="220" height="100" rx="8" ry="8" fill="white" stroke="#ef4444" stroke-width="2" />
+  <rect x="1290" y="520" width="220" height="100" rx="8" ry="8" fill="white" stroke="#f59e0b" stroke-width="2" />
+  <rect x="1520" y="520" width="220" height="100" rx="8" ry="8" fill="white" stroke="#10b981" stroke-width="2" />
+  
+  <text x="1170" y="550" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#ef4444" text-anchor="middle">ミニ実験</text>
+  <text x="1170" y="580" font-family="Arial, sans-serif" font-size="12px" fill="#334155" text-anchor="middle">
+    身近な材料で「なぜ？」を体験
+  </text>
+  
+  <text x="1400" y="550" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#f59e0b" text-anchor="middle">観察ミッション</text>
+  <text x="1400" y="580" font-family="Arial, sans-serif" font-size="12px" fill="#334155" text-anchor="middle">
+    自然・社会現象の観察活動
+  </text>
+  
+  <text x="1630" y="550" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#10b981" text-anchor="middle">お手伝いミッション</text>
+  <text x="1630" y="580" font-family="Arial, sans-serif" font-size="12px" fill="#334155" text-anchor="middle">
+    生活の中での学びと体験
+  </text>
+  
+  <!-- Analysis Section - Market Impact -->
+  <rect x="80" y="710" width="850" height="280" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <text x="110" y="750" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">市場影響分析</text>
+  
+  <!-- Simple Chart Visualization -->
+  <rect x="110" y="780" width="770" height="180" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+  
+  <!-- Y Axis -->
+  <line x1="150" y1="780" x2="150" y2="920" stroke="#cbd5e1" stroke-width="1" />
+  <text x="140" y="800" font-family="Arial, sans-serif" font-size="12px" fill="#64748b" text-anchor="end">高</text>
+  <text x="140" y="920" font-family="Arial, sans-serif" font-size="12px" fill="#64748b" text-anchor="end">低</text>
+  
+  <!-- X Axis -->
+  <line x1="150" y1="920" x2="860" y2="920" stroke="#cbd5e1" stroke-width="1" />
+  <text x="190" y="940" font-family="Arial, sans-serif" font-size="12px" fill="#64748b" text-anchor="middle">現在</text>
+  <text x="400" y="940" font-family="Arial, sans-serif" font-size="12px" fill="#64748b" text-anchor="middle">6ヶ月後</text>
+  <text x="610" y="940" font-family="Arial, sans-serif" font-size="12px" fill="#64748b" text-anchor="middle">1年後</text>
+  <text x="820" y="940" font-family="Arial, sans-serif" font-size="12px" fill="#64748b" text-anchor="middle">2年後</text>
+  
+  <!-- Chart Lines -->
+  <path d="M190 880 L400 850 L610 820 L820 780" stroke="#2563EB" stroke-width="3" fill="none" />
+  <path d="M190 890 L400 870 L610 830 L820 810" stroke="#ef4444" stroke-width="3" fill="none" stroke-dasharray="5,5" />
+  
+  <!-- Legend -->
+  <circle cx="730" y="795" r="5" fill="#2563EB" />
+  <text x="745" y="800" font-family="Arial, sans-serif" font-size="12px" fill="#334155">利用者数</text>
+  
+  <line x1="800" y1="795" x2="820" y2="795" stroke="#ef4444" stroke-width="3" stroke-dasharray="5,5" />
+  <text x="825" y="800" font-family="Arial, sans-serif" font-size="12px" fill="#334155">市場成長</text>
+  
+  <!-- Risk Assessment Section -->
+  <rect x="990" y="710" width="850" height="280" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <text x="1020" y="750" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">リスク評価とアクションプラン</text>
+  
+  <!-- Risk Table -->
+  <rect x="1020" y="780" width="790" height="40" fill="#e2e8f0" rx="4" ry="4" />
+  <rect x="1020" y="820" width="790" height="40" fill="#f8fafc" rx="0" ry="0" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="1020" y="860" width="790" height="40" fill="white" rx="0" ry="0" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="1020" y="900" width="790" height="40" fill="#f8fafc" rx="0" ry="0" stroke="#e2e8f0" stroke-width="1" />
+  
+  <!-- Table Headers -->
+  <text x="1080" y="805" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#475569">リスク要因</text>
+  <text x="1350" y="805" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#475569">重要度</text>
+  <text x="1550" y="805" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#475569">対応策</text>
+  
+  <!-- Table Content -->
+  <text x="1080" y="845" font-family="Arial, sans-serif" font-size="14px" fill="#334155">コンテンツの正確性</text>
+  <rect x="1330" y="830" width="80" height="20" rx="10" ry="10" fill="#ef4444" opacity="0.2" />
+  <text x="1370" y="845" font-family="Arial, sans-serif" font-size="14px" fill="#ef4444" font-weight="bold" text-anchor="middle">高</text>
+  <text x="1550" y="845" font-family="Arial, sans-serif" font-size="14px" fill="#334155">教育専門家による監修体制の確立</text>
+  
+  <text x="1080" y="885" font-family="Arial, sans-serif" font-size="14px" fill="#334155">利用時間管理</text>
+  <rect x="1330" y="870" width="80" height="20" rx="10" ry="10" fill="#f59e0b" opacity="0.2" />
+  <text x="1370" y="885" font-family="Arial, sans-serif" font-size="14px" fill="#f59e0b" font-weight="bold" text-anchor="middle">中</text>
+  <text x="1550" y="885" font-family="Arial, sans-serif" font-size="14px" fill="#334155">保護者設定による利用時間制限機能</text>
+  
+  <text x="1080" y="925" font-family="Arial, sans-serif" font-size="14px" fill="#334155">UI/UX使いやすさ</text>
+  <rect x="1330" y="910" width="80" height="20" rx="10" ry="10" fill="#10b981" opacity="0.2" />
+  <text x="1370" y="925" font-family="Arial, sans-serif" font-size="14px" fill="#10b981" font-weight="bold" text-anchor="middle">低</text>
+  <text x="1550" y="925" font-family="Arial, sans-serif" font-size="14px" fill="#334155">継続的なユーザーテストと改善</text>
+  
+  <!-- Footer -->
+  <line x1="80" x2="1840" y1="1010" y2="1010" stroke="#cbd5e1" stroke-width="1" />
+  <text x="80" y="1040" font-family="Arial, sans-serif" font-size="12px" fill="#64748b">COMPANY LOGO</text>
+  <text x="1840" y="1040" font-family="Arial, sans-serif" font-size="12px" fill="#64748b" text-anchor="end">Confidential | AI学習プラットフォーム企画書</text>
+</svg>

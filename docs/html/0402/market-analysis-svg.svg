@@ -1,0 +1,307 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1e40af" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bgGradient)" />
+  
+  <!-- Header Section -->
+  <g id="header">
+    <!-- Title -->
+    <text x="80" y="80" font-family="Arial, sans-serif" font-size="44" font-weight="bold" fill="url(#titleGradient)">日本の子ども向けデジタル学習・エデュテイメント市場分析</text>
+    <text x="80" y="120" font-family="Arial, sans-serif" font-size="24" fill="#475569">TAM・SAM・SOM分析に基づく市場進出戦略</text>
+    
+    <!-- Date and Source -->
+    <text x="1840" y="80" font-family="Arial, sans-serif" font-size="18" fill="#475569" text-anchor="end">2025年4月2日</text>
+    <text x="1840" y="110" font-family="Arial, sans-serif" font-size="18" fill="#475569" text-anchor="end">出典: 総務省・経産省・民間調査会社等</text>
+  </g>
+  
+  <!-- Executive Summary Card -->
+  <g id="executiveSummary">
+    <rect x="80" y="160" width="1100" height="220" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1" />
+    
+    <!-- Card Title with Icon -->
+    <circle cx="110" cy="190" r="14" fill="#2563EB" opacity="0.1" />
+    <path d="M110,184 L114,195 L106,195 Z" fill="#1e40af" />
+    <text x="135" y="195" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1e40af">エグゼクティブサマリー</text>
+    
+    <!-- KPI Boxes -->
+    <g id="kpiBoxes">
+      <!-- TAM Box -->
+      <rect x="120" y="220" width="300" height="100" rx="8" fill="#ebf5ff" />
+      <text x="270" y="245" font-family="Arial, sans-serif" font-size="16" fill="#475569" text-anchor="middle">TAM</text>
+      <text x="270" y="285" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#2563EB" text-anchor="middle">3,000億円+</text>
+      <text x="270" y="310" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">国内子ども向けデジタル学習市場</text>
+      
+      <!-- SAM Box -->
+      <rect x="440" y="220" width="300" height="100" rx="8" fill="#ebf5ff" />
+      <text x="590" y="245" font-family="Arial, sans-serif" font-size="16" fill="#475569" text-anchor="middle">SAM</text>
+      <text x="590" y="285" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#2563EB" text-anchor="middle">500-600億円</text>
+      <text x="590" y="310" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">教育熱心な家庭・機関</text>
+      
+      <!-- SOM Box -->
+      <rect x="760" y="220" width="300" height="100" rx="8" fill="#ebf5ff" />
+      <text x="910" y="245" font-family="Arial, sans-serif" font-size="16" fill="#475569" text-anchor="middle">SOM（3年目）</text>
+      <text x="910" y="285" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#2563EB" text-anchor="middle">57億円</text>
+      <text x="910" y="310" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">SAMの約10%獲得</text>
+    </g>
+    
+    <!-- Key Points -->
+    <circle cx="140" cy="345" r="4" fill="#475569" />
+    <text x="160" y="350" font-family="Arial, sans-serif" font-size="16" fill="#475569">日本の3～15歳の子ども約<tspan font-weight="bold" fill="#2563EB">1,200万人強</tspan>を対象とする市場</text>
+    
+    <circle cx="460" cy="345" r="4" fill="#475569" />
+    <text x="480" y="350" font-family="Arial, sans-serif" font-size="16" fill="#475569">デジタル教材コンテンツ市場は<tspan font-weight="bold" fill="#2563EB">632億円</tspan>（2022年度）に成長</text>
+    
+    <circle cx="800" cy="345" r="4" fill="#475569" />
+    <text x="820" y="350" font-family="Arial, sans-serif" font-size="16" fill="#475569">ソフトバンク等の強力なチャネルを活用し<tspan font-weight="bold" fill="#2563EB">3年で50億円超</tspan>の売上達成を目指す</text>
+  </g>
+  
+  <!-- TAM Analysis Card with Chart -->
+  <g id="tamAnalysis">
+    <rect x="80" y="400" width="700" height="300" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1" />
+    
+    <!-- Card Title with Icon -->
+    <circle cx="110" cy="430" r="14" fill="#2563EB" opacity="0.1" />
+    <path d="M110,424 L118,436 L102,436 Z" fill="#1e40af" />
+    <text x="135" y="435" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1e40af">TAM分析：3,000億円規模のデジタル学習市場</text>
+    
+    <!-- Bar Chart -->
+    <g id="tamBarChart" transform="translate(120, 460)">
+      <!-- Y Axis -->
+      <line x1="60" y1="200" x2="60" y2="20" stroke="#94a3b8" stroke-width="1" />
+      <text x="55" y="200" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="end">0</text>
+      <text x="55" y="150" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="end">500</text>
+      <text x="55" y="100" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="end">1000</text>
+      <text x="55" y="50" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="end">1500</text>
+      <text x="55" y="20" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="end">2000</text>
+      <text x="30" y="30" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="middle" transform="rotate(-90, 30, 100)">億円</text>
+      
+      <!-- X Axis -->
+      <line x1="60" y1="200" x2="540" y2="200" stroke="#94a3b8" stroke-width="1" />
+      
+      <!-- Bars -->
+      <g id="bar1">
+        <rect x="100" y="42" width="80" height="158" rx="4" fill="#2563EB" />
+        <text x="140" y="220" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">家庭向け通信教育</text>
+        <text x="140" y="240" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">1,450億円</text>
+      </g>
+      
+      <g id="bar2">
+        <rect x="250" y="0" width="80" height="200" rx="4" fill="#2563EB" />
+        <text x="290" y="220" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">知育・教育玩具</text>
+        <text x="290" y="240" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">1,812億円</text>
+      </g>
+      
+      <g id="bar3">
+        <rect x="400" y="130" width="80" height="70" rx="4" fill="#2563EB" />
+        <text x="440" y="220" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">デジタル学習</text>
+        <text x="440" y="240" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">632億円</text>
+      </g>
+    </g>
+    
+    <!-- Info Box -->
+    <rect x="120" y="630" width="620" height="50" rx="8" fill="#ebf5ff" />
+    <text x="130" y="660" font-family="Arial, sans-serif" font-size="16" fill="#475569">
+      <tspan font-weight="bold" fill="#2563EB">ベネッセ</tspan>は通信教育市場の<tspan font-weight="bold" fill="#2563EB">85%以上</tspan>のシェアを持ち、
+      子育て世帯の<tspan font-weight="bold" fill="#2563EB">約23%</tspan>が通信教育契約経験あり
+    </text>
+  </g>
+  
+  <!-- SOM Projection Card with Chart -->
+  <g id="somProjection">
+    <rect x="80" y="720" width="700" height="280" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1" />
+    
+    <!-- Card Title with Icon -->
+    <circle cx="110" cy="750" r="14" fill="#2563EB" opacity="0.1" />
+    <path d="M105,750 L115,740 L115,760 Z" fill="#1e40af" />
+    <text x="135" y="755" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1e40af">SOM予測：3年間の売上成長予測</text>
+    
+    <!-- Line Chart -->
+    <g id="somLineChart" transform="translate(120, 780)">
+      <!-- Y Axis -->
+      <line x1="60" y1="180" x2="60" y2="20" stroke="#94a3b8" stroke-width="1" />
+      <text x="55" y="180" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="end">0</text>
+      <text x="55" y="140" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="end">20</text>
+      <text x="55" y="100" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="end">40</text>
+      <text x="55" y="60" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="end">60</text>
+      <text x="30" y="30" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="middle" transform="rotate(-90, 30, 100)">億円</text>
+      
+      <!-- X Axis -->
+      <line x1="60" y1="180" x2="540" y2="180" stroke="#94a3b8" stroke-width="1" />
+      <text x="150" y="200" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">初年度</text>
+      <text x="300" y="200" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">2年目</text>
+      <text x="450" y="200" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">3年目</text>
+      
+      <!-- Grid Lines -->
+      <line x1="60" y1="140" x2="540" y2="140" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4" />
+      <line x1="60" y1="100" x2="540" y2="100" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4" />
+      <line x1="60" y1="60" x2="540" y2="60" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4" />
+      
+      <!-- Line -->
+      <path d="M150,140 L300,109 L450,70" stroke="#2563EB" stroke-width="3" fill="none" />
+      
+      <!-- Data Points -->
+      <circle cx="150" cy="140" r="6" fill="#2563EB" />
+      <circle cx="300" cy="109" r="6" fill="#2563EB" />
+      <circle cx="450" cy="70" r="6" fill="#2563EB" />
+      
+      <!-- Data Labels -->
+      <rect x="140" y="115" width="50" height="22" rx="4" fill="white" stroke="#e2e8f0" stroke-width="1" />
+      <text x="165" y="131" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2563EB" text-anchor="middle">20億円</text>
+      
+      <rect x="290" y="84" width="50" height="22" rx="4" fill="white" stroke="#e2e8f0" stroke-width="1" />
+      <text x="315" y="100" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2563EB" text-anchor="middle">35億円</text>
+      
+      <rect x="440" y="45" width="50" height="22" rx="4" fill="white" stroke="#e2e8f0" stroke-width="1" />
+      <text x="465" y="61" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2563EB" text-anchor="middle">57億円</text>
+    </g>
+  </g>
+  
+  <!-- SAM Analysis Card -->
+  <g id="samAnalysis">
+    <rect x="800" y="400" width="640" height="300" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1" />
+    
+    <!-- Card Title with Icon -->
+    <circle cx="830" cy="430" r="14" fill="#2563EB" opacity="0.1" />
+    <path d="M825,430 C825,427 830,425 835,430 C840,425 845,427 845,430 C845,437 835,442 835,442 C835,442 825,437 825,430 Z" fill="#1e40af" />
+    <text x="855" y="435" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1e40af">SAM分析：ターゲット市場</text>
+    
+    <!-- B2C Section -->
+    <text x="820" y="470" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#475569">B2C市場（教育熱心な家庭層）</text>
+    
+    <circle cx="830" cy="500" r="4" fill="#475569" />
+    <text x="845" y="505" font-family="Arial, sans-serif" font-size="16" fill="#475569">18歳未満の子どもがいる世帯<tspan font-weight="bold" fill="#2563EB">約992万世帯</tspan></text>
+    
+    <circle cx="830" cy="530" r="4" fill="#475569" />
+    <text x="845" y="535" font-family="Arial, sans-serif" font-size="16" fill="#475569">デジタル学習に積極的な<tspan font-weight="bold" fill="#2563EB">約20-30%</tspan>が潜在顧客</text>
+    
+    <circle cx="830" cy="560" r="4" fill="#475569" />
+    <text x="845" y="565" font-family="Arial, sans-serif" font-size="16" fill="#475569">約<tspan font-weight="bold" fill="#2563EB">200-300万世帯</tspan>×月額1,000-2,000円で<tspan font-weight="bold" fill="#2563EB">約500億円</tspan>規模</text>
+    
+    <!-- B2B/B2G Section -->
+    <text x="820" y="605" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#475569">B2B/B2G市場（教育機関）</text>
+    
+    <circle cx="830" cy="635" r="4" fill="#475569" />
+    <text x="845" y="640" font-family="Arial, sans-serif" font-size="16" fill="#475569">全国<tspan font-weight="bold" fill="#2563EB">約3万校</tspan>の公立小中学校（GIGAスクール構想で端末配備済み）</text>
+    
+    <circle cx="830" cy="665" r="4" fill="#475569" />
+    <text x="845" y="670" font-family="Arial, sans-serif" font-size="16" fill="#475569">先進的な<tspan font-weight="bold" fill="#2563EB">5%（約1,500校）</tspan>が採用すると<tspan font-weight="bold" fill="#2563EB">約50-100億円</tspan>規模</text>
+  </g>
+  
+  <!-- SOM Strategy Card -->
+  <g id="somStrategy">
+    <rect x="800" y="720" width="640" height="330" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1" />
+    
+    <!-- Card Title with Icon -->
+    <circle cx="830" cy="750" r="14" fill="#2563EB" opacity="0.1" />
+    <path d="M830,743 L838,755 L822,755 Z" fill="#1e40af" />
+    <text x="855" y="755" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1e40af">SOM戦略：獲得計画</text>
+    
+    <!-- First Year Target -->
+    <text x="820" y="795" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#475569">初年度目標</text>
+    
+    <!-- B2C Box -->
+    <rect x="830" y="810" width="280" height="100" rx="8" fill="#ebf5ff" />
+    <text x="970" y="835" font-family="Arial, sans-serif" font-size="16" fill="#475569" text-anchor="middle">B2C</text>
+    <text x="970" y="865" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#2563EB" text-anchor="middle">10万世帯</text>
+    <text x="970" y="890" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">月額1,500円×12ヶ月</text>
+    <text x="970" y="910" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e40af" text-anchor="middle">18億円</text>
+    
+    <!-- B2B Box -->
+    <rect x="1130" y="810" width="280" height="100" rx="8" fill="#ebf5ff" />
+    <text x="1270" y="835" font-family="Arial, sans-serif" font-size="16" fill="#475569" text-anchor="middle">B2B/B2G</text>
+    <text x="1270" y="865" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#2563EB" text-anchor="middle">50機関</text>
+    <text x="1270" y="890" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">年間100万円/機関</text>
+    <text x="1270" y="910" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e40af" text-anchor="middle">5,000万円</text>
+    
+    <!-- Third Year Target -->
+    <text x="820" y="940" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#475569">3年目目標</text>
+    
+    <!-- B2C Box -->
+    <rect x="830" y="955" width="280" height="100" rx="8" fill="#ebf5ff" />
+    <text x="970" y="980" font-family="Arial, sans-serif" font-size="16" fill="#475569" text-anchor="middle">B2C</text>
+    <text x="970" y="1010" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#2563EB" text-anchor="middle">30万世帯</text>
+    <text x="970" y="1035" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">シェア約10%</text>
+    <text x="970" y="1055" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e40af" text-anchor="middle">54億円</text>
+    
+    <!-- B2B Box -->
+    <rect x="1130" y="955" width="280" height="100" rx="8" fill="#ebf5ff" />
+    <text x="1270" y="980" font-family="Arial, sans-serif" font-size="16" fill="#475569" text-anchor="middle">B2B/B2G</text>
+    <text x="1270" y="1010" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#2563EB" text-anchor="middle">300機関</text>
+    <text x="1270" y="1035" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">年間100万円/機関</text>
+    <text x="1270" y="1055" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e40af" text-anchor="middle">3億円</text>
+  </g>
+  
+  <!-- Risk Analysis Card -->
+  <g id="riskAnalysis">
+    <rect x="1490" y="400" width="350" height="650" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1" />
+    
+    <!-- Card Title with Icon -->
+    <circle cx="1520" cy="430" r="14" fill="#2563EB" opacity="0.1" />
+    <path d="M1520,420 L1530,440 L1510,440 Z" fill="#1e40af" />
+    <text x="1545" y="435" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1e40af">市場リスク分析</text>
+    
+    <!-- Risk Table -->
+    <g id="riskTable">
+      <!-- Headers -->
+      <text x="1520" y="475" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#475569">リスク要因</text>
+      <text x="1700" y="475" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#475569">影響度</text>
+      
+      <!-- Lines -->
+      <line x1="1510" y1="485" x2="1820" y2="485" stroke="#e2e8f0" stroke-width="2" />
+      
+      <!-- Row 1 -->
+      <circle cx="1520" cy="515" r="6" fill="#ef4444" />
+      <text x="1540" y="520" font-family="Arial, sans-serif" font-size="16" fill="#475569">競合優位性</text>
+      <text x="1700" y="520" font-family="Arial, sans-serif" font-size="16" fill="#475569">高</text>
+      <text x="1520" y="545" font-family="Arial, sans-serif" font-size="14" fill="#64748b">ベネッセが通信教育市場の85%以上を独占</text>
+      
+      <line x1="1510" y1="565" x2="1820" y2="565" stroke="#e2e8f0" stroke-width="1" />
+      
+      <!-- Row 2 -->
+      <circle cx="1520" cy="595" r="6" fill="#f59e0b" />
+      <text x="1540" y="600" font-family="Arial, sans-serif" font-size="16" fill="#475569">価格感度</text>
+      <text x="1700" y="600" font-family="Arial, sans-serif" font-size="16" fill="#475569">中</text>
+      <text x="1520" y="625" font-family="Arial, sans-serif" font-size="14" fill="#64748b">月額1,000-2,000円の価格帯で顧客獲得の壁</text>
+      
+      <line x1="1510" y1="645" x2="1820" y2="645" stroke="#e2e8f0" stroke-width="1" />
+      
+      <!-- Row 3 -->
+      <circle cx="1520" cy="675" r="6" fill="#f59e0b" />
+      <text x="1540" y="680" font-family="Arial, sans-serif" font-size="16" fill="#475569">教育機関の予算</text>
+      <text x="1700" y="680" font-family="Arial, sans-serif" font-size="16" fill="#475569">中</text>
+      <text x="1520" y="705" font-family="Arial, sans-serif" font-size="14" fill="#64748b">公立校は予算制約が厳しく導入ハードル高い</text>
+      
+      <line x1="1510" y1="725" x2="1820" y2="725" stroke="#e2e8f0" stroke-width="1" />
+      
+      <!-- Row 4 -->
+      <circle cx="1520" cy="755" r="6" fill="#10b981" />
+      <text x="1540" y="760" font-family="Arial, sans-serif" font-size="16" fill="#475569">ICT環境</text>
+      <text x="1700" y="760" font-family="Arial, sans-serif" font-size="16" fill="#475569">低</text>
+      <text x="1520" y="785" font-family="Arial, sans-serif" font-size="14" fill="#64748b">GIGAスクール構想でデジタル環境は整備済み</text>
+      
+      <line x1="1510" y1="805" x2="1820" y2="805" stroke="#e2e8f0" stroke-width="1" />
+      
+      <!-- Row 5 - Opportunity -->
+      <circle cx="1520" cy="835" r="6" fill="#10b981" />
+      <text x="1540" y="840" font-family="Arial, sans-serif" font-size="16" fill="#475569">AI活用機会</text>
+      <text x="1700" y="840" font-family="Arial, sans-serif" font-size="16" fill="#10b981">チャンス</text>
+      <text x="1520" y="865" font-family="Arial, sans-serif" font-size="14" fill="#64748b">生成AIを活用した新サービス展開の余地</text>
+      <text x="1520" y="890" font-family="Arial, sans-serif" font-size="14" fill="#64748b">例：「しまじろうAI」など先行事例あり</text>
+    </g>
+  </g>
+  
+  <!-- Footer -->
+  <g id="footer">
+    <line x1="80" y1="1030" x2="1840" y2="1030" stroke="#e2e8f0" stroke-width="1" />
+    <text x="80" y="1060" font-family="Arial, sans-serif" font-size="14" fill="#

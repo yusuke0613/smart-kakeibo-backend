@@ -1,0 +1,342 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="#f8fafc" />
+  
+  <!-- Header -->
+  <defs>
+    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <filter id="shadow" x="-2" y="-2" width="104%" height="104%">
+      <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2" />
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="2" />
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+    </filter>
+  </defs>
+  
+  <!-- Title Section -->
+  <text x="80" y="80" font-family="Arial, sans-serif" font-size="32px" font-weight="bold" fill="url(#titleGradient)">AI搭載「なぜなに」学習プラットフォーム</text>
+  <text x="1840" y="80" font-family="Arial, sans-serif" font-size="14px" fill="#475569" text-anchor="end">2025年4月2日</text>
+  <line x1="80" x2="1840" y1="100" y2="100" stroke="#2563EB" stroke-width="2" opacity="0.5" />
+  
+  <!-- Executive Summary Card -->
+  <rect x="80" y="120" width="1760" height="110" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <text x="110" y="150" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">エグゼクティブサマリー</text>
+  <text x="110" y="180" font-family="Arial, sans-serif" font-size="14px" fill="#334155" line-height="1.4">
+    子どもの<tspan fill="#2563EB" font-weight="bold">「なぜ？」</tspan>という好奇心に応えるAI搭載プラットフォーム。年齢・興味に合わせた回答を提供し、
+  </text>
+  <text x="110" y="205" font-family="Arial, sans-serif" font-size="14px" fill="#334155" line-height="1.4">
+    絵本風ストーリーや実験アクティビティに変換することで、親子の学びと体験をサポートします。
+  </text>
+  
+  <!-- KPI Indicators -->
+  <rect x="1350" y="130" width="180" height="85" rx="8" ry="8" fill="#eef2ff" stroke="#2563EB" stroke-width="1" />
+  <rect x="1550" y="130" width="180" height="85" rx="8" ry="8" fill="#eef2ff" stroke="#2563EB" stroke-width="1" />
+  
+  <text x="1440" y="155" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#1e40af" text-anchor="middle">ターゲット年齢</text>
+  <text x="1440" y="190" font-family="Arial, sans-serif" font-size="20px" font-weight="bold" fill="#2563EB" text-anchor="middle">3-12歳</text>
+  
+  <text x="1640" y="155" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#1e40af" text-anchor="middle">サブスク価格</text>
+  <text x="1640" y="190" font-family="Arial, sans-serif" font-size="20px" font-weight="bold" fill="#2563EB" text-anchor="middle">¥1,000-1,500/月</text>
+  
+  <!-- 4 Core Features in Grid Layout -->
+  <!-- Feature 1: Q&A + Picture Book -->
+  <rect x="80" y="250" width="425" height="240" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <!-- Feature Icon -->
+  <circle cx="115" cy="285" r="20" fill="#2563EB" opacity="0.1" />
+  <text x="115" y="293" font-family="Arial, sans-serif" font-size="20px" fill="#2563EB" text-anchor="middle">🔍</text>
+  
+  <text x="150" y="293" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">AI なぜなに Q&A ＋ 絵本生成</text>
+  
+  <!-- Feature Content -->
+  <circle cx="115" cy="330" r="5" fill="#2563EB" />
+  <text x="130" y="335" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    子どもの「なぜ？」を<tspan fill="#2563EB" font-weight="bold">テキスト・音声</tspan>で入力
+  </text>
+  
+  <circle cx="115" cy="365" r="5" fill="#2563EB" />
+  <text x="130" y="370" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    年齢・興味に最適化された回答を提供
+  </text>
+  
+  <circle cx="115" cy="400" r="5" fill="#2563EB" />
+  <text x="130" y="405" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan fill="#2563EB" font-weight="bold">絵本風ストーリー</tspan>と挿絵を自動生成
+  </text>
+  
+  <circle cx="115" cy="435" r="5" fill="#2563EB" />
+  <text x="130" y="440" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    アプリ内に保存・共有可能
+  </text>
+  
+  <!-- Feature 2: Activity Missions -->
+  <rect x="525" y="250" width="425" height="240" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <!-- Feature Icon -->
+  <circle cx="560" cy="285" r="20" fill="#2563EB" opacity="0.1" />
+  <text x="560" y="293" font-family="Arial, sans-serif" font-size="20px" fill="#2563EB" text-anchor="middle">🚀</text>
+  
+  <text x="595" y="293" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">ミッション型アクティビティ提案</text>
+  
+  <!-- Feature Content -->
+  <circle cx="560" cy="330" r="5" fill="#2563EB" />
+  <text x="575" y="335" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan fill="#2563EB" font-weight="bold">おうちでできるミニ実験</tspan>を提案
+  </text>
+  
+  <circle cx="560" cy="365" r="5" fill="#2563EB" />
+  <text x="575" y="370" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    「観察してみよう」ミッション
+  </text>
+  
+  <circle cx="560" cy="400" r="5" fill="#2563EB" />
+  <text x="575" y="405" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    「お手伝いミッション」で生活との接点
+  </text>
+  
+  <circle cx="560" cy="435" r="5" fill="#2563EB" />
+  <text x="575" y="440" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan fill="#2563EB" font-weight="bold">体験から学ぶ</tspan>アクションを促進
+  </text>
+  
+  <!-- Feature 3: Interactive Quiz -->
+  <rect x="970" y="250" width="425" height="240" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <!-- Feature Icon -->
+  <circle cx="1005" cy="285" r="20" fill="#2563EB" opacity="0.1" />
+  <text x="1005" y="293" font-family="Arial, sans-serif" font-size="20px" fill="#2563EB" text-anchor="middle">🎮</text>
+  
+  <text x="1040" y="293" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">対話型クイズ ＆ ゲームモード</text>
+  
+  <!-- Feature Content -->
+  <circle cx="1005" cy="330" r="5" fill="#2563EB" />
+  <text x="1020" y="335" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    理解度確認のための<tspan fill="#2563EB" font-weight="bold">簡易クイズ</tspan>を生成
+  </text>
+  
+  <circle cx="1005" cy="365" r="5" fill="#2563EB" />
+  <text x="1020" y="370" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    年齢・理解度に合わせた難易度調整
+  </text>
+  
+  <circle cx="1005" cy="400" r="5" fill="#2563EB" />
+  <text x="1020" y="405" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    正解でアプリ内<tspan fill="#2563EB" font-weight="bold">アイテム獲得</tspan>
+  </text>
+  
+  <circle cx="1005" cy="435" r="5" fill="#2563EB" />
+  <text x="1020" y="440" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    達成感を得られる仕組みを用意
+  </text>
+  
+  <!-- Feature 4: Growth Tracking -->
+  <rect x="1415" y="250" width="425" height="240" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <!-- Feature Icon -->
+  <circle cx="1450" cy="285" r="20" fill="#2563EB" opacity="0.1" />
+  <text x="1450" y="293" font-family="Arial, sans-serif" font-size="20px" fill="#2563EB" text-anchor="middle">📊</text>
+  
+  <text x="1485" y="293" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">成長トラッキング ＆ 親向けレポート</text>
+  
+  <!-- Feature Content -->
+  <circle cx="1450" cy="330" r="5" fill="#2563EB" />
+  <text x="1465" y="335" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan fill="#2563EB" font-weight="bold">学習記録</tspan>をAIが自動管理
+  </text>
+  
+  <circle cx="1450" cy="365" r="5" fill="#2563EB" />
+  <text x="1465" y="370" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    週次・月次の活動レポートを提供
+  </text>
+  
+  <circle cx="1450" cy="400" r="5" fill="#2563EB" />
+  <text x="1465" y="405" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan fill="#2563EB" font-weight="bold">得意/苦手分野</tspan>の可視化
+  </text>
+  
+  <circle cx="1450" cy="435" r="5" fill="#2563EB" />
+  <text x="1465" y="440" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    次のステップを提案するレコメンド機能
+  </text>
+  
+  <!-- Service Flow -->
+  <rect x="80" y="510" width="850" height="230" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <text x="110" y="545" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">サービス利用フロー</text>
+  
+  <!-- Flow Steps -->
+  <rect x="110" y="565" width="740" height="155" fill="#f8fafc" rx="8" ry="8" />
+  
+  <!-- Step 1 -->
+  <circle cx="170" cy="605" r="25" fill="#2563EB" opacity="0.2" />
+  <text x="170" y="610" font-family="Arial, sans-serif" font-size="16px" fill="#2563EB" font-weight="bold" text-anchor="middle">1</text>
+  <text x="170" y="655" font-family="Arial, sans-serif" font-size="14px" fill="#334155" text-anchor="middle">質問入力</text>
+  <text x="170" y="675" font-family="Arial, sans-serif" font-size="12px" fill="#475569" text-anchor="middle">「なぜ空は青いの？」</text>
+  
+  <!-- Arrow -->
+  <line x1="205" y1="605" x2="245" y2="605" stroke="#2563EB" stroke-width="2" />
+  <polygon points="245,600 255,605 245,610" fill="#2563EB" />
+  
+  <!-- Step 2 -->
+  <circle cx="290" cy="605" r="25" fill="#2563EB" opacity="0.2" />
+  <text x="290" y="610" font-family="Arial, sans-serif" font-size="16px" fill="#2563EB" font-weight="bold" text-anchor="middle">2</text>
+  <text x="290" y="655" font-family="Arial, sans-serif" font-size="14px" fill="#334155" text-anchor="middle">AI回答</text>
+  <text x="290" y="675" font-family="Arial, sans-serif" font-size="12px" fill="#475569" text-anchor="middle">説明＋絵本生成</text>
+  
+  <!-- Arrow -->
+  <line x1="325" y1="605" x2="365" y2="605" stroke="#2563EB" stroke-width="2" />
+  <polygon points="365,600 375,605 365,610" fill="#2563EB" />
+  
+  <!-- Step 3 -->
+  <circle cx="410" cy="605" r="25" fill="#2563EB" opacity="0.2" />
+  <text x="410" y="610" font-family="Arial, sans-serif" font-size="16px" fill="#2563EB" font-weight="bold" text-anchor="middle">3</text>
+  <text x="410" y="655" font-family="Arial, sans-serif" font-size="14px" fill="#334155" text-anchor="middle">実験ミッション</text>
+  <text x="410" y="675" font-family="Arial, sans-serif" font-size="12px" fill="#475569" text-anchor="middle">簡単実験提案</text>
+  
+  <!-- Arrow -->
+  <line x1="445" y1="605" x2="485" y2="605" stroke="#2563EB" stroke-width="2" />
+  <polygon points="485,600 495,605 485,610" fill="#2563EB" />
+  
+  <!-- Step 4 -->
+  <circle cx="530" cy="605" r="25" fill="#2563EB" opacity="0.2" />
+  <text x="530" y="610" font-family="Arial, sans-serif" font-size="16px" fill="#2563EB" font-weight="bold" text-anchor="middle">4</text>
+  <text x="530" y="655" font-family="Arial, sans-serif" font-size="14px" fill="#334155" text-anchor="middle">クイズ挑戦</text>
+  <text x="530" y="675" font-family="Arial, sans-serif" font-size="12px" fill="#475569" text-anchor="middle">理解度確認</text>
+  
+  <!-- Arrow -->
+  <line x1="565" y1="605" x2="605" y2="605" stroke="#2563EB" stroke-width="2" />
+  <polygon points="605,600 615,605 605,610" fill="#2563EB" />
+  
+  <!-- Step 5 -->
+  <circle cx="650" cy="605" r="25" fill="#2563EB" opacity="0.2" />
+  <text x="650" y="610" font-family="Arial, sans-serif" font-size="16px" fill="#2563EB" font-weight="bold" text-anchor="middle">5</text>
+  <text x="650" y="655" font-family="Arial, sans-serif" font-size="14px" fill="#334155" text-anchor="middle">成長レポート</text>
+  <text x="650" y="675" font-family="Arial, sans-serif" font-size="12px" fill="#475569" text-anchor="middle">親向け分析</text>
+  
+  <!-- Arrow to cycle back -->
+  <path d="M685 605 C725 605, 740 560, 700 560 C660 560, 150 560, 110 560 C70 560, 55 605, 95 605" stroke="#2563EB" stroke-width="1" stroke-dasharray="5,5" fill="none" />
+  <polygon points="95,600 85,605 95,610" fill="#2563EB" />
+  <text x="400" y="550" font-family="Arial, sans-serif" font-size="12px" fill="#475569" font-style="italic" text-anchor="middle">好奇心サイクル：次の「なぜ？」へ</text>
+  
+  <!-- Differentiation Points -->
+  <rect x="970" y="510" width="870" height="230" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <text x="1000" y="545" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">差別化ポイント</text>
+  
+  <!-- Points -->
+  <rect x="1000" y="565" width="815" height="155" rx="8" ry="8" fill="#f8fafc" />
+  
+  <!-- Point 1 -->
+  <rect x="1020" y="585" width="370" height="50" rx="4" ry="4" fill="white" stroke="#2563EB" stroke-width="1" />
+  <text x="1040" y="615" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#1e40af">「なぜ？」に特化</text>
+  <text x="1200" y="615" font-family="Arial, sans-serif" font-size="12px" fill="#334155">子どもの素朴な疑問から出発する独自性</text>
+  
+  <!-- Point 2 -->
+  <rect x="1420" y="585" width="370" height="50" rx="4" ry="4" fill="white" stroke="#2563EB" stroke-width="1" />
+  <text x="1440" y="615" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#1e40af">学習＋リアル体験の融合</text>
+  <text x="1630" y="615" font-family="Arial, sans-serif" font-size="12px" fill="#334155">デジタルと実体験をシームレスに接続</text>
+  
+  <!-- Point 3 -->
+  <rect x="1020" y="650" width="370" height="50" rx="4" ry="4" fill="white" stroke="#2563EB" stroke-width="1" />
+  <text x="1040" y="680" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#1e40af">親子のコミュニケーション強化</text>
+  <text x="1200" y="680" font-family="Arial, sans-serif" font-size="12px" fill="#334155">一緒に学び・体験する時間の創出</text>
+  
+  <!-- Point 4 -->
+  <rect x="1420" y="650" width="370" height="50" rx="4" ry="4" fill="white" stroke="#2563EB" stroke-width="1" />
+  <text x="1440" y="680" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#1e40af">継続的な学習トラッキング</text>
+  <text x="1630" y="680" font-family="Arial, sans-serif" font-size="12px" fill="#334155">AIによるカスタムレコメンド機能</text>
+  
+  <!-- Revenue Model -->
+  <rect x="80" y="760" width="850" height="250" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <text x="110" y="795" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">収益モデル</text>
+  
+  <!-- Models -->
+  <rect x="110" y="815" width="790" height="175" rx="8" ry="8" fill="#f8fafc" />
+  
+  <!-- Basic Section -->
+  <text x="140" y="845" font-family="Arial, sans-serif" font-size="16px" font-weight="bold" fill="#1e40af">フリーミアムモデル</text>
+  
+  <circle cx="140" cy="875" r="5" fill="#2563EB" />
+  <text x="155" y="880" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">無料プラン：</tspan>1日3回まで利用可能
+  </text>
+  
+  <circle cx="140" cy="905" r="5" fill="#2563EB" />
+  <text x="155" y="910" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">プレミアム：</tspan>月額1,000～1,500円
+  </text>
+  
+  <rect x="415" y="865" width="150" height="50" rx="25" ry="25" fill="#2563EB" opacity="0.1" />
+  <text x="490" y="895" font-family="Arial, sans-serif" font-size="14px" fill="#2563EB" font-weight="bold" text-anchor="middle">無制限利用</text>
+  
+  <!-- Additional Revenue -->
+  <text x="140" y="945" font-family="Arial, sans-serif" font-size="16px" font-weight="bold" fill="#1e40af">追加収益オプション</text>
+  
+  <circle cx="140" cy="975" r="5" fill="#ef4444" />
+  <text x="155" y="980" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">リアル絵本製本：</tspan>オリジナルストーリーの印刷配送
+  </text>
+  
+  <circle cx="480" cy="975" r="5" fill="#f59e0b" />
+  <text x="495" y="980" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">学習キット販売：</tspan>実験・観察用具の提供
+  </text>
+  
+  <!-- Marketing Strategy -->
+  <rect x="970" y="760" width="870" height="250" rx="12" ry="12" fill="white" filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" />
+  
+  <text x="1000" y="795" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">マーケティング戦略 ＆ 収益最大化</text>
+  
+  <!-- Strategy Content -->
+  <rect x="1000" y="815" width="815" height="175" rx="8" ry="8" fill="#f8fafc" />
+  
+  <!-- Left Column -->
+  <text x="1030" y="845" font-family="Arial, sans-serif" font-size="16px" font-weight="bold" fill="#1e40af">ローンチ戦略</text>
+  
+  <circle cx="1030" cy="875" r="5" fill="#2563EB" />
+  <text x="1045" y="880" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">7日間無料トライアル</tspan>で機能体験を促進
+  </text>
+  
+  <circle cx="1030" cy="905" r="5" fill="#2563EB" />
+  <text x="1045" y="910" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">育児インフルエンサー</tspan>によるSNS展開
+  </text>
+  
+  <circle cx="1030" cy="935" r="5" fill="#2563EB" />
+  <text x="1045" y="940" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">科学館・テーマパーク</tspan>とのコラボイベント
+  </text>
+  
+  <!-- Right Column -->
+  <text x="1400" y="845" font-family="Arial, sans-serif" font-size="16px" font-weight="bold" fill="#1e40af">収益最大化施策</text>
+  
+  <circle cx="1400" cy="875" r="5" fill="#ef4444" />
+  <text x="1415" y="880" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">教育機関向けライセンス</tspan>の展開
+  </text>
+  
+  <circle cx="1400" cy="905" r="5" fill="#f59e0b" />
+  <text x="1415" y="910" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">玩具メーカー・出版社</tspan>とのコラボ商品
+  </text>
+  
+  <circle cx="1400" cy="935" r="5" fill="#10b981" />
+  <text x="1415" y="940" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">学習データ分析</tspan>によるB2Bコンサルティング
+  </text>
+  
+  <circle cx="1400" cy="965" r="5" fill="#2563EB" />
+  <text x="1415" y="970" font-family="Arial, sans-serif" font-size="14px" fill="#334155">
+    <tspan font-weight="bold">多言語対応</tspan>による国際展開
+  </text>
+  
+  <!-- Footer -->
+  <line x1="80" x2="1840" y1="1025" y2="1025" stroke="#cbd5e1" stroke-width="1" />
+  <text x="80" y="1055" font-family="Arial, sans-serif" font-size="12px" fill="#64748b">COMPANY LOGO</text>
+  <text x="1840" y="1055" font-family="Arial, sans-serif" font-size="12px" fill="#64748b" text-anchor="end">Confidential | AI学習プラットフォーム企画書</text>
+</svg>

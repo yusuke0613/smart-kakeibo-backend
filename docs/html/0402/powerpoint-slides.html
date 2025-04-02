@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子どもの「なぜ？」を育むサービス - スライド</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Zen Kurenaido', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            background-color: var(--fashion-1);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--fashion-5);
+        }
+        
+        .slide-counter {
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        
+        .slide-container {
+            width: 100%;
+            max-width: 960px;
+            height: 540px;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: none;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .slide-content {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button id="prev-btn">前へ</button>
+        <div class="slide-counter"><span id="current-slide">1</span> / <span id="total-slides">6</span></div>
+        <button id="next-btn">次へ</button>
+    </div>
+    
+    <div class="slide-container">
+        <!-- スライド1: タイトル -->
+        <div class="slide active" id="slide-1">
+            <svg class="slide-content" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg">
+                <!-- 背景 -->
+                <rect width="960" height="540" fill="white"/>
+                
+                <!-- 装飾要素 - 左上 -->
+                <path d="M0,0 Q100,50 120,150 Q140,250 100,300 Q60,350 0,380" fill="none" stroke="#F2E63D" stroke-width="8" stroke-opacity="0.3"/>
+                
+                <!-- 装飾要素 - 右下 -->
+                <path d="M960,540 Q860,490 840,390 Q820,290 860,240 Q900,190 960,160" fill="none" stroke="#F25C05" stroke-width="8" stroke-opacity="0.3"/>
+                
+                <!-- タイトル -->
+                <text x="480" y="180" font-family="Kaisei Decol, serif" font-size="48" fill="#593C47" text-anchor="middle" font-weight="bold">子どもの「なぜ？」を育むサービス分析</text>
+                
+                <!-- サブタイトル -->
+                <text x="480" y="250" font-family="Yomogi, cursive" font-size="28" fill="#F24405" text-anchor="middle">唯一無二のコンテンツアイディア提案</text>
+                
+                <!-- 手書き風下線 -->
+                <path d="M280,260 Q380,280 480,270 Q580,260 680,280" fill="none" stroke="#F2C53D" stroke-width="4" stroke-linecap="round"/>
+                
+                <!-- 日付 -->
+                <text x="480" y="450" font-family="Zen Kurenaido, sans-serif" font-size="24" fill="#475569" text-anchor="middle">2025年4月2日</text>
+            </svg>
+        </div>
+        
+        <!-- スライド2: 競合サービスの大分類 -->
+        <div class="slide" id="slide-2">
+            <svg class="slide-content" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg">
+                <!-- 背景 -->
+                <rect width="960" height="540" fill="white"/>
+                
+                <!-- ヘッダー背景 -->
+                <rect x="0" y="0" width="960" height="80" fill="#593C47"/>
+                
+                <!-- ヘッダータイトル -->
+                <text x="30" y="50" font-family="Kaisei Decol, serif" font-size="32" fill="white">競合サービスの大分類と主要機能</text>
+                
+                <!-- サービス分類 左列 -->
+                <g transform="translate(40, 110)">
+                    <!-- AI絵本・物語生成系 -->
+                    <rect x="0" y="0" width="420" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#4a6da7" stroke-width="3"/>
+                    <circle cx="30" cy="30" r="20" fill="#4a6da7"/>
+                    <text x="30" y="36" font-family="Zen Kurenaido, sans-serif" font-size="24" fill="white" text-anchor="middle">A</text>
+                    <text x="70" y="35" font-family="Kaisei Decol, serif" font-size="22" fill="#333">AI絵本・物語生成系</text>
+                    <text x="70" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333" width="380">テーマやキーワードからAIがストーリーや挿絵を自動生成</text>
+                    <text x="70" y="85" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#666">例：AI絵本工房、はじまりはじまり、ふしぎえほん.ai</text>
+                </g>
+                
+                <g transform="translate(40, 230)">
+                    <!-- 教育Q&A/AIチャット系 -->
+                    <rect x="0" y="0" width="420" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#9a4aa7" stroke-width="3"/>
+                    <circle cx="30" cy="30" r="20" fill="#9a4aa7"/>
+                    <text x="30" y="36" font-family="Zen Kurenaido, sans-serif" font-size="24" fill="white" text-anchor="middle">C</text>
+                    <text x="70" y="35" font-family="Kaisei Decol, serif" font-size="22" fill="#333">教育Q&A/AIチャット系</text>
+                    <text x="70" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">宿題・学習に関するQ&A、AIチャットでの疑問解消</text>
+                    <text x="70" y="85" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#666">例：AIティーチャーちゃん、Brainly AI、Socratic</text>
+                </g>
+                
+                <g transform="translate(40, 350)">
+                    <!-- 知育アプリ・玩具系 -->
+                    <rect x="0" y="0" width="420" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#4aa76a" stroke-width="3"/>
+                    <circle cx="30" cy="30" r="20" fill="#4aa76a"/>
+                    <text x="30" y="36" font-family="Zen Kurenaido, sans-serif" font-size="24" fill="white" text-anchor="middle">E</text>
+                    <text x="70" y="35" font-family="Kaisei Decol, serif" font-size="22" fill="#333">知育アプリ・玩具系</text>
+                    <text x="70" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">幼児～小学生向けの知育ゲームやパズル、体験学習</text>
+                    <text x="70" y="85" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#666">例：Khan Academy Kids、ABCmouse、トドさんすう</text>
+                </g>
+                
+                <!-- サービス分類 右列 -->
+                <g transform="translate(500, 110)">
+                    <!-- 読み聞かせ・オーディオブック系 -->
+                    <rect x="0" y="0" width="420" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#6a7aa7" stroke-width="3"/>
+                    <circle cx="30" cy="30" r="20" fill="#6a7aa7"/>
+                    <text x="30" y="36" font-family="Zen Kurenaido, sans-serif" font-size="24" fill="white" text-anchor="middle">B</text>
+                    <text x="70" y="35" font-family="Kaisei Decol, serif" font-size="22" fill="#333">読み聞かせ・オーディオブック系</text>
+                    <text x="70" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">プロの声優朗読・オーディオブック聞き放題など</text>
+                    <text x="70" y="85" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#666">例：Yondee!、おとるーぺ、Audible、みいみ</text>
+                </g>
+                
+                <g transform="translate(500, 230)">
+                    <!-- 通信教育・学習コーチ系 -->
+                    <rect x="0" y="0" width="420" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#a76a4a" stroke-width="3"/>
+                    <circle cx="30" cy="30" r="20" fill="#a76a4a"/>
+                    <text x="30" y="36" font-family="Zen Kurenaido, sans-serif" font-size="24" fill="white" text-anchor="middle">D</text>
+                    <text x="70" y="35" font-family="Kaisei Decol, serif" font-size="22" fill="#333">通信教育・学習コーチ系</text>
+                    <text x="70" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">通信教材とAIを組み合わせ、進捗管理やヒント提示</text>
+                    <text x="70" y="85" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#666">例：チャレンジAI学習コーチ、こどもちゃれんじ</text>
+                </g>
+                
+                <g transform="translate(500, 350)">
+                    <!-- AIアシスタント・スマートスピーカー系 -->
+                    <rect x="0" y="0" width="420" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#a7a74a" stroke-width="3"/>
+                    <circle cx="30" cy="30" r="20" fill="#a7a74a"/>
+                    <text x="30" y="36" font-family="Zen Kurenaido, sans-serif" font-size="24" fill="white" text-anchor="middle">G</text>
+                    <text x="70" y="35" font-family="Kaisei Decol, serif" font-size="22" fill="#333">AIアシスタント・スマートスピーカー系</text>
+                    <text x="70" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">子どもが音声で質問するとAIが答える</text>
+                    <text x="70" y="85" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#666">例：Amazon Alexa Kids、Google Assistant</text>
+                </g>
+                
+                <!-- フッターノート -->
+                <text x="480" y="510" font-family="Yomogi, cursive" font-size="20" fill="#F24405" text-anchor="middle">既存サービスは特定の用途に特化した機能が中心</text>
+            </svg>
+        </div>
+        
+        <!-- スライド3: 各カテゴリの「なぜ？」対応度 -->
+        <div class="slide" id="slide-3">
+            <svg class="slide-content" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg">
+                <!-- 背景 -->
+                <rect width="960" height="540" fill="white"/>
+                
+                <!-- ヘッダー背景 -->
+                <rect x="0" y="0" width="960" height="80" fill="#F2C53D"/>
+                
+                <!-- ヘッダータイトル -->
+                <text x="30" y="50" font-family="Kaisei Decol, serif" font-size="32" fill="#593C47">各カテゴリの「なぜ？」対応度と不足点</text>
+                
+                <!-- 中央の吹き出し -->
+                <g>
+                    <path d="M280,100 Q480,90 680,100 Q730,110 730,140 Q730,170 680,180 Q480,190 280,180 Q230,170 230,140 Q230,110 280,100 Z" fill="#FEF9C3" stroke="#F2C53D" stroke-width="3"/>
+                    <text x="480" y="130" font-family="Kaisei Decol, serif" font-size="24" fill="#593C47" text-anchor="middle">子どもの「なぜ？」を満たすサービスがない！</text>
+                    <text x="480" y="160" font-family="Zen Kurenaido, sans-serif" font-size="18" fill="#593C47" text-anchor="middle">即時に、わかりやすく、体験も含めて答えるサービスが不足</text>
+                </g>
+                
+                <!-- 左側のサービス評価 -->
+                <g transform="translate(40, 220)">
+                    <!-- AI絵本・物語生成系 -->
+                    <rect x="0" y="0" width="420" height="130" rx="10" ry="10" fill="#f8f9fa" stroke="#4a6da7" stroke-width="2"/>
+                    <text x="20" y="30" font-family="Kaisei Decol, serif" font-size="20" fill="#4a6da7">AI絵本・物語生成系</text>
+                    <line x1="20" y1="40" x2="400" y2="40" stroke="#4a6da7" stroke-width="1" stroke-dasharray="2,2"/>
+                    <text x="20" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">✓ <tspan fill="#F25C05" font-weight="bold">強み：</tspan>物語で子どもの想像力を刺激</text>
+                    <text x="20" y="95" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">✗ <tspan fill="#F24405" font-weight="bold">不足点：</tspan>論理的・科学的な解説よりも</text>
+                    <text x="40" y="115" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">ファンタジー要素重視。Q&A対応は苦手</text>
+                </g>
+                
+                <g transform="translate(40, 370)">
+                    <!-- 教育Q&A/AIチャット系 -->
+                    <rect x="0" y="0" width="420" height="130" rx="10" ry="10" fill="#f8f9fa" stroke="#9a4aa7" stroke-width="2"/>
+                    <text x="20" y="30" font-family="Kaisei Decol, serif" font-size="20" fill="#9a4aa7">教育Q&A/AIチャット系</text>
+                    <line x1="20" y1="40" x2="400" y2="40" stroke="#9a4aa7" stroke-width="1" stroke-dasharray="2,2"/>
+                    <text x="20" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">✓ <tspan fill="#F25C05" font-weight="bold">強み：</tspan>テキストベースで疑問に答えられる</text>
+                    <text x="20" y="95" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">✗ <tspan fill="#F24405" font-weight="bold">不足点：</tspan>宿題のQ&Aが中心で日常の</text>
+                    <text x="40" y="115" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">素朴な疑問を体験させる機能は弱い</text>
+                </g>
+                
+                <!-- 右側のサービス評価 -->
+                <g transform="translate(500, 220)">
+                    <!-- 読み聞かせ・オーディオブック系 -->
+                    <rect x="0" y="0" width="420" height="130" rx="10" ry="10" fill="#f8f9fa" stroke="#6a7aa7" stroke-width="2"/>
+                    <text x="20" y="30" font-family="Kaisei Decol, serif" font-size="20" fill="#6a7aa7">読み聞かせ・オーディオブック系</text>
+                    <line x1="20" y1="40" x2="400" y2="40" stroke="#6a7aa7" stroke-width="1" stroke-dasharray="2,2"/>
+                    <text x="20" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">✓ <tspan fill="#F25C05" font-weight="bold">強み：</tspan>音声中心でリスニングや読解力を育む</text>
+                    <text x="20" y="95" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">✗ <tspan fill="#F24405" font-weight="bold">不足点：</tspan>既存コンテンツを"聞く"が中心で</text>
+                    <text x="40" y="115" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">インタラクティブな機能に欠ける</text>
+                </g>
+                
+                <g transform="translate(500, 370)">
+                    <!-- AIアシスタント・スマートスピーカー系 -->
+                    <rect x="0" y="0" width="420" height="130" rx="10" ry="10" fill="#f8f9fa" stroke="#a7a74a" stroke-width="2"/>
+                    <text x="20" y="30" font-family="Kaisei Decol, serif" font-size="20" fill="#a7a74a">AIアシスタント・スマートスピーカー系</text>
+                    <line x1="20" y1="40" x2="400" y2="40" stroke="#a7a74a" stroke-width="1" stroke-dasharray="2,2"/>
+                    <text x="20" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">✓ <tspan fill="#F25C05" font-weight="bold">強み：</tspan>簡単なQ&A対応が音声で可能</text>
+                    <text x="20" y="95" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">✗ <tspan fill="#F24405" font-weight="bold">不足点：</tspan>大人向け検索結果を子ども向けに</text>
+                    <text x="40" y="115" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">噛み砕く難しさ。視覚的・体験的フォローなし</text>
+                </g>
+            </svg>
+        </div>
+        
+        <!-- スライド4: 新サービス提案の概要 -->
+        <div class="slide" id="slide-4">
+            <svg class="slide-content" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg">
+                <!-- 背景 -->
+                <rect width="960" height="540" fill="white"/>
+                
+                <!-- ヘッダー背景 -->
+                <rect x="0" y="0" width="960" height="80" fill="#F25C05"/>
+                
+                <!-- ヘッダータイトル -->
+                <text x="30" y="50" font-family="Kaisei Decol, serif" font-size="32" fill="white">唯一無二のコンテンツアイディア</text>
+                
+                <!-- サービスコンセプト -->
+                <g>
+                    <rect x="180" y="100" width="600" height="60" rx="10" ry="10" fill="#593C47"/>
+                    <text x="480" y="140" font-family="Kaisei Decol, serif" font-size="24" fill="white" text-anchor="middle">子どもの「なぜ？」→体験・実験へつなげるサービス</text>
+                </g>
+                
+                <!-- サービスフロー図 -->
+                <g transform="translate(480, 250)">
+                    <!-- 中心円 -->
+                    <circle cx="0" cy="0" r="130" fill="#FEF9C3" stroke="#F2C53D" stroke-width="3"/>
+                    
+                    <!-- 内側の円と接続 -->
+                    <!-- 疑問 -->
+                    <circle cx="-80" cy="-80" r="50" fill="white" stroke="#593C47" stroke-width="2"/>
+                    <text x="-80" y="-85" font-family="Kaisei Decol, serif" font-size="18" fill="#593C47" text-anchor="middle">疑問</text>
+                    <text x="-80" y="-65" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#593C47" text-anchor="middle">子どもの素朴な</text>
+                    <text x="-80" y="-45" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#593C47" text-anchor="middle">「なぜ？」</text>
+                    <path d="M-40,-40 L-10,-10" stroke="#593C47" stroke-width="2" stroke-dasharray="3,2"/>
+                    
+                    <!-- 実験提案 -->
+                    <circle cx="80" cy="-80" r="50" fill="white" stroke="#F2C53D" stroke-width="2"/>
+                    <text x="80" y="-85" font-family="Kaisei Decol, serif" font-size="18" fill="#F2C53D" text-anchor="middle">実験提案</text>
+                    <text x="80" y="-65" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#593C47" text-anchor="middle">AIが家庭でできる</text>
+                    <text x="80" y="-45" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#593C47" text-anchor="middle">実験を提案</text>
+                    <path d="M40,-40 L10,-10" stroke="#F2C53D" stroke-width="2" stroke-dasharray="3,2"/>
+                    
+                    <!-- 親子実践 -->
+                    <circle cx="80" cy="80" r="50" fill="white" stroke="#F25C05" stroke-width="2"/>
+                    <text x="80" y="75" font-family="Kaisei Decol, serif" font-size="18" fill="#F25C05" text-anchor="middle">親子実践</text>
+                    <text x="80" y="95" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#593C47" text-anchor="middle">一緒に実験して</text>
+                    <text x="80" y="115" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#593C47" text-anchor="middle">写真記録</text>
+                    <path d="M40,40 L10,10" stroke="#F25C05" stroke-width="2" stroke-dasharray="3,2"/>
+                    
+                    <!-- AI解説 -->
+                    <circle cx="-80" cy="80" r="50" fill="white" stroke="#F24405" stroke-width="2"/>
+                    <text x="-80" y="75" font-family="Kaisei Decol, serif" font-size="18" fill="#F24405" text-anchor="middle">AI解説</text>
+                    <text x="-80" y="95" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#593C47" text-anchor="middle">結果を踏まえて</text>
+                    <text x="-80" y="115" font-family="Zen Kurenaido, sans-serif" font-size="14" fill="#593C47" text-anchor="middle">さらに深く解説</text>
+                    <path d="M-40,40 L-10,10" stroke="#F24405" stroke-width="2" stroke-dasharray="3,2"/>
+                    
+                    <!-- 中心テキスト -->
+                    <text x="0" y="-15" font-family="Kaisei Decol, serif" font-size="22" fill="#593C47" text-anchor="middle">探究する</text>
+                    <text x="0" y="15" font-family="Kaisei Decol, serif" font-size="22" fill="#593C47" text-anchor="middle">面白さを</text>
+                    <text x="0" y="45" font-family="Kaisei Decol, serif" font-size="22" fill="#593C47" text-anchor="middle">体験！</text>
+                </g>
+                
+                <!-- 実際の例 -->
+                <rect x="40" y="380" width="880" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#333" stroke-width="1" stroke-dasharray="3,2"/>
+                <text x="60" y="410" font-family="Yomogi, cursive" font-size="20" fill="#593C47">例：「水はどうして下に落ちるの？」</text>
+                <text x="60" y="440" font-family="Zen Kurenaido, sans-serif" font-size="18" fill="#333">→ AIが重力についての簡単な実験を提案 → 親子で実験して結果をアプリに記録</text>
+                <text x="60" y="470" font-family="Zen Kurenaido, sans-serif" font-size="18" fill="#333">→ AIが実験結果を踏まえて解説し、次の探究（浮力・水圧など）へ導く</text>
+            </svg>
+        </div>
+        
+        <!-- スライド5: 差別化機能とビジネスモデル -->
+        <div class="slide" id="slide-5">
+            <svg class="slide-content" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg">
+                <!-- 背景 -->
+                <rect width="960" height="540" fill="white"/>
+                
+                <!-- ヘッダー背景 -->
+                <rect x="0" y="0" width="960" height="80" fill="#F24405"/>
+                
+                <!-- ヘッダータイトル -->
+                <text x="30" y="50" font-family="Kaisei Decol, serif" font-size="32" fill="white">差別化機能とビジネスモデル</text>
+                
+                <!-- 左側：差別化機能 -->
+                <g transform="translate(40, 100)">
+                    <text x="0" y="30" font-family="Kaisei Decol, serif" font-size="24" fill="#593C47">差別化機能</text>
+                    
+                    <!-- 機能リスト -->
+                    <g transform="translate(20, 50)">
+                        <!-- リアルタイム実験ガイド生成 -->
+                        <rect x="0" y="0" width="380" height="60" rx="10" ry="10" fill="#f8f9fa" stroke="#F2C53D" stroke-width="2"/>
+                        <text x="20" y="35" font-family="Zen Kurenaido, sans-serif" font-size="18" fill="#593C47">リアルタイム実験ガイド生成</text>
+                        <path d="M0,15 L380,15" stroke="#F2C53D" stroke-width="1" stroke-dasharray="2,2"/>
+                        
+                        <!-- AR（拡張現実）ビジュアルサポート -->
+                        <rect x="0" y="70" width="380" height="60" rx="10" ry="10" fill="#f8f9fa" stroke="#F2C53D" stroke-width="2"/>
+                        <text x="20" y="105" font-family="Zen Kurenaido, sans-serif" font-size="18" fill="#593C47">AR（拡張現実）ビジュアルサポート</text>
+                        <path d="M0,85 L380,85" stroke="#F2C53D" stroke-width="1" stroke-dasharray="2,2"/>
+                        
+                        <!-- 保護者向けサポート -->
+                        <rect x="0" y="140" width="380" height="60" rx="10" ry="10" fill="#f8f9fa" stroke="#F2C53D" stroke-width="2"/>
+                        <text x="20" y="175" font-family="Zen Kurenaido, sans-serif" font-size="18" fill="#593C47">保護者向けサポート</text>
+                        <path d="M0,155 L380,155" stroke="#F2C53D" stroke-width="1" stroke-dasharray="2,2"/>
+                        
+                        <!-- 継続的な探求ストーリー化 -->
+                        <rect x="0" y="210" width="380" height="60" rx="10" ry="10" fill="#f8f9fa" stroke="#F2C53D" stroke-width="2"/>
+                        <text x="20" y="245" font-family="Zen Kurenaido, sans-serif" font-size="18" fill="#593C47">継続的な探求ストーリー化</text>
+                        <path d="M0,225 L380,225" stroke="#F2C53D" stroke-width="1" stroke-dasharray="2,2"/>
+                        
+                        <!-- 実験・観察ログと成果共有 -->
+                        <rect x="0" y="280" width="380" height="60" rx="10" ry="10" fill="#f8f9fa" stroke="#F2C53D" stroke-width="2"/>
+                        <text x="20" y="315" font-family="Zen Kurenaido, sans-serif" font-size="18" fill="#593C47">実験・観察ログと成果共有</text>
+                        <path d="M0,295 L380,295" stroke="#F2C53D" stroke-width="1" stroke-dasharray="2,2"/>
+                    </g>
+                </g>
+                
+                <!-- 右側：ビジネスモデル -->
+                <g transform="translate(520, 100)">
+                    <text x="0" y="30" font-family="Kaisei Decol, serif" font-size="24" fill="#593C47">ビジネスモデル</text>
+                    
+                    <!-- モデル説明 -->
+                    <g transform="translate(20, 50)">
+                        <!-- フリーミアム型 -->
+                        <rect x="0" y="0" width="380" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#F25C05" stroke-width="2"/>
+                        <text x="20" y="30" font-family="Kaisei Decol, serif" font-size="20" fill="#F25C05">フリーミアム型</text>
+                        <line x1="20" y1="40" x2="360" y2="40" stroke="#F25C05" stroke-width="1" stroke-dasharray="2,2"/>
+                        <text x="20" y="65" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">基本的なQ&Aと一部の実験プランは無料。</text>
+                        <text x="20" y="85" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">高度な実験プランやAR機能は有料会員向け。</text>
+                        
+                        <!-- 教育機関や企業との連携 -->
+                        <rect x="0" y="110" width="380" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#F25C05" stroke-width="2"/>
+                        <text x="20" y="140" font-family="Kaisei Decol, serif" font-size="20" fill="#F25C05">教育機関や企業との連携</text>
+                        <line x1="20" y1="150" x2="360" y2="150" stroke="#F25C05" stroke-width="1" stroke-dasharray="2,2"/>
+                        <text x="20" y="175" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">STEM教育や探求学習を重視する学校・塾との</text>
+                        <text x="20" y="195" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">法人契約、理科実験玩具メーカーとのコラボ。</text>
+                        
+                        <!-- アドオン販売 -->
+                        <rect x="0" y="220" width="380" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#F25C05" stroke-width="2"/>
+                        <text x="20" y="250" font-family="Kaisei Decol, serif" font-size="20" fill="#F25C05">アドオン販売</text>
+                        <line x1="20" y1="260" x2="360" y2="260" stroke="#F25C05" stroke-width="1" stroke-dasharray="2,2"/>
+                        <text x="20" y="285" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">実験キットや参考書、関連グッズをオンライン</text>
+                        <text x="20" y="305" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">で販売し、実際の体験教材として収益を得る。</text>
+                    </g>
+                </g>
+            </svg>
+        </div>
+        
+        <!-- スライド6: まとめと結論 -->
+        <div class="slide" id="slide-6">
+            <svg class="slide-content" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg">
+                <!-- 背景 -->
+                <rect width="960" height="540" fill="white"/>
+                
+                <!-- 装飾要素 - 左上 -->
+                <path d="M0,0 Q100,50 120,150 Q140,250 100,300 Q60,350 0,380" fill="none" stroke="#F2E63D" stroke-width="8" stroke-opacity="0.3"/>
+                
+                <!-- 装飾要素 - 右下 -->
+                <path d="M960,540 Q860,490 840,390 Q820,290 860,240 Q900,190 960,160" fill="none" stroke="#F25C05" stroke-width="8" stroke-opacity="0.3"/>
+                
+                <!-- タイトル -->
+                <text x="480" y="80" font-family="Kaisei Decol, serif" font-size="36" fill="#593C47" text-anchor="middle">まとめ</text>
+                
+                <!-- 手書き風下線 -->
+                <path d="M380,90 Q430,100 480,95 Q530,90 580,100" fill="none" stroke="#F2C53D" stroke-width="4" stroke-linecap="round"/>
+                
+                <!-- 中央のまとめボックス -->
+                <rect x="130" y="130" width="700" height="240" rx="15" ry="15" fill="#f8f9fa" stroke="#593C47" stroke-width="3"/>
+                
+                <!-- まとめ内容 -->
+                <g transform="translate(480, 170)">
+                    <text x="0" y="0" font-family="Kaisei Decol, serif" font-size="24" fill="#F24405" text-anchor="middle">唯一無二のサービス提案</text>
+                    
+                    <text x="0" y="50" font-family="Zen Kurenaido, sans-serif" font-size="20" fill="#593C47" text-anchor="middle">「子どもの『なぜ？』をAIが答え＋</text>
+                    <text x="0" y="80" font-family="Zen Kurenaido, sans-serif" font-size="20" fill="#593C47" text-anchor="middle">家庭内での実験・体験につなげる」</text>
+                    <text x="0" y="110" font-family="Zen Kurenaido, sans-serif" font-size="20" fill="#593C47" text-anchor="middle">サービスは未だ存在していない</text>
+                    
+                    <text x="0" y="160" font-family="Zen Kurenaido, sans-serif" font-size="18" fill="#333" text-anchor="middle">科学的・論理的な回答 + 体験コンテンツ + 親子コミュニケーション</text>
+                    <text x="0" y="190" font-family="Zen Kurenaido, sans-serif" font-size="18" fill="#333" text-anchor="middle">をパッケージで提供し、継続的な探求体験を促す</text>
+                </g>
+                
+                <!-- 成功のポイント -->
+                <g transform="translate(480, 400)">
+                    <text x="0" y="0" font-family="Kaisei Decol, serif" font-size="24" fill="#F25C05" text-anchor="middle">成功のポイント</text>
+                    
+                    <line x1="-300" y1="20" x2="300" y2="20" stroke="#F2C53D" stroke-width="2" stroke-dasharray="5,3"/>
+                    
+                    <!-- 3つのポイント -->
+                    <g transform="translate(-220, 60)">
+                        <circle cx="0" cy="0" r="25" fill="#F2E63D"/>
+                        <text x="0" y="5" font-family="Zen Kurenaido, sans-serif" font-size="20" fill="#593C47" text-anchor="middle">1</text>
+                        <text x="120" y="5" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">子どもが楽しく、保護者も安心</text>
+                    </g>
+                    
+                    <g transform="translate(0, 60)">
+                        <circle cx="0" cy="0" r="25" fill="#F2C53D"/>
+                        <text x="0" y="5" font-family="Zen Kurenaido, sans-serif" font-size="20" fill="#593C47" text-anchor="middle">2</text>
+                        <text x="120" y="5" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">STEM教育ブームとの連携</text>
+                    </g>
+                    
+                    <g transform="translate(220, 60)">
+                        <circle cx="0" cy="0" r="25" fill="#F25C05"/>
+                        <text x="0" y="5" font-family="Zen Kurenaido, sans-serif" font-size="20" fill="#593C47" text-anchor="middle">3</text>
+                        <text x="120" y="5" font-family="Zen Kurenaido, sans-serif" font-size="16" fill="#333">SNSやリアルへの波及</text>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const currentSlideEl = document.getElementById('current-slide');
+            const totalSlidesEl = document.getElementById('total-slides');
+            
+            let currentSlide = 1;
+            const totalSlides = slides.length;
+            
+            totalSlidesEl.textContent = totalSlides;
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[n-1].classList.add('active');
+                currentSlideEl.textContent = n;
+                
+                // Disable prev button on first slide
+                prevBtn.disabled = n === 1;
+                
+                // Disable next button on last slide
+                nextBtn.disabled = n === totalSlides;
+            }
+            
+            function nextSlide() {
+                if (currentSlide < totalSlides) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            }
+            
+            function prevSlide() {
+                if (currentSlide > 1) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            }
+            
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Initialize
+            showSlide(currentSlide);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
