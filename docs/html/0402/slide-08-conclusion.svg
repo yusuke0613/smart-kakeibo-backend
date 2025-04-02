@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <!-- 背景 -->
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  
+  <!-- ヘッダーライン -->
+  <rect x="0" y="0" width="1920" height="12" fill="#1E88E5"/>
+  
+  <!-- 左サイドアクセント -->
+  <rect x="0" y="12" width="12" height="1068" fill="#1E88E5"/>
+  
+  <!-- タイトル -->
+  <text x="120" y="120" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#1E88E5">結論：今こそ「なぜ？」に応える時</text>
+  
+  <!-- メインポイント -->
+  <g transform="translate(160, 200)">
+    <!-- ポイント1 -->
+    <circle cx="40" cy="40" r="30" fill="#1E88E5"/>
+    <path d="M30,40 L40,50 L55,30" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="120" y="50" font-family="Arial, sans-serif" font-size="28" fill="#212121">
+      子どもの自然な好奇心を満たし、非認知能力を育む需要は高まっている
+    </text>
+    
+    <!-- ポイント2 -->
+    <circle cx="40" cy="140" r="30" fill="#1E88E5"/>
+    <path d="M30,140 L40,150 L55,130" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="120" y="150" font-family="Arial, sans-serif" font-size="28" fill="#212121">
+      デジタル知育への関心と投資意欲は継続的に拡大傾向
+    </text>
+    
+    <!-- ポイント3 -->
+    <circle cx="40" cy="240" r="30" fill="#1E88E5"/>
+    <path d="M30,240 L40,250 L55,230" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="120" y="250" font-family="Arial, sans-serif" font-size="28" fill="#212121">
+      「AIによる物語型回答」「カスタム絵本」「実験提案」の3本柱で差別化
+    </text>
+    
+    <!-- ポイント4 -->
+    <circle cx="40" cy="340" r="30" fill="#1E88E5"/>
+    <path d="M30,340 L40,350 L55,330" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="120" y="350" font-family="Arial, sans-serif" font-size="28" fill="#212121">
+      デジタル志向の教育熱心層へのアプローチが初期成長の鍵
+    </text>
+    
+    <!-- ポイント5 -->
+    <circle cx="40" cy="440" r="30" fill="#1E88E5"/>
+    <path d="M30,440 L40,450 L55,430" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="120" y="450" font-family="Arial, sans-serif" font-size="28" fill="#212121">
+      SNS・専門メディア・既存プラットフォームを活用した複合的なリーチ戦略
+    </text>
+  </g>
+  
+  <!-- CTA部分 -->
+  <rect x="160" y="650" width="1600" height="200" rx="15" ry="15" fill="#1E88E5"/>
+  <text x="960" y="750" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle">
+    子どもの「なぜ？」を未来への投資に変えるサービスを、共に創りましょう
+  </text>
+  
+  <!-- 装飾 - 右上のアイコン -->
+  <g transform="translate(1600, 350)">
+    <!-- 大きな疑問符からアイデア電球へ変わるイメージ -->
+    <circle cx="0" cy="0" r="150" fill="#E3F2FD"/>
+    
+    <!-- 左側：疑問符 -->
+    <path d="M-80,-40 C-80,-80 -40,-100 0,-100 C40,-100 80,-80 80,-40 C80,0 40,20 0,40 M0,60 L0,80" 
+          stroke="#1E88E5" stroke-width="12" fill="none" stroke-linecap="round"/>
+    
+    <!-- 変換矢印 -->
+    <path d="M-40,100 L40,100" stroke="#1E88E5" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M20,80 L40,100 L20,120" stroke="#1E88E5" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- 右側：電球（アイデア） -->
+    <circle cx="180" cy="0" r="80" fill="#E3F2FD" stroke="#1E88E5" stroke-width="8"/>
+    <path d="M150,-40 C150,-80 210,-80 210,-40 C210,0 230,30 180,50 C130,30 150,0 150,-40 Z" 
+          fill="#FFD700" stroke="#1E88E5" stroke-width="3"/>
+    <rect x="165" y="50" width="30" height="10" fill="#FFD700" stroke="#1E88E5" stroke-width="2"/>
+    <rect x="170" y="60" width="20" height="10" fill="#FFD700" stroke="#1E88E5" stroke-width="2"/>
+  </g>
+</svg>

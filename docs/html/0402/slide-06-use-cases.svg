@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <!-- 背景 -->
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  
+  <!-- ヘッダーライン -->
+  <rect x="0" y="0" width="1920" height="12" fill="#1E88E5"/>
+  
+  <!-- 左サイドアクセント -->
+  <rect x="0" y="12" width="12" height="1068" fill="#1E88E5"/>
+  
+  <!-- タイトル -->
+  <text x="120" y="120" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#1E88E5">サービス価値が響く利用シーン</text>
+  
+  <!-- ユースケースカード-->
+  <g transform="translate(120, 180)">
+    <!-- カード1: AI対話による即時回答 -->
+    <rect x="0" y="0" width="550" height="500" rx="10" ry="10" fill="#E3F2FD"/>
+    
+    <!-- アイコン: 活動グラフ -->
+    <circle cx="60" cy="60" r="40" fill="#1E88E5"/>
+    <path d="M40,60 L50,50 L60,70 L80,30" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="130" y="70" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#212121">AI対話による即時回答</text>
+    
+    <text x="60" y="140" font-family="Arial, sans-serif" font-size="24" fill="#212121" text-anchor="start">
+      <tspan x="60" dy="0">家事や移動中の「なぜ？」攻撃に、</tspan>
+      <tspan x="60" dy="35">子どもの理解度に合わせた物語仕立ての</tspan>
+      <tspan x="60" dy="35">回答をその場で生成</tspan>
+    </text>
+    
+    <!-- シナリオボックス -->
+    <rect x="40" y="250" width="470" height="200" rx="10" ry="10" fill="#FFFFFF" stroke="#FF6D00" stroke-width="2"/>
+    
+    <text x="60" y="290" font-family="Arial, sans-serif" font-size="22" font-style="italic" fill="#212121">
+      <tspan x="60" dy="0">「どうして空は青いの？」という質問に、</tspan>
+      <tspan x="60" dy="35">難解な科学的説明をファンタジーや</tspan>
+      <tspan x="60" dy="35">身近な例えを交えたストーリーで回答</tspan>
+    </text>
+    
+    <!-- カード2: オリジナル絵本生成 -->
+    <rect x="600" y="0" width="550" height="500" rx="10" ry="10" fill="#E3F2FD"/>
+    
+    <!-- アイコン: 本 -->
+    <circle cx="660" cy="60" r="40" fill="#1E88E5"/>
+    <rect x="640" y="40" width="40" height="35" fill="white" stroke="white" stroke-width="2"/>
+    <path d="M640,40 C640,40 650,30 660,40 C670,30 680,40 680,40" stroke="white" stroke-width="2" fill="none"/>
+    <path d="M640,75 C640,75 650,85 660,75 C670,85 680,75 680,75" stroke="white" stroke-width="2" fill="none"/>
+    
+    <text x="730" y="70" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#212121">オリジナル絵本生成</text>
+    
+    <text x="660" y="140" font-family="Arial, sans-serif" font-size="24" fill="#212121" text-anchor="start">
+      <tspan x="660" dy="0">子どもの興味や質問をもとにAIが</tspan>
+      <tspan x="660" dy="35">即興でストーリーを作成、イラスト付きの</tspan>
+      <tspan x="660" dy="35">デジタル絵本として提供</tspan>
+    </text>
+    
+    <!-- シナリオボックス -->
+    <rect x="640" y="250" width="470" height="200" rx="10" ry="10" fill="#FFFFFF" stroke="#FF6D00" stroke-width="2"/>
+    
+    <text x="660" y="290" font-family="Arial, sans-serif" font-size="22" font-style="italic" fill="#212121">
+      <tspan x="660" dy="0">就寝前の読み聞かせで、その日子どもが</tspan>
+      <tspan x="660" dy="35">興味を示したテーマの物語を作成。</tspan>
+      <tspan x="660" dy="35">例:「なぜ恐竜は絶滅したの？」</tspan>
+    </text>
+    
+    <!-- カード3: 実験アクティビティ提案 -->
+    <rect x="1200" y="0" width="550" height="500" rx="10" ry="10" fill="#E3F2FD"/>
+    
+    <!-- アイコン: ペンツール -->
+    <circle cx="1260" cy="60" r="40" fill="#1E88E5"/>
+    <path d="M1245,45 L1260,30 L1275,45 L1260,75 Z" stroke="white" stroke-width="2" fill="white"/>
+    <line x1="1260" y1="75" x2="1260" y2="85" stroke="white" stroke-width="2"/>
+    
+    <text x="1330" y="70" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#212121">実験アクティビティ提案</text>
+    
+    <text x="1260" y="140" font-family="Arial, sans-serif" font-size="24" fill="#212121" text-anchor="start">
+      <tspan x="1260" dy="0">子どもの疑問から家庭でできる科学実験や</tspan>
+      <tspan x="1260" dy="35">体験学習を提案、必要な材料や手順を</tspan>
+      <tspan x="1260" dy="35">ガイド</tspan>
+    </text>
+    
+    <!-- シナリオボックス -->
+    <rect x="1240" y="250" width="470" height="200" rx="10" ry="10" fill="#FFFFFF" stroke="#FF6D00" stroke-width="2"/>
+    
+    <text x="1260" y="290" font-family="Arial, sans-serif" font-size="22" font-style="italic" fill="#212121">
+      <tspan x="1260" dy="0">「なぜマグマは噴火するの？」という</tspan>
+      <tspan x="1260" dy="35">質問から、安全にできる火山実験</tspan>
+      <tspan x="1260" dy="35">（重曹とお酢で火山模型を噴火）を提案</tspan>
+    </text>
+  </g>
+  
+  <!-- 注釈テキスト -->
+  <rect x="120" y="900" width="1660" height="100" rx="10" ry="10" fill="#E3F2FD"/>
+  <text x="950" y="960" font-family="Arial, sans-serif" font-size="28" fill="#212121" text-anchor="middle">
+    子どもは1日に平均約100個の質問をすると言われています。本サービスはこの「なぜ？」を学びの機会に変えます。
+  </text>
+</svg>

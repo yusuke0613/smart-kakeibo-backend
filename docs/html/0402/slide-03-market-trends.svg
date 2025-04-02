@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <!-- 背景 -->
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  
+  <!-- ヘッダーライン -->
+  <rect x="0" y="0" width="1920" height="12" fill="#1E88E5"/>
+  
+  <!-- 左サイドアクセント -->
+  <rect x="0" y="12" width="12" height="1068" fill="#1E88E5"/>
+  
+  <!-- タイトル -->
+  <text x="120" y="120" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#1E88E5">教育支出の傾向とデジタル学習への関心</text>
+  
+  <!-- 統計カード -->
+  <g transform="translate(120, 200)">
+    <!-- カード1: 未就学児の教育支出 -->
+    <rect x="0" y="0" width="400" height="200" rx="10" ry="10" fill="#E3F2FD"/>
+    
+    <!-- グラフアイコン -->
+    <path d="M50,100 L80,70 L110,90 L140,50 L170,80" stroke="#1E88E5" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="200" y="80" font-family="Arial, sans-serif" font-size="24" fill="#757575">未就学児の教育支出</text>
+    <text x="200" y="130" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1E88E5">月平均 9,218円</text>
+    
+    <!-- カード2: 小学生の教育支出 -->
+    <rect x="450" y="0" width="400" height="200" rx="10" ry="10" fill="#E3F2FD"/>
+    
+    <!-- グラフアイコン -->
+    <path d="M500,100 L530,50 L560,60 L590,30 L620,20" stroke="#1E88E5" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="650" y="80" font-family="Arial, sans-serif" font-size="24" fill="#757575">小学生の教育支出</text>
+    <text x="650" y="130" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1E88E5">月平均 18,914円</text>
+    
+    <!-- カード3: 早期知育を重視する親 -->
+    <rect x="900" y="0" width="400" height="200" rx="10" ry="10" fill="#E3F2FD"/>
+    
+    <!-- 人物アイコン -->
+    <circle cx="950" cy="80" r="30" fill="#1E88E5"/>
+    <path d="M950,120 v40" stroke="#1E88E5" stroke-width="10" fill="none"/>
+    
+    <text x="1100" y="80" font-family="Arial, sans-serif" font-size="24" fill="#757575">早期知育を重視する親</text>
+    <text x="1100" y="130" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1E88E5">約70%</text>
+    
+    <!-- カード4: 幼児向け通信教育満足度 -->
+    <rect x="0" y="250" width="400" height="200" rx="10" ry="10" fill="#E3F2FD"/>
+    
+    <!-- ハートアイコン -->
+    <path d="M50,350 C50,330 70,310 90,330 C110,310 130,330 130,350 C130,370 90,390 90,390 C90,390 50,370 50,350 Z" fill="#1E88E5"/>
+    
+    <text x="200" y="330" font-family="Arial, sans-serif" font-size="24" fill="#757575">幼児向け通信教育満足度</text>
+    <text x="200" y="380" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1E88E5">96.6%</text>
+    
+    <!-- カード5: dキッズ利用者数 -->
+    <rect x="450" y="250" width="400" height="200" rx="10" ry="10" fill="#E3F2FD"/>
+    
+    <!-- 人物アイコン(複数) -->
+    <circle cx="500" cy="330" r="20" fill="#1E88E5"/>
+    <circle cx="540" cy="330" r="20" fill="#1E88E5"/>
+    <circle cx="520" cy="370" r="20" fill="#1E88E5"/>
+    
+    <text x="650" y="330" font-family="Arial, sans-serif" font-size="24" fill="#757575">dキッズ利用者数</text>
+    <text x="650" y="380" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1E88E5">約45万人</text>
+  </g>
+  
+  <!-- 注釈テキスト -->
+  <rect x="120" y="600" width="1200" height="80" rx="10" ry="10" fill="#E3F2FD" opacity="0.5"/>
+  <text x="720" y="650" font-family="Arial, sans-serif" font-size="28" fill="#212121" text-anchor="middle">幼児期からの学びに価値を見出し、デジタル学習への関心も年々高まっています。</text>
+  
+  <!-- 装飾 - 右下グラフ -->
+  <g transform="translate(1500, 700)">
+    <!-- 円グラフ（単純な表現） -->
+    <path d="M0,0 L0,-150 A150,150 0 0,1 130,-75 z" fill="#1E88E5" opacity="0.8"/>
+    <path d="M0,0 L130,-75 A150,150 0 0,1 150,0 z" fill="#FF6D00" opacity="0.8"/>
+    <path d="M0,0 L150,0 A150,150 0 0,1 -150,0 z" fill="#4CAF50" opacity="0.8"/>
+    <path d="M0,0 L-150,0 A150,150 0 0,1 0,-150 z" fill="#9C27B0" opacity="0.8"/>
+    
+    <!-- グラフフレーム -->
+    <circle cx="0" cy="0" r="150" fill="none" stroke="#757575" stroke-width="2"/>
+  </g>
+</svg>
