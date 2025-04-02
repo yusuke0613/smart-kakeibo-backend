@@ -47,7 +47,7 @@
   <circle cx="120" cy="370" r="25" fill="#2563EB" opacity="0.1" />
   <text x="120" y="380" font-family="Arial, sans-serif" font-size="24px" fill="#2563EB" text-anchor="middle">🔍</text>
   
-  <text x="160" y="378" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">AI なぜなに Q&A ＋ 絵本生成</text>
+  <text x="160" y="378" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#1e40af">AI なぜなに Q&amp;A ＋ 絵本生成</text>
   
   <!-- Feature 1 Content -->
   <circle cx="130" cy="430" r="6" fill="#2563EB" />
@@ -187,5 +187,5 @@
   <!-- Footer -->
   <line x1="80" x2="1840" y1="1010" y2="1010" stroke="#cbd5e1" stroke-width="1" />
   <text x="80" y="1040" font-family="Arial, sans-serif" font-size="12px" fill="#64748b">COMPANY LOGO</text>
-  <text x="1840" y="1040" font-family="Arial, sans-serif" font-size="12px" fill="#64748b" text-anchor="end">Confidential | AI学習プラットフォーム企画書</text>
+  <text x="1840" y="1040" font-family="Arial, sans-serif" font-size="12px" fill="#64748b" text-anchor="end">Confidential &#124; AI学習プラットフォーム企画書</text>
 </svg>

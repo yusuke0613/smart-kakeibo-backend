@@ -304,4 +304,6 @@
   <!-- Footer -->
   <g id="footer">
     <line x1="80" y1="1030" x2="1840" y2="1030" stroke="#e2e8f0" stroke-width="1" />
-    <text x="80" y="1060" font-family="Arial, sans-serif" font-size="14" fill="#
+    <text x="80" y="1060" font-family="Arial, sans-serif" font-size="14" fill="#64748b">市場分析レポート：株式会社スマートラーニング</text>
+  </g>
+</svg>
