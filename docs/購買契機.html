@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>顧客の購買契機に対する競合マッピングと差別化サービス案</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --blue-800: #1e40af;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Zen Kurenaido', sans-serif;
+      background-color: #f8f9fa;
+      color: var(--gray-700);
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+    
+    .header {
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px dashed var(--fashion-1);
+      position: relative;
+    }
+    
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      right: 40px;
+      width: 130px;
+      height: 30px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' fill='none' stroke='%23593C47' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5,10 C20,5 35,18 50,10 C65,2 80,15 95,10'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      transform: rotate(-5deg);
+    }
+    
+    .title-container {
+      flex: 1;
+    }
+    
+    .title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(to right, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' fill='none' stroke='%23F25C05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2,5 C40,12 80,2 120,8 C160,12 180,4 198,6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    
+    .subtitle {
+      font-size: 16px;
+      color: var(--gray-600);
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .date {
+      font-size: 16px;
+      color: var(--gray-600);
+      text-align: right;
+      font-family: 'Yomogi', cursive;
+      position: relative;
+    }
+    
+    .date::before {
+      content: "📅";
+      margin-right: 5px;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .section {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, var(--fashion-2), var(--fashion-4));
+    }
+    
+    .age-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--fashion-1);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+    
+    .age-title::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 2' fill='none' stroke='%23F2C53D' stroke-width='2' stroke-linecap='round' stroke-dasharray='1 6'%3E%3Cpath d='M0,1 L200,1'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    
+    .section-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      color: var(--blue-800);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+    
+    .section-title::before {
+      content: "👉";
+      font-size: 20px;
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f0f0f0' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.2;
+      z-index: -1;
+    }
+    
+    .card-title {
+      font-weight: bold;
+      color: var(--fashion-5);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+    }
+    
+    .card-title .emoji {
+      margin-right: 8px;
+      font-size: 20px;
+    }
+    
+    .card-content {
+      font-size: 14px;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+      font-weight: bold;
+      padding: 0 2px;
+    }
+    
+    .competitor {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .competitor::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F25C05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpath d='M22 4L12 14.01l-3-3'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    
+    .competitor-name {
+      font-weight: bold;
+    }
+    
+    .competitor-rating {
+      color: var(--fashion-4);
+      margin-left: 5px;
+    }
+    
+    .weakness {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .weakness::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23593C47' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M8 15h8M9 9h.01M15 9h.01'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    
+    .service {
+      margin-bottom: 15px;
+      background-color: rgba(242, 197, 61, 0.1);
+      border-radius: 8px;
+      padding: 12px;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .service::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 20px;
+      width: 40px;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 16' fill='%23F2C53D'%3E%3Cpath d='M0,8 L10,0 L30,0 L40,8 L30,16 L10,16 Z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+    }
+    
+    .service-title {
+      font-weight: bold;
+      color: var(--fashion-5);
+      margin-bottom: 8px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .service-title .emoji {
+      margin-right: 8px;
+      font-size: 20px;
+    }
+    
+    .service-description {
+      font-size: 14px;
+    }
+    
+    .bubble {
+      background-color: white;
+      border-radius: 20px;
+      padding: 15px;
+      margin-bottom: 15px;
+      position: relative;
+      border: 2px solid var(--fashion-3);
+    }
+    
+    .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23F2C53D'%3E%3Cpath d='M0,0 L20,0 L10,20 Z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+    }
+    
+    .arrow {
+      width: 70px;
+      height: 20px;
+      margin: 10px auto;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 20' fill='none' stroke='%23F25C05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2,10 L60,10'/%3E%3Cpath d='M50,2 L60,10 L50,18'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+    }
+    
+    .footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--gray-600);
+      border-top: 2px dashed var(--fashion-1);
+    }
+    
+    .bullet-point {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--fashion-4);
+      margin-right: 8px;
+    }
+    
+    .differentiator {
+      background-color: rgba(242, 92, 5, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      position: relative;
+      border: 2px dashed var(--fashion-4);
+    }
+    
+    .differentiator-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      color: var(--fashion-5);
+      margin-bottom: 15px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .differentiator-title::before,
+    .differentiator-title::after {
+      content: "★";
+      color: var(--fashion-3);
+      margin: 0 10px;
+    }
+    
+    .differentiator-point {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 25px;
+    }
+    
+    .differentiator-point::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F24405' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .column {
+        flex: 1 0 100%;
+      }
+      
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .date {
+        margin-top: 10px;
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title-container">
+        <h1 class="title">顧客の購買契機に対する競合マッピングと差別化サービス案</h1>
+        <p class="subtitle">各年代における競合他社のサービスをマッピングし、競合が弱い点を考察した上で、差別化できるサービス案を提案</p>
+      </div>
+      <div class="date">2025年4月11日</div>
+    </div>
+    
+    <div class="content">
+      <!-- 0歳～3歳（乳幼児期）カラム -->
+      <div class="column">
+        <div class="section">
+          <h2 class="age-title">🍼 0歳～3歳（乳幼児期）</h2>
+          
+          <h3 class="section-title">購買契機</h3>
+          <div class="card">
+            <div class="card-title"><span class="emoji">😰</span>初めての子育てによる不安</div>
+            <div class="card-content">発達、遊び方、言葉の遅れなど。<span class="highlight">知育・育児サポートの安心</span>を求める。</div>
+          </div>
+          
+          <div class="card">
+            <div class="card-title"><span class="emoji">💬</span>SNS・ママ友の口コミ</div>
+            <div class="card-content">「〇〇が良かった」というリアルな声で<span class="highlight">安心感を得て</span>加入。</div>
+          </div>
+          
+          <div class="card">
+            <div class="card-title"><span class="emoji">📸</span>成長記録や親子のふれあい</div>
+            <div class="card-content">忙しい中でも<span class="highlight">「親子で向き合う時間」</span>を作りたい。</div>
+          </div>
+          
+          <div class="card">
+            <div class="card-title"><span class="emoji">📩</span>無料資料請求からの流入</div>
+            <div class="card-content">DMやWeb広告 → 資料請求 → 体験付録 → 加入。</div>
+          </div>
+          
+          <h3 class="section-title">主な競合サービス</h3>
+          <div class="competitor">
+            <span class="competitor-name">ベネッセ こどもちゃれんじ Baby</span>
+            <span class="competitor-rating">◎</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">公文 Baby Kumon</span>
+            <span class="competitor-rating">○</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">Z会</span>
+            <span class="competitor-rating">△ (情報サイト)</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">Wonderfy</span>
+            <span class="competitor-rating">△ (知育玩具)</span>
+          </div>
+          
+          <h3 class="section-title">競合が弱い点</h3>
+          <div class="weakness">
+            <span class="highlight">個別性の欠如</span>：我が子の発達ペースや特性に合わせた具体的なアドバイスや、ピンポイントな悩みへの個別対応は限定的。
+          </div>
+          <div class="weakness">
+            <span class="highlight">実践へのハードル</span>：情報はあっても、どう実践すれば良いか分からない、継続できない。
+          </div>
+          <div class="weakness">
+            <span class="highlight">情報の質と信頼性のばらつき</span>：口コミは玉石混交。信頼できる情報交換や相談の場が不足。
+          </div>
+          <div class="weakness">
+            <span class="highlight">記録の手間と活用不足</span>：成長記録がアナログだったり、デジタルでも入力が手間だったりする。
+          </div>
+          
+          <div class="bubble">
+            競合の多くは<span class="highlight">月齢別の標準的な情報</span>は提供するが、<span class="highlight">個々の子どもに合わせた具体的支援</span>が弱い！
+          </div>
+        </div>
+        
+        <div class="section">
+          <h3 class="section-title">差別化サービス案</h3>
+          <div class="service">
+            <div class="service-title"><span class="emoji">🤖</span>AI発達チェック＆パーソナルアドバイス</div>
+            <div class="service-description">保護者入力や動画からAIが発達状況を分析。その子のペースや得意・不得意を考慮した遊び方、関わり方のヒントを具体的に提案。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">📱</span>ワンタップ成長ログ＆思い出ムービー</div>
+            <div class="service-description">「できた！」瞬間にワンタップで記録。AIが月齢に合わせてコメントを自動生成。ダイジェストムービーを自動作成し、家族と共有可能。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">⏱️</span>専門家監修「5分親子チャレンジ」</div>
+            <div class="service-description">脳科学や発達心理学に基づいた、短時間で質の高いふれあいができる遊びを毎日動画で提案。準備物も家にあるもの中心。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">👨‍👩‍👧‍👦</span>月齢/悩み別・匿名オンラインサロン</div>
+            <div class="service-description">専門家がモデレーターを務める、信頼性の高い匿名コミュニティ。「寝かしつけ」「イヤイヤ期」などテーマ別で、悩み相談や情報交換が可能。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">💻</span>インタラクティブWeb体験</div>
+            <div class="service-description">資料請求前に、Web上で簡単な質問に答えるとその親子に合った機能や教材の一部をシミュレーション体験できる。</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 3歳～6歳（未就学児）カラム -->
+      <div class="column">
+        <div class="section">
+          <h2 class="age-title">🧸 3歳～6歳（未就学児）</h2>
+          
+          <h3 class="section-title">購買契機</h3>
+          <div class="card">
+            <div class="card-title"><span class="emoji">🏫</span>入園・就学準備への不安</div>
+            <div class="card-content">ひらがな、数字、集団生活など。<span class="highlight">入学前の基礎学力・非認知能力</span>が心配。</div>
+          </div>
+          
+          <div class="card">
+            <div class="card-title"><span class="emoji">🧩</span>おもちゃ・教材の魅力</div>
+            <div class="card-content">キャラクター（しまじろう等）の力。子どもが<span class="highlight">「やりたい！」</span>と言う。</div>
+          </div>
+          
+          <div class="card">
+            <div class="card-title"><span class="emoji">🧠</span>子どもの集中力を育てたい</div>
+            <div class="card-content">タブレットやTV以外で<span class="highlight">「楽しみながら集中できる時間」</span>をつくりたい。</div>
+          </div>
+          
+          <div class="card">
+            <div class="card-title"><span class="emoji">💰</span>幼児教室よりコスパが良い</div>
+            <div class="card-content">月額料金で<span class="highlight">「学び＋遊び」</span>ができる点。</div>
+          </div>
+          
+          <h3 class="section-title">主な競合サービス</h3>
+          <div class="competitor">
+            <span class="competitor-name">ベネッセ こどもちゃれんじ</span>
+            <span class="competitor-rating">◎</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">スマイルゼミ 幼児</span>
+            <span class="competitor-rating">◎</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">Z会 幼児</span>
+            <span class="competitor-rating">○</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">公文</span>
+            <span class="competitor-rating">○</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">Wonderfy</span>
+            <span class="competitor-rating">△ (思考力)</span>
+          </div>
+          
+          <h3 class="section-title">競合が弱い点</h3>
+          <div class="weakness">
+            <span class="highlight">「学びへの態度」育成の弱さ</span>：スキル習得に偏り、学ぶこと自体の楽しさ、試行錯誤する力、諦めない心を育む視点が弱い。
+          </div>
+          <div class="weakness">
+            <span class="highlight">個別サポートの画一性</span>：つまずき箇所は分かっても、なぜつまずくのか、その子に合った乗り越え方のアドバイスが不足。
+          </div>
+          <div class="weakness">
+            <span class="highlight">キャラ依存と飽き</span>：キャラクター頼みで本質的な学習意欲に繋がらない、飽きると続かないリスク。
+          </div>
+          <div class="weakness">
+            <span class="highlight">教材の活用・管理負担</span>：付録（おもちゃ）が増えすぎる、管理が大変、活用しきれないという保護者の声。
+          </div>
+          
+          <div class="bubble">
+            競合サービスは<span class="highlight">「スキル習得」</span>に重点を置きがちで、<span class="highlight">「学ぶ楽しさ」「試行錯誤の経験」「非認知能力」</span>の育成が不十分！
+          </div>
+        </div>
+        
+        <div class="section">
+          <h3 class="section-title">差別化サービス案</h3>
+          <div class="service">
+            <div class="service-title"><span class="emoji">🔍</span>「なぜなぜ？」探求ミッション</div>
+            <div class="service-description">子どもの日常の「なぜ？」を起点に、関連する絵本、動画、簡単な実験、工作などを組み合わせた探求ミッションを提案。文字や数も自然な形で組み込む。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">👏</span>AIチューター「できたね！」フィードバック</div>
+            <div class="service-description">ワークやアプリでの取り組みに対し、AIがプロセスや努力を具体的に褒める動画/音声メッセージを生成。保護者にも「褒めポイント」を通知。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">🎨</span>デジタル＆リアル「変身！」キット</div>
+            <div class="service-description">シンプルな基本キットを毎月提供。アプリからの指令で、そのキットが様々なものに「変身」するミッションに挑戦。創造力と集中力を養う。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">🤔</span>メタ認知を促す「ふりかえりタイム」</div>
+            <div class="service-description">ミッション完了後、「どこが面白かった？」「次はどうしたい？」などを親子で話すきっかけをアプリが提供。「学び方を学ぶ」意識を育む。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">👦👧</span>オンライン「みんなでチャレンジ」</div>
+            <div class="service-description">月数回、希望者参加型のオンラインイベント。簡単なクイズ大会、一緒に工作、絵本の読み聞かせ会など。他の子の様子から刺激を受ける機会を提供。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">⚡</span>保護者向け「集中スイッチ」発見サポート</div>
+            <div class="service-description">子どもの活動時間やアプリ利用状況から、集中しやすい時間帯や活動タイプをAIが分析・レポート。集中できる環境づくりのヒントを提案。</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 6歳～12歳（小学生）カラム -->
+      <div class="column">
+        <div class="section">
+          <h2 class="age-title">📘 6歳～12歳（小学生）</h2>
+          
+          <h3 class="section-title">購買契機</h3>
+          <div class="card">
+            <div class="card-title"><span class="emoji">📚</span>学校の授業に追いつけるか不安</div>
+            <div class="card-content">勉強についていけてるか不明、親が教える時間がない。<span class="highlight">自学自習教材</span>を求める。</div>
+          </div>
+          
+          <div class="card">
+            <div class="card-title"><span class="emoji">📝</span>学校のテスト結果が悪かった</div>
+            <div class="card-content">苦手科目やつまずきが顕在化。<span class="highlight">補習として使える教材</span>を探す。</div>
+          </div>
+          
+          <div class="card">
+            <div class="card-title"><span class="emoji">📱</span>タブレット学習に興味を持った</div>
+            <div class="card-content">ICT学習の魅力。紙では続かなかった家庭でも<span class="highlight">試しやすい</span>。</div>
+          </div>
+          
+          <div class="card">
+            <div class="card-title"><span class="emoji">🏫</span>進学や中学受験への備え</div>
+            <div class="card-content">低学年からの基礎固め、応用力育成。<span class="highlight">塾の前のステップ</span>。</div>
+          </div>
+          
+          <div class="card">
+            <div class="card-title"><span class="emoji">📺</span>CM や学習イベントをきっかけに</div>
+            <div class="card-content">テレビCM、体験イベントでの印象。</div>
+          </div>
+          
+          <h3 class="section-title">主な競合サービス</h3>
+          <div class="competitor">
+            <span class="competitor-name">ベネッセ 進研ゼミ</span>
+            <span class="competitor-rating">◎</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">スマイルゼミ 小学生</span>
+            <span class="competitor-rating">◎</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">Z会 小学生</span>
+            <span class="competitor-rating">○</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">RISU算数</span>
+            <span class="competitor-rating">○ (算数)</span>
+          </div>
+          <div class="competitor">
+            <span class="competitor-name">公文</span>
+            <span class="competitor-rating">○ (基礎)</span>
+          </div>
+          
+          <h3 class="section-title">競合が弱い点</h3>
+          <div class="weakness">
+            <span class="highlight">「自律学習」へのサポート不足</span>：教材はあっても、学習計画の立て方、実行、モチベーション維持といった「自律的に学ぶ力」そのものを育むサポートが弱い。
+          </div>
+          <div class="weakness">
+            <span class="highlight">根本理解へのアプローチ</span>：間違いの原因を深く理解し、応用できるレベルになるためのサポートが弱い。
+          </div>
+          <div class="weakness">
+            <span class="highlight">「書く」ことへの懸念</span>：記述力や思考プロセスを整理する力の低下を心配する声。
+          </div>
+          <div class="weakness">
+            <span class="highlight">進路情報の不足</span>：通信教育単体では、具体的な学校情報、受験戦略、併願パターンなどの情報提供や相談機能は弱い。
+          </div>
+          
+          <div class="bubble">
+            競合は<span class="highlight">「学習コンテンツ」の提供</span>は充実しているが、<span class="highlight">「自律的に学ぶ力」「学習の動機づけ」「進路選択」</span>のサポートが不足！
+          </div>
+        </div>
+        
+        <div class="section">
+          <h3 class="section-title">差別化サービス案</h3>
+          <div class="service">
+            <div class="service-title"><span class="emoji">🗓️</span>AI学習コンシェルジュ＆プランナー</div>
+            <div class="service-description">目標、現在の学力、学習スタイル、使える時間を入力すると、AIがパーソナライズされた学習計画を自動生成・提案。進捗に応じて自動調整。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">💡</span>マルチアングル解説システム</div>
+            <div class="service-description">間違えた問題に対し、個別解説動画、ステップ表示でのヒント、類似問題の別解法提示、概念理解のための図解など複数の理解経路を提供。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">📊</span>「学びログ」＆メタ認知ノート</div>
+            <div class="service-description">学習時間、内容、正答率に加え、「どこで時間がかかったか」などを記録。AIが学習パターンを分析し、効果的な学習法をフィードバック。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">✏️</span>デジタル×ライティング融合ワーク</div>
+            <div class="service-description">タブレットでの演習に加え、重要な公式や思考プロセスを専用連携ノートに「手書き」するステップを組み込む。AIが記述内容をフィードバック。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">👨‍👩‍👧‍👦</span>目標別バーチャル自習室＆チームチャレンジ</div>
+            <div class="service-description">同じ目標を持つ仲間と匿名で集うオンライン自習室。集中時間を共有したり、チームで協力して学習ミッションに挑戦したりできる。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">🔭</span>未来発見ナビゲーター</div>
+            <div class="service-description">学習内容に関連する職業、人物、最新ニュースなどを紹介。興味を持った分野について、関連書籍や動画、イベント情報などをレコメンド。</div>
+          </div>
+          
+          <div class="service">
+            <div class="service-title"><span class="emoji">🧠</span>保護者向け「伴走コーチングAI」</div>
+            <div class="service-description">子どもの学習ログ、保護者の悩みを統合的に分析し、「今は見守る時期」「こんな声かけが効果的」など、具体的な関わり方をアドバイス。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="differentiator">
+      <h3 class="differentiator-title">全体を通した差別化のポイント</h3>
+      <div class="differentiator-point">
+        <span class="highlight">「どう学ぶか」「なぜ学ぶか」へのフォーカス</span>：自律学習スキルの育成、メタ認知の促進、好奇心を起点とした学び、将来との接続を重視。
+      </div>
+      <div class="differentiator-point">
+        <span class="highlight">徹底的な個別最適化</span>：学力レベルだけでなく、発達段階、興味関心、性格、学習スタイル、保護者の状況まで考慮したパーソナルなサポート。
+      </div>
+      <div class="differentiator-point">
+        <span class="highlight">保護者を「孤立させない」伴走</span>：不安に寄り添い、具体的なアクションを提示し、共感できるコミュニティを提供する。
+      </div>
+      <div class="differentiator-point">
+        <span class="highlight">テクノロジーによる人間的なサポートの拡張</span>：AIを単なる自動化ツールではなく、個別のフィードバック、コーチング、コミュニティ活性化など、温かみのあるサポートを実現するために活用する。
+      </div>
+    </div>
+    
+    <div class="footer">
+      資料作成：2025年4月 | 参考資料：顧客購買契機分析レポート, 競合サービス調査データ
+    </div>
+  </div>
+</body>
+</html>

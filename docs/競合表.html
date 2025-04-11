@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本の幼児・小学生向け主要教育サービス比較分析</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --bg-color: #FFFCF7;
+            --text-color: #334155;
+            --heading-color: #1e40af;
+            --subtitle-color: #475569;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Zen Kurenaido', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* ヘッダースタイル */
+        header {
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-info {
+            width: 70%;
+        }
+        
+        h1 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(90deg, var(--fashion-2), var(--fashion-4));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 0,2 C 5,5 10,-1 15,2 C 20,5 25,-1 30,2 C 35,5 40,-1 45,2 C 50,5 55,-1 60,2 C 65,5 70,-1 75,2 C 80,5 85,-1 90,2 C 95,5 100,-1 105,2' stroke='%23F2C53D' stroke-width='3' fill='none'/%3E%3C/svg%3E") repeat-x;
+        }
+        
+        .date {
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            text-align: right;
+        }
+        
+        /* セクションスタイル */
+        section {
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+        
+        h2 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 24px;
+            color: var(--fashion-1);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 8px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 0,4 C 5,7 10,1 15,4 C 20,7 25,1 30,4 C 35,7 40,1 45,4 C 50,7 55,1 60,4 C 65,7 70,1 75,4 C 80,7 85,1 90,4 C 95,7 100,1 105,4' stroke='%23F25C05' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+        }
+        
+        h3 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 18px;
+            color: var(--heading-color);
+            margin: 15px 0 10px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        h3::before {
+            content: '✏️';
+            margin-right: 8px;
+        }
+        
+        p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        /* 3カラムレイアウト */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        
+        .column {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+            padding: 0 15px;
+        }
+        
+        /* カード型コンポーネント */
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 12px;
+            background: linear-gradient(45deg, var(--fashion-3), var(--fashion-4), var(--fashion-2));
+            z-index: -1;
+            opacity: 0.4;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* 手書き風のデザイン要素 */
+        .hand-drawn-box {
+            border: 3px solid;
+            border-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='5' y='5' width='90' height='90' rx='10' ry='10' fill='none' stroke='%23593C47' stroke-width='3' stroke-dasharray='10 5' stroke-linecap='round'/%3E%3C/svg%3E") 20 stretch;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        
+        .bubble {
+            position: relative;
+            background: rgba(242, 230, 61, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 30px;
+            border-width: 15px;
+            border-style: solid;
+            border-color: rgba(242, 230, 61, 0.2) transparent transparent;
+        }
+        
+        /* 矢印スタイル */
+        .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .arrow svg {
+            width: 100%;
+            height: 40px;
+        }
+        
+        /* ハイライトマーカー */
+        .highlight {
+            background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+            padding: 0 2px;
+            display: inline;
+        }
+        
+        /* キーワードの強調 */
+        .keyword {
+            font-weight: bold;
+            color: var(--fashion-5);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .keyword::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--fashion-3);
+            border-radius: 2px;
+        }
+        
+        /* アイコン */
+        .icon {
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        /* 比較表 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            overflow-x: auto;
+            display: block;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px dashed #ddd;
+            font-size: 14px;
+        }
+        
+        .comparison-table th {
+            background-color: var(--fashion-1);
+            color: white;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: rgba(242, 230, 61, 0.1);
+        }
+        
+        /* 会社ロゴカラー */
+        .benesse {
+            border-top: 4px solid #FF8000;
+        }
+        
+        .justsystems {
+            border-top: 4px solid #00A0E9;
+        }
+        
+        .zkai {
+            border-top: 4px solid #005BAC;
+        }
+        
+        .shopro {
+            border-top: 4px solid #E50012;
+        }
+        
+        .wonderlab {
+            border-top: 4px solid #00C300;
+        }
+        
+        .risu {
+            border-top: 4px solid #FF6699;
+        }
+        
+        .kumon {
+            border-top: 4px solid #D70C18;
+        }
+        
+        /* バッジ */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .badge-primary {
+            background-color: var(--fashion-1);
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: var(--fashion-3);
+            color: #333;
+        }
+        
+        .badge-accent {
+            background-color: var(--fashion-4);
+            color: white;
+        }
+        
+        /* フッター */
+        footer {
+            background-color: var(--fashion-1);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 30px;
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 992px) {
+            .column {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .column {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-info {
+                width: 100%;
+            }
+        }
+        
+        /* グラスモーフィズム効果 */
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        /* 価格・特徴バッジ */
+        .price-badge {
+            background-color: var(--fashion-2);
+            color: var(--fashion-1);
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        /* 特徴リスト */
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 15px 0;
+        }
+        
+        .feature-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--fashion-4);
+            font-weight: bold;
+        }
+        
+        /* バナー */
+        .banner {
+            background: linear-gradient(135deg, var(--fashion-3), var(--fashion-4));
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        
+        /* 円グラフ風の要素 */
+        .pie-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .pie-item {
+            text-align: center;
+            width: 120px;
+            margin: 10px;
+        }
+        
+        .pie {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(var(--fashion-3) 0% 25%, var(--fashion-4) 25% 60%, var(--fashion-5) 60% 100%);
+            margin: 0 auto 10px;
+            position: relative;
+        }
+        
+        .pie-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--fashion-1);
+        }
+        
+        .pie-label {
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-info">
+                <h1>日本の幼児・小学生向け主要教育サービス比較分析</h1>
+                <p style="color: rgba(255,255,255,0.8);">各サービスの特徴と市場動向を徹底解説</p>
+            </div>
+            <div class="date">2025年4月11日</div>
+        </header>
+        
+        <section id="intro">
+            <h2>1. はじめに 📝</h2>
+            <div class="bubble">
+                <p>本レポートは、<span class="highlight">日本の幼児および小学生を対象とした主要な教育サービス</span>について、各社の顧客数、売上高、主な顧客層、解決している顧客課題、提供しているWebサービスなどを調査・分析し、比較検討することを目的としています。</p>
+            </div>
+            
+            <div class="hand-drawn-box">
+                <h3>🔍 調査方法</h3>
+                <p>各社の公開情報（IR資料、公式サイト、ニュースリリース等）、各種メディア記事、利用者レビュー、および提供された調査データを基に分析を行いました。売上高や会員数については最新の公表値を用い、顧客層や課題、Webサービスについては、提供情報や利用者の声から推定・分析しています。</p>
+            </div>
+        </section>
+        
+        <section id="market-overview">
+            <h2>2. 市場概観 📊</h2>
+            <div class="glass">
+                <p>日本の幼児・小学生向け教育サービス市場は、<span class="keyword">少子化</span>が進む一方で、<span class="keyword">教育への関心の高まり</span>や<span class="keyword">多様化するニーズ</span>を背景に、依然として活発な競争環境にあります。</p>
+                
+                <div class="arrow">
+                    <svg viewBox="0 0 300 40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10,20 C50,5 100,35 150,20 C200,5 250,35 290,20" stroke="#F25C05" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+                        <polygon points="290,20 280,15 285,20 280,25" fill="#F25C05" />
+                    </svg>
+                </div>
+                
+                <div class="row">
+                    <div class="column">
+                        <div class="card">
+                            <h3>市場トレンド① 📱</h3>
+                            <p>従来型の通信教育（紙教材）に加え、<span class="highlight">タブレット端末を活用したデジタル学習サービス</span>が急速に普及</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <h3>市場トレンド② 👨‍👩‍👧‍👦</h3>
+                            <p><span class="highlight">共働き家庭の増加</span>に伴う利便性への要求、STEAM教育やプログラミング教育といった新しい学びへの関心</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <h3>市場トレンド③ 🎯</h3>
+                            <p><span class="highlight">個別最適化された学習</span>への期待が高まっている</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="company-analysis">
+            <h2>3. 企業・サービス分析 🔎</h2>
+            
+            <div class="row">
+                <!-- ベネッセ -->
+                <div class="column">
+                    <div class="card benesse">
+                        <h3>ベネッセホールディングス 📚</h3>
+                        <div class="price-badge">売上高: 4,118億円</div>
+                        
+                        <div class="hand-drawn-box">
+                            <h4 style="color: #FF8000; margin-bottom: 10px;">こどもちゃれんじ</h4>
+                            <p style="font-size: 12px;"><span class="badge badge-primary">対象</span> 0歳〜6歳頃</p>
+                            <p style="font-size: 12px;"><span class="badge badge-secondary">料金</span> 約2,000〜2,500円/月</p>
+                            <p style="font-size: 12px;"><span class="badge badge-accent">会員数</span> 国内75万人(22年4月)</p>
+                            
+                            <ul class="feature-list">
+                                <li>月齢・年齢別の教材セット（絵本、知育玩具、映像教材等）</li>
+                                <li>キャラクター「しまじろう」による学習意欲向上</li>
+                                <li>家庭学習習慣の導入支援</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="hand-drawn-box">
+                            <h4 style="color: #FF8000; margin-bottom: 10px;">進研ゼミ 小学講座</h4>
+                            <p style="font-size: 12px;"><span class="badge badge-primary">対象</span> 小学1〜6年生</p>
+                            <p style="font-size: 12px;"><span class="badge badge-secondary">料金</span> 約3,000〜6,000円/月</p>
+                            <p style="font-size: 12px;"><span class="badge badge-accent">会員数</span> 133万人(2020年度)</p>
+                            
+                            <ul class="feature-list">
+                                <li>紙教材「チャレンジ」またはタブレット教材「チャレンジタッチ」を選択可能</li>
+                                <li>AIによる個別問題配信、とき直しシステム</li>
+                                <li>保護者向けアプリ「まなびの手帳」でサポート</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ジャストシステム -->
+                <div class="column">
+                    <div class="card justsystems">
+                        <h3>ジャストシステム 💻</h3>
+                        <div class="price-badge">売上高: 409.8億円</div>
+                        
+                        <div class="hand-drawn-box">
+                            <h4 style="color: #00A0E9; margin-bottom: 10px;">スマイルゼミ</h4>
+                            <p style="font-size: 12px;"><span class="badge badge-primary">対象</span> 年長〜小学生</p>
+                            <p style="font-size: 12px;"><span class="badge badge-secondary">料金</span> 約3,000〜6,000円/月 +タブレット代</p>
+                            <p style="font-size: 12px;"><span class="badge badge-accent">会員数</span> 非公開</p>
+                            
+                            <ul class="feature-list">
+                                <li>専用タブレットを用いたオールインワン教材</li>
+                                <li>自動丸付け機能で親の負担軽減</li>
+                                <li>保護者向けWeb/アプリ「みまもるネット」「みまもるトーク」</li>
+                                <li>高い営業利益率(41.6%)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bubble">
+                            <p><span class="highlight">タブレット完結型の利便性</span>と<span class="highlight">親の負担軽減</span>が評価され、特に共働き家庭からの支持を集めています</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Z会 -->
+                <div class="column">
+                    <div class="card zkai">
+                        <h3>Z会グループ 🎓</h3>
+                        <div class="price-badge">売上高: 689.3億円</div>
+                        
+                        <div class="hand-drawn-box">
+                            <h4 style="color: #005BAC; margin-bottom: 10px;">Z会 幼児・小学生コース</h4>
+                            <p style="font-size: 12px;"><span class="badge badge-primary">対象</span> 年少〜小6</p>
+                            <p style="font-size: 12px;"><span class="badge badge-secondary">料金</span> 約2,200〜5,000円/月</p>
+                            <p style="font-size: 12px;"><span class="badge badge-accent">会員数</span> グループ全体 約30万人</p>
+                            
+                            <ul class="feature-list">
+                                <li>思考力・応用力養成を重視した通信教育</li>
+                                <li>質の高い教材と丁寧な添削指導</li>
+                                <li>難関校受験に強み</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bubble">
+                            <p><span class="highlight">「質の高さ」と「思考力重視」</span>という明確なポジショニングで、特定の顧客層から強い支持を獲得</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- ShoPro -->
+                <div class="column">
+                    <div class="card shopro">
+                        <h3>小学館集英社プロダクション 📕</h3>
+                        <div class="price-badge">売上高: 375億円(エデュケーション51億円)</div>
+                        
+                        <div class="hand-drawn-box">
+                            <h4 style="color: #E50012; margin-bottom: 10px;">名探偵コナンゼミ</h4>
+                            <p style="font-size: 12px;"><span class="badge badge-primary">対象</span> 小1〜小6</p>
+                            <p style="font-size: 12px;"><span class="badge badge-secondary">料金</span> 約2,300〜5,000円/月</p>
+                            <p style="font-size: 12px;"><span class="badge badge-accent">会員数</span> 非公開</p>
+                            
+                            <ul class="feature-list">
+                                <li>人気アニメ「名探偵コナン」を題材にした学習</li>
+                                <li>紙教材またはPDF版を選択可能</li>
+                                <li>思考力(ナゾトキ)に特化した問題</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bubble">
+                            <p>強力なIP（<span class="highlight">名探偵コナン</span>）の活用により学習意欲を喚起</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wonderfy -->
+                <div class="column">
+                    <div class="card wonderlab">
+                        <h3>ワンダーファイ(旧WonderLab) 🔬</h3>
+                        <div class="price-badge">売上高: 非公開</div>
+                        
+                        <div class="hand-drawn-box">
+                            <h4 style="color: #00C300; margin-bottom: 10px;">ワンダーボックス</h4>
+                            <p style="font-size: 12px;"><span class="badge badge-primary">対象</span> 年中〜小学生</p>
+                            <p style="font-size: 12px;"><span class="badge badge-secondary">料金</span> 月額3,700円</p>
+                            <p style="font-size: 12px;"><span class="badge badge-accent">会員数</span> 非公開</p>
+                            
+                            <ul class="feature-list">
+                                <li>STEAM教育に特化したサブスクリプションサービス</li>
+                                <li>タブレットアプリとキット教材の組み合わせ</li>
+                                <li>プログラミング、数理パズル、アート、科学実験など</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bubble">
+                            <p><span class="highlight">「STEAM教育」という明確なニッチ市場</span>に特化した新興EdTech企業</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- RISU Japan -->
+                <div class="column">
+                    <div class="card risu">
+                        <h3>RISU Japan 🧮</h3>
+                        <div class="price-badge">売上高: 非公開</div>
+                        
+                        <div class="hand-drawn-box">
+                            <h4 style="color: #FF6699; margin-bottom: 10px;">RISU算数</h4>
+                            <p style="font-size: 12px;"><span class="badge badge-primary">対象</span> 主に小学生</p>
+                            <p style="font-size: 12px;"><span class="badge badge-secondary">料金</span> 月額2,480円〜 +従量課金</p>
+                            <p style="font-size: 12px;"><span class="badge badge-accent">会員数</span> 非公開</p>
+                            
+                            <ul class="feature-list">
+                                <li>算数特化型の学習サービス</li>
+                                <li>無学年制で先取り学習が可能</li>
+                                <li>アダプティブラーニング(個別最適化)</li>
+                                <li>東大生などのチューターによるサポート</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bubble">
+                            <p><span class="highlight">「算数特化」と「個別最適化」</span>で独自の地位を確立</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 公文 -->
+            <div class="row">
+                <div class="column" style="margin: 0 auto; flex: 0 0 66.666667%; max-width: 66.666667%;">
+                    <div class="card kumon">
+                        <h3>公文教育研究会 🏫</h3>
+                        <div class="price-badge">売上高: 820.6億円</div>
+                        
+                        <div class="hand-drawn-box">
+                            <h4 style="color: #D70C18; margin-bottom: 10px;">公文式</h4>
+                            <p style="font-size: 12px;"><span class="badge badge-primary">対象</span> 0歳〜社会人</p>
+                            <p style="font-size: 12px;"><span class="badge badge-secondary">料金</span> 約7,150円/月/科目</p>
+                            <p style="font-size: 12px;"><span class="badge badge-accent">会員数</span> 全世界355万人(24年9月)</p>
+                            
+                            <div class="row">
+                                <div class="column" style="flex: 0 0 50%; max-width: 50%;">
+                                    <ul class="feature-list">
+                                        <li>教室でのプリント学習と家庭学習の組み合わせ</li>
+                                        <li>反復による基礎学力の定着を重視</li>
+                                    </ul>
+                                </div>
+                                <div class="column" style="flex: 0 0 50%; max-width: 50%;">
+                                    <ul class="feature-list">
+                                        <li>自学自習力の養成</li>
+                                        <li>世界的に展開する教室ネットワーク</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bubble">
+                            <p>確立された<span class="highlight">「自学自習」メソッド</span>と<span class="highlight">世界中の教室ネットワーク</span>が強み</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="comparison">
+            <h2>4. サービス比較 📋</h2>
+            
+            <div class="banner">
+                <h3 style="color: white;">教育サービスの特徴比較</h3>
+            </div>
+            
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <tr>
+                        <th>サービス名</th>
+                        <th>対象年齢</th>
+                        <th>月額料金(目安)</th>
+                        <th>主な教材形態</th>
+                        <th>顧客数</th>
+                        <th>主な特徴</th>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #FF8000; font-weight: bold;">こどもちゃれんじ</span></td>
+                        <td>0歳〜6歳頃</td>
+                        <td>約¥2,000〜¥2,500</td>
+                        <td>玩具,絵本,映像(混合)</td>
+                        <td>国内75万人</td>
+                        <td>遊びと学びの両立、しまじろうキャラクター</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #FF8000; font-weight: bold;">進研ゼミ小学講座</span></td>
+                        <td>小学1〜6年生</td>
+                        <td>約¥3,000〜¥6,000</td>
+                        <td>紙 or タブレット選択</td>
+                        <td>133万人</td>
+                        <td>学校準拠、苦手克服、まなびの手帳アプリ</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #00A0E9; font-weight: bold;">スマイルゼミ</span></td>
+                        <td>年長〜小学生</td>
+                        <td>約¥3,000〜¥6,000 +端末</td>
+                        <td>専用タブレット</td>
+                        <td>非公開</td>
+                        <td>自動丸付け、みまもるネット/トーク</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #005BAC; font-weight: bold;">Z会</span></td>
+                        <td>年少〜小6</td>
+                        <td>約¥2,200〜¥5,000</td>
+                        <td>紙中心 (一部タブレット)</td>
+                        <td>グループ全体約30万人</td>
+                        <td>思考力・応用力育成、難関校受験に強み</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #E50012; font-weight: bold;">名探偵コナンゼミ</span></td>
+                        <td>小1〜小6</td>
+                        <td>約¥2,300〜¥5,000</td>
+                        <td>紙 or PDF</td>
+                        <td>非公開</td>
+                        <td>コナンIP活用、ナゾトキ思考力問題</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #00C300; font-weight: bold;">ワンダーボックス</span></td>
+                        <td>年中〜小学生</td>
+                        <td>¥3,700</td>
+                        <td>アプリ + キット</td>
+                        <td>非公開</td>
+                        <td>STEAM教育特化、デジタル&アナログ融合</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #FF6699; font-weight: bold;">RISU算数</span></td>
+                        <td>主に小学生</td>
+                        <td>¥2,480〜 +従量課金</td>
+                        <td>タブレット</td>
+                        <td>非公開</td>
+                        <td>算数特化、無学年制、個別最適化</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #D70C18; font-weight: bold;">公文式</span></td>
+                        <td>0歳〜社会人</td>
+                        <td>約¥7,150/科目</td>
+                        <td>プリント (一部タブレット)</td>
+                        <td>全世界355万人</td>
+                        <td>自学自習、教室と家庭学習の連携</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        
+        <section id="trends">
+            <h2>5. 市場の二極化と多様化 🔄</h2>
+            
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <h3>💪 規模の二極化</h3>
+                        <p>ベネッセと公文という圧倒的な規模を持つプレイヤーが存在する一方、ニッチ市場に特化したサービスも登場</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <h3>🌈 ニーズの多様化</h3>
+                        <p>基礎学力向上から思考力育成、STEAM教育、特定教科特化まで、多様な教育方針を反映したサービスが展開</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <h3>🔍 個別最適化の流れ</h3>
+                        <p>AI技術の活用により、個々の学習進捗や理解度に合わせた問題提供や解説を行うサービスが増加</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass">
+                <h3>デジタル戦略の重要性 📱</h3>
+                <div class="row">
+                    <div class="column" style="flex: 0 0 50%; max-width: 50%;">
+                        <ul class="feature-list">
+                            <li>タブレット学習の普及（チャレンジタッチ、スマイルゼミ）</li>
+                            <li>保護者向けアプリの充実（みまもるネット/トーク、まなびの手帳）</li>
+                            <li>自動丸付け機能による親の負担軽減</li>
+                        </ul>
+                    </div>
+                    <div class="column" style="flex: 0 0 50%; max-width: 50%;">
+                        <ul class="feature-list">
+                            <li>AIによる個別最適化（苦手分析、問題生成）</li>
+                            <li>学習進捗の可視化とリアルタイム共有</li>
+                            <li>親子コミュニケーション機能の強化</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="conclusion">
+            <h2>6. 結論と戦略的考察 🏁</h2>
+            
+            <div class="banner">
+                <h3 style="color: white;">市場の主要動向</h3>
+            </div>
+            
+            <div class="pie-container">
+                <div class="pie-item">
+                    <div class="pie"><div class="pie-center">1</div></div>
+                    <div class="pie-label">デジタル化の深化</div>
+                </div>
+                <div class="pie-item">
+                    <div class="pie"><div class="pie-center">2</div></div>
+                    <div class="pie-label">保護者向けサポート機能</div>
+                </div>
+                <div class="pie-item">
+                    <div class="pie"><div class="pie-center">3</div></div>
+                    <div class="pie-label">多様なスキル育成</div>
+                </div>
+            </div>
+            
+            <div class="hand-drawn-box">
+                <h3>戦略的考察 💡</h3>
+                <div class="row">
+                    <div class="column">
+                        <h4 style="color: var(--fashion-5); margin: 10px 0;">既存大手プレイヤー</h4>
+                        <p>規模とブランド力を活かしつつ、デジタル化への対応と既存メソッドとの融合が鍵</p>
+                    </div>
+                    <div class="column">
+                        <h4 style="color: var(--fashion-5); margin: 10px 0;">デジタル特化プレイヤー</h4>
+                        <p>収益性維持とコンテンツ質向上、機能的優位性の確保が重要</p>
+                    </div>
+                    <div class="column">
+                        <h4 style="color: var(--fashion-5); margin: 10px 0;">ニッチプレイヤー</h4>
+                        <p>専門性を磨き上げ、ターゲット顧客層への訴求力を高める</p>
+                    </div>
+                </div>
+                
+                <div class="arrow">
+                    <svg viewBox="0 0 300 40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10,20 C50,5 100,35 150,20 C200,5 250,35 290,20" stroke="#593C47" stroke-width="2" fill="none" />
+                        <polygon points="290,20 280,15 285,20 280,25" fill="#593C47" />
+                    </svg>
+                </div>
+                
+                <div class="bubble">
+                    <p>この市場で成功するためには、<span class="highlight">明確な教育哲学に基づいた質の高いコンテンツ提供</span>に加え、<span class="highlight">テクノロジーを活用した学習体験の向上</span>、そして<span class="highlight">保護者のニーズに応えるきめ細やかなサポート体制の構築</span>が不可欠です。</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>出典: 各社IR資料、公式サイト、ニュースリリース、各種メディア記事、利用者レビュー</p>
+            <p>© 2025 日本の幼児・小学生向け主要教育サービス比較分析レポート</p>
+        </footer>
+    </div>
+</body>
+</html>
