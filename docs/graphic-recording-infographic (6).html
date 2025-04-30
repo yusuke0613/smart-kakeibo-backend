@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Pass ビジネスプラン グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --bg-color: #fcfcfc;
+            --text-main: #334155;
+            --text-title: #1e293b;
+            --text-subtitle: #475569;
+            --text-heading: #1e40af;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Zen Kurenaido', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--fashion-3);
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--fashion-4);
+            border-radius: 3px;
+        }
+        
+        .title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(45deg, var(--fashion-3), var(--fashion-4));
+            border-radius: 3px;
+        }
+        
+        .date {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: var(--text-subtitle);
+            text-align: right;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--fashion-2), var(--fashion-4));
+        }
+        
+        .segment {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 20px;
+            color: var(--fashion-1);
+            margin-bottom: 15px;
+            padding-top: 10px;
+            position: relative;
+            font-weight: bold;
+        }
+        
+        .segment::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 90%;
+            height: 2px;
+            background-color: var(--fashion-3);
+            border-radius: 2px;
+        }
+        
+        .age {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: var(--text-subtitle);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .age::before {
+            content: "👶";
+            margin-right: 5px;
+        }
+        
+        .pain {
+            font-size: 16px;
+            background-color: rgba(242, 198, 61, 0.15);
+            padding: 8px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .pain::before {
+            content: "😫";
+            margin-right: 5px;
+        }
+        
+        .benefit {
+            font-size: 14px;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .benefit::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .price {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--fashion-5);
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: rgba(242, 92, 5, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .price-reason {
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .sb-value {
+            font-size: 14px;
+            background-color: rgba(89, 60, 71, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .sb-value::before {
+            content: "📱";
+            margin-right: 5px;
+        }
+        
+        .kpi {
+            font-size: 14px;
+            color: var(--text-subtitle);
+            margin-top: 10px;
+            padding: 8px;
+            background-color: rgba(30, 64, 175, 0.1);
+            border-radius: 8px;
+        }
+        
+        .kpi::before {
+            content: "📊";
+            margin-right: 5px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(89, 60, 71, 0.05);
+            border-radius: 12px;
+        }
+        
+        .footer-title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--fashion-1);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--fashion-3);
+            border-radius: 2px;
+        }
+        
+        .common-points {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .point {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .point::before {
+            content: "🔍";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .conclusion {
+            font-family: 'Yomogi', cursive;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(242, 230, 61, 0.2);
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .conclusion::before,
+        .conclusion::after {
+            content: "✨";
+            position: absolute;
+            top: 15px;
+        }
+        
+        .conclusion::before {
+            left: 20px;
+        }
+        
+        .conclusion::after {
+            right: 20px;
+        }
+        
+        .hand-drawn {
+            position: relative;
+        }
+        
+        .hand-drawn::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--fashion-3);
+            border-radius: 3px;
+            transform: rotate(-0.5deg);
+        }
+        
+        .marker {
+            background: linear-gradient(transparent 60%, rgba(242, 198, 61, 0.4) 40%);
+            padding: 0 2px;
+        }
+        
+        .highlight {
+            color: var(--fashion-5);
+            font-weight: bold;
+        }
+        
+        .arrow {
+            position: relative;
+            padding-right: 20px;
+        }
+        
+        .arrow::after {
+            content: "→";
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--fashion-4);
+        }
+        
+        .benchmark-table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .benchmark-table th {
+            background-color: var(--fashion-1);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .benchmark-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(89, 60, 71, 0.2);
+        }
+        
+        .benchmark-table tr:nth-child(even) {
+            background-color: rgba(242, 230, 61, 0.1);
+        }
+        
+        .judge-table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .judge-table th {
+            background-color: var(--fashion-4);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .judge-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(242, 92, 5, 0.2);
+        }
+        
+        .judge-table tr:nth-child(even) {
+            background-color: rgba(242, 198, 61, 0.1);
+        }
+        
+        /* 手書き風の各要素スタイル */
+        .hand-circle {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border: 2px solid var(--fashion-4);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 21px;
+            margin-right: 5px;
+            transform: rotate(5deg);
+        }
+        
+        .hand-box {
+            border: 2px solid var(--fashion-3);
+            border-radius: 8px;
+            padding: 10px;
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .hand-box::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background-color: var(--fashion-3);
+            transform: rotate(-1deg);
+        }
+        
+        .hand-note {
+            background-color: rgba(242, 230, 61, 0.15);
+            padding: 10px;
+            border-radius: 8px;
+            position: relative;
+            margin: 15px 0;
+            border-left: 3px solid var(--fashion-3);
+        }
+        
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .common-points {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .date {
+                margin-top: 10px;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Kids Pass ビジネスプラン</h1>
+            <div class="date">2025年4月30日</div>
+        </div>
+        
+        <div class="grid">
+            <!-- カード1: Kids Pass Jr -->
+            <div class="card">
+                <h3 class="segment"><span class="hand-circle">1</span>To C：Kids Pass Jr</h3>
+                <div class="age">0-6歳</div>
+                <div class="pain">「子どもの質問にすぐ答えたい」「絵本で説明したい」</div>
+                <div class="benefit">30秒で子どもの質問から<span class="marker">オリジナル絵本</span>を自動生成＋学習記録を保存</div>
+                <div class="benefit">プロの声優による読み聞かせ機能付き絵本（寝かしつけにも便利）</div>
+                <div class="price">¥480/月</div>
+                <div class="price-reason">
+                    読み放題アプリの中央値(¥500)以下<br>
+                    保護者支出(教育費6k/月)の1割以下で心理的ハードル小
+                </div>
+                <div class="sb-value">
+                    • <span class="highlight">My SoftBankアプリ</span>からワンタップで簡単加入・決済（顧客獲得コスト削減）<br>
+                    • <span class="highlight">PayPay</span>アプリ内広告で実質0円集客（既存顧客接点活用）
+                </div>
+                <div class="kpi">
+                    NPS ≥ 70 & 継続率 ≥ 60%
+                </div>
+            </div>
+            
+            <!-- カード2: Kids Pass Std -->
+            <div class="card">
+                <h3 class="segment"><span class="hand-circle">2</span>To C：Kids Pass Std</h3>
+                <div class="age">6-12歳</div>
+                <div class="pain">小学生の探究学習のネタが足りない・親が手伝えない</div>
+                <div class="benefit">教科書内容を理解しやすい<span class="marker">読解まんが</span>＋<span class="marker">クイズ</span>＋<span class="marker">STEAM実験</span>コンテンツ</div>
+                <div class="benefit">子どもが撮影した写真をアップロードすると翌日には<span class="marker">オリジナル図鑑</span>や<span class="marker">学習まんが</span>に変換</div>
+                <div class="price">¥650/月</div>
+                <div class="price-reason">
+                    タブレット教材(¥3,300〜)の1/5<br>
+                    低単価で"追加教材"として採用されやすい
+                </div>
+                <div class="sb-value">
+                    • <span class="highlight">PayPayポイント</span>を広告主協賛から捻出し、ユーザー実質負担を軽減（購入障壁低下）<br>
+                    • 学習ログデータを<span class="highlight">学校SaaS</span>へ横展開し、家庭-学校の学習連携を実現（エコシステム構築）
+                </div>
+                <div class="kpi">
+                    加入率 ≥ 0.7%（SB小学生世帯）
+                </div>
+            </div>
+            
+            <!-- カード3: 保育園パック -->
+            <div class="card">
+                <h3 class="segment"><span class="hand-circle">3</span>保育園パック（To B）</h3>
+                <div class="age">0-3歳</div>
+                <div class="pain">保育士の読み聞かせネタ切れ・連絡帳作成の負担大</div>
+                <div class="benefit">子どもの様子を入力するだけで<span class="marker">絵本を自動生成</span>→そのまま連絡帳・日誌へ転記可能</div>
+                <div class="benefit">1タップで静止画絵本が<span class="marker">アニメーション絵本</span>に変化（子どもの集中力アップ）</div>
+                <div class="price">¥35,000/園/年</div>
+                <div class="price-reason">
+                    児童単価≈¥600／補助金枠内<br>
+                    施設補助金は「園単位」申請が主流
+                </div>
+                <div class="sb-value">
+                    • 保有する<span class="highlight">Pepper在庫</span>を活用し、AI絵本の読み聞かせロボットとして再利用（差別化）<br>
+                    • <span class="highlight">コドモン連絡帳API</span>と連携して園と保護者のコミュニケーションをデジタル化（顧客ロックイン）
+                </div>
+                <div class="kpi">
+                    園あたり週次利用≥3回
+                </div>
+            </div>
+            
+            <!-- カード4: 幼稚園パック -->
+            <div class="card">
+                <h3 class="segment"><span class="hand-circle">4</span>幼稚園パック（To B）</h3>
+                <div class="age">3-6歳</div>
+                <div class="pain">行事準備の資料作成負担・園児作品の記録・管理が大変</div>
+                <div class="benefit">行事テーマを入力するだけで<span class="marker">紙芝居・歌詞カード・BGM</span>を一括自動生成</div>
+                <div class="benefit">先生や園児の声を録音して、AIが<span class="marker">自分の声で読む紙芝居</span>に（思い出作品に）</div>
+                <div class="price">¥50,000/クラス/年</div>
+                <div class="price-reason">
+                    児童単価≈¥2,000（教材費枠）<br>
+                    行事費はクラス一括で予算化
+                </div>
+                <div class="sb-value">
+                    • <span class="highlight">Print On Demand</span>印刷を<span class="highlight">Yahoo!ロジスティクス</span>で供給し、紙の絵本・紙芝居としても提供（追加粗利）<br>
+                    • 保護者へ<span class="highlight">DeepLink</span>で個人向けKids Passを案内し、家庭でも使ってもらう（To C誘導・クロスセル）
+                </div>
+                <div class="kpi">
+                    クラス利用率 ≥ 60%／行事ごとに1作品
+                </div>
+            </div>
+            
+            <!-- カード5: 小学校SaaS -->
+            <div class="card">
+                <h3 class="segment"><span class="hand-circle">5</span>小学校SaaS（To B）</h3>
+                <div class="age">6-12歳</div>
+                <div class="pain">教員の教材準備時間不足・GIGAスクール端末活用実績が必要</div>
+                <div class="benefit">学習指導要領から単元を選ぶだけで<span class="marker">教材一括生成</span>＋児童の活用状況ダッシュボード</div>
+                <div class="benefit">児童が観察・実験結果を投稿すると自動で<span class="marker">学習図鑑・解説まんが</span>に変換（探究学習促進）</div>
+                <div class="price">¥400/児童/年</div>
+                <div class="price-reason">
+                    文科省GIGA「デジタル教材上限¥450」以下<br>
+                    児童単価で申請・転入出精算が容易
+                </div>
+                <div class="sb-value">
+                    • <span class="highlight">SB コマース&サービス</span>のGIGA端末販路と<span class="highlight">自治体DX部隊</span>を活用して自治体単位での一括導入を実現<br>
+                    • 学習データから<span class="highlight">自治体向け活用レポート</span>を自動生成し、予算継続・更新率向上を支援（安定収益）
+                </div>
+                <div class="kpi">
+                    準備時間▲20%／クラス週次利用≥30%
+                </div>
+            </div>
+            
+            <!-- カード6: ベネッセSDK/OEM -->
+            <div class="card">
+                <h3 class="segment"><span class="hand-circle">6</span>ベネッセSDK/OEM</h3>
+                <div class="age">(進研ゼミ・こどもちゃれんじ)</div>
+                <div class="pain">ベネッセが「しまじろう」などの教材に<span class="marker">パーソナライズ絵本</span>機能を追加したいが、自社開発コストが高すぎる</div>
+                <div class="benefit">当社のSDKを組み込むだけで既存教材を<span class="marker">AI絵本化</span>→会員継続率向上・解約防止</div>
+                <div class="benefit">ユーザーは普段使っているアプリ内で「AI絵本」ボタンをタップするだけ（シームレス体験）</div>
+                <div class="price">年額¥1.2億＋¥2/冊</div>
+                <div class="price-reason">
+                    進研ゼミ月刊教材の制作費(1冊≈¥70)を大幅削減できる価格・会員200万DAUへ即リーチ<br>
+                    UIを壊さず差別化
+                </div>
+                <div class="sb-value">
+                    • <span class="highlight">従量課金モデル</span>（基本料＋生成数）で変動費＜売上となり収益が安定（必ず黒字化）<br>
+                    • ベネッセとの実績を<span class="highlight">レファレンス</span>に他の教育事業者・出版社へもOEM展開（横展開）
+                </div>
+                <div class="kpi">
+                    PoC：Promoter≥65／生成CVR≥40%→正式
+                </div>
+            </div>
+            
+            <!-- カード7: 小学館IP & EC協業 -->
+            <div class="card">
+                <h3 class="segment"><span class="hand-circle">7</span>小学館IP & EC協業</h3>
+                <div class="age">IP保有→新販路を拡大／ロイヤルティ収益</div>
+                <div class="pain">小学館が保有する「図鑑NEO・ドラえもん」などの人気IPを活用した新しい収益源を探している</div>
+                <div class="benefit">公式IPキャラクターと素材を活用した<span class="marker">AI絵本生成</span>で新たな体験価値を創出</div>
+                <div class="benefit">Kids Pass内で通常版の代わりに「<span class="marker">公式キャラクター版</span>」を選択できる特別オプション</div>
+                <div class="price">売上70:30（SB:小学館）＋印刷物1冊ロイ¥200</div>
+                <div class="price-reason">
+                    市販絵本ロイヤルティ平均25%を上回る好条件で魅力度↑
+                </div>
+                <div class="sb-value">
+                    • <span class="highlight">Yahoo!ショッピング</span>と<span class="highlight">SB物流</span>を活用し、AI絵本の印刷版やキャラグッズをEC販売（収益拡大）<br>
+                    • 人気キャラクター解禁で<span class="highlight">Kids Pass全体のARPU</span>（顧客単価）向上（プレミアム機能として）
+                </div>
+                <div class="kpi">
+                    Pilot：IP版購入率≥10%／半年ロイ≥¥0.5億
+                </div>
+            </div>
+        </div>
+        
+        <!-- 単価の根拠テーブル -->
+        <div class="hand-box">
+            <h3 class="footer-title">単価の根拠（かんたん早見）</h3>
+            <table class="benchmark-table">
+                <tr>
+                    <th>単価</th>
+                    <th>参考ベンチマーク</th>
+                    <th>コストどう決めた？</th>
+                </tr>
+                <tr>
+                    <td>¥480 / ¥650</td>
+                    <td>主要読み放題アプリ¥500、タブレット教材¥3,000+</td>
+                    <td>「相場より安い＋ワンコイン感覚」</td>
+                </tr>
+                <tr>
+                    <td>¥35k/園・¥50k/クラス</td>
+                    <td>ICT補助上限／行事費例：アルバム制作¥40k</td>
+                    <td>既存支出の置換えで決裁が通りやすい</td>
+                </tr>
+                <tr>
+                    <td>¥400/児童</td>
+                    <td>文科省ガイドライン「450円上限」</td>
+                    <td>補助金満額内で収まる</td>
+                </tr>
+                <tr>
+                    <td>¥1.2億＋¥2/冊</td>
+                    <td>進研ゼミ教材1冊当たり制作・配送コスト¥70</td>
+                    <td>20万冊で原価5割削減でもベネッセ黒字</td>
+                </tr>
+                <tr>
+                    <td>売上70:30</td>
+                    <td>絵本ロイヤリティ25%＋EC販促手数料15%</td>
+                    <td>小学館に市場平均より好条件を提示</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- フェーズ移行判断テーブル -->
+        <div class="hand-box">
+            <h3 class="footer-title">フェーズ移行判断 ― 代表的 Go / Kill 指標</h3>
+            <table class="judge-table">
+                <tr>
+                    <th>フェーズ移行</th>
+                    <th>判定ライン (例)</th>
+                </tr>
+                <tr>
+                    <td>PoC→β (Jr)</td>
+                    <td><span class="highlight">NPS ≥ 70</span> & 週平均5冊/世帯</td>
+                </tr>
+                <tr>
+                    <td>β→正式 (Jr)</td>
+                    <td>課金CVR ≥ 5% & 30日継続 ≥ 60%</td>
+                </tr>
+                <tr>
+                    <td>Kids Pass Jr→Std</td>
+                    <td>小学生世帯加入率≥0.7% or ARPU≥¥600</td>
+                </tr>
+                <tr>
+                    <td>園パック pilot→有償</td>
+                    <td>園週次利用≥3回／園長NPS≥60</td>
+                </tr>
+                <tr>
+                    <td>小学校SaaS pilot→拡大</td>
+                    <td>先生準備時間▲20% & 活用率≥30%クラス</td>
+                </tr>
+                <tr>
+                    <td>ベネッセ SDK PoC→契約</td>
+                    <td>Promoter≥65 & 生成CVR≥40% & エラー<0.5%</td>
+                </tr>
+                <tr>
+                    <td>小学館 IP pilot→正式</td>
+                    <td>IP版購入率≥10% & 半年ロイ≥¥0.5億</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- SoftBank価値最大化共通手段 -->
+        <div class="footer">
+            <h3 class="footer-title">SoftBankが"最大化"する共通手段</h3>
+            <div class="common-points">
+                <div class="point">
+                    <strong>顧客接点をフル活用</strong> — 4,000万回線・PayPay・LINEのプッシュで CAC ゼロ。
+                </div>
+                <div class="point">
+                    <strong>既存アセット二次利用</strong> — Pepper在庫／Yahoo!物流／コドモンAPI／県教委販路。
+                </div>
+                <div class="point">
+                    <strong>データを一本化</strong> — Kids Pass↔学校↔企業SDKのログを1つのDWHへ→LLM精度UP→さらなる価値。
+                </div>
+                <div class="point">
+                    <strong>クロスセル設計</strong> — 子の学習→親に金融・保険提案、園・学校→法人通信契約、など。
+                </div>
+            </div>
+            <div class="conclusion">
+                これにより、<span class="highlight">家庭（To C）・保育園・幼稚園・小学校（To B教育機関）・教材大手（To B企業）</span>の全セグメントを
+                1つのAI生成エンジン基盤でカバーし、<span class="highlight">段階的に展開・投資回収しながら、5年以内に年商100億円超を堅実に実現できる</span>
+                事業設計となっています。SoftBankの既存資産と顧客接点を最大限活用した独自性の高いビジネスモデルです。
+            </div>
+        </div>
+        
+        <div class="hand-note">
+            このビジネスプランは、<span class="marker">2025年〜2030年</span>の中期計画として策定されました。各フェーズで投資対効果を検証しながら
+            段階的に展開します。さらに詳細な「<span class="highlight">月次P/L表</span>」「<span class="highlight">詳細ガントチャート</span>」
+            「<span class="highlight">法務チェックリスト</span>」「<span class="highlight">リスク対応策</span>」などが必要な場合はお気軽にご相談ください！
+        </div>
+    </div>
+</body>
+</html>
